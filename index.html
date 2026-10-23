@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atölye · Herkese Eğitim</title>
+<meta name="description" content="Müfredat konularından tahtada dokunarak çalışılan simülasyonlar. Tek dosya, internetsiz, hesapsız, ücretsiz.">
+<meta property="og:title" content="Atölye · Herkese Eğitim">
+<meta property="og:description" content="Müfredat konularından tahtada dokunarak çalışılan simülasyonlar. Tek dosya, internetsiz, ücretsiz.">
+<style>
+:root{--kagit:#FBF8EF;--murekkep:#16263D;--soluk:#4E5D70;--gece:#1B3A5C;--sari:#FFC21A;--turuncu:#B8501A;--kirmizi:#C62F25;--cizgi:#C9D6E3}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{color:var(--murekkep);font:18px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,"Noto Sans",sans-serif;
+  background-color:var(--kagit);
+  background-image:linear-gradient(#BFD0E2 1.4px,transparent 1.4px),linear-gradient(90deg,#BFD0E2 1.4px,transparent 1.4px),linear-gradient(#E1EAF3 1px,transparent 1px),linear-gradient(90deg,#E1EAF3 1px,transparent 1px);
+  background-size:150px 150px,150px 150px,30px 30px,30px 30px}
+header{background:var(--gece);color:#FBF8EF;padding:14px 20px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+header h1{margin:0;font-size:26px}
+header h1 span{color:var(--sari)}
+header p{margin:0;opacity:.9;font-size:16px}
+main{max-width:1080px;margin:0 auto;padding:28px 16px 48px}
+.giris{font-size:21px;max-width:760px;margin:0 0 26px}
+.seri{display:inline-block;align-self:flex-start;background:#FFFDF6;color:var(--murekkep);font-size:13px;font-weight:800;letter-spacing:.6px;padding:4px 10px;border:1.5px dashed #9FB3C8;transform:rotate(-1.5deg);box-shadow:0 2px 0 rgba(0,0,0,.18)}
+.liste{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+.kart{background:#fff;border:3px solid var(--murekkep);border-radius:16px;padding:16px 18px;box-shadow:6px 6px 0 var(--murekkep);display:flex;flex-direction:column;gap:10px}
+.kart h2{margin:4px 0 0;font-size:24px}
+.kart p{margin:0;color:var(--soluk)}
+.dugmeler{display:flex;gap:10px;flex-wrap:wrap;margin-top:4px}
+a.ana{background:var(--turuncu);color:#fff;border:3px solid var(--murekkep);border-radius:12px;padding:9px 16px;font-weight:800;text-decoration:none}
+a.ikincil{background:#fff;color:var(--murekkep);border:2px solid var(--murekkep);border-radius:12px;padding:8px 14px;font-weight:700;text-decoration:none}
+a:focus-visible{outline:3px solid #2F5FA8;outline-offset:2px}
+.kucuk{font-size:15px;color:var(--soluk)}
+.bos{border:3px dashed var(--soluk);border-radius:16px;padding:16px 18px;color:var(--soluk);display:flex;align-items:center;justify-content:center;text-align:center;min-height:200px;background:rgba(255,255,255,.6)}
+.not{background:#FFE58A;padding:22px 26px;margin:40px 0 0;max-width:720px;transform:rotate(-1deg);box-shadow:8px 10px 0 rgba(22,38,61,.15)}
+.not h2{margin:0 0 6px;font-size:28px}
+.not h2 span{color:var(--kirmizi)}
+.not p{margin:4px 0}
+footer{max-width:1080px;margin:0 auto;padding:0 16px 30px;color:var(--soluk);font-size:15px}
+footer a{color:var(--murekkep)}
+</style>
+</head>
+<body>
+<header>
+  <h1>Atölye <span>·</span> Herkese Eğitim</h1>
+  <p>Müfredat konuları, tahtada dokunarak.</p>
+</header>
+<main>
+  <p class="giris">Her atölye tek HTML dosyası: internet istemez, hesap yok, kurulum yok. Öğrenci önce tahmin eder, sonra düzeneği kendi kurar ve sonucu görür.</p>
+  <div class="liste">
+    <article class="kart">
+      <span class="seri">FEN · 8. SINIF · FB.8.2</span>
+      <h2>Basit Makineler Atölyesi</h2>
+      <p>Makarayı, kaldıracı, çıkrığı kendi kurar; ipi parmağıyla çeker. Kuvvet azalınca yolun uzadığını, iş çubuklarının hep eşit kaldığını görür.</p>
+      <div class="dugmeler">
+        <a class="ana" href="fen-8-fb-8-2/">Aç</a>
+        <a class="ikincil" href="fen-8-fb-8-2/tani.html">Tahta tanı sayfası</a>
+      </div>
+      <p class="kucuk">Açınca Ctrl+S ile bilgisayara ya da USB belleğe kaydedin. Gerçek tahtada henüz denenmedi.</p>
+    </article>
+    <div class="bos">Sıradaki atölye<br>sizin konunuz olabilir.</div>
+  </div>
+  <section class="not">
+    <h2>Sınıfınızın konusunu yazın, <span>atölyesini yapalım.</span></h2>
+    <p>Ders, sınıf ve öğrenme çıktısı kodunu yazın: <b>herkeseegitimtek@gmail.com</b></p>
+    <p class="kucuk">Her hafta gelen isteklerden birini seçiyoruz.</p>
+  </section>
+</main>
+<footer>
+  <p>Nasıl kullanıldığını YouTube'da gösteriyorum: <a href="https://www.youtube.com/@egitimtek">@egitimtek</a> · Kaynak ve lisans (MIT): <a href="https://github.com/herkeseegitim/atolye">github.com/herkeseegitim/atolye</a></p>
+  <p>Bu çalışmalarda takım arkadaşım Claude. · Herkese Eğitim · İdiye Ökten</p>
+</footer>
+</body>
+</html>
