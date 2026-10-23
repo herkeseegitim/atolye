@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; form-action 'none'; base-uri 'none'">
+<title>Basit Makineler tanı</title>
+<style>
+:root{--kagit:#FFF7E3;--murekkep:#26190B;--soluk:#6B5A44;--sari:#FFC21A;--yesil:#2F7D4F;--kirmizi:#9E1F17;--koyu:#B8501A}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--kagit);color:var(--murekkep);font:18px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,"Noto Sans",sans-serif}
+header{background:var(--murekkep);color:var(--kagit);padding:10px 16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+header h1{margin:0;font-size:21px}
+header h1 span{color:var(--sari)}
+header p{margin:0;font-size:15px;opacity:.85}
+main{max-width:1180px;margin:0 auto;padding:12px 16px 40px;display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:12px}
+.kart{background:#fff;border:3px solid var(--murekkep);border-radius:14px;padding:10px 12px;display:flex;flex-direction:column;gap:6px}
+.kart h2{margin:0;font-size:19px;display:flex;align-items:center;gap:8px}
+.kart h2 b{display:inline-flex;width:30px;height:30px;border-radius:50%;background:var(--sari);border:2px solid var(--murekkep);align-items:center;justify-content:center;font-size:16px;flex:none}
+.kart p{margin:0;font-size:15px;color:var(--soluk)}
+.alan{border:2px dashed var(--murekkep);border-radius:12px;background:var(--kagit);touch-action:none;user-select:none;-webkit-user-select:none;position:relative;overflow:hidden}
+.durum{font-weight:700;min-height:24px}
+.durum.iyi{color:var(--yesil)}
+.durum.sorun{color:var(--kirmizi)}
+button{font:inherit;color:inherit;cursor:pointer;touch-action:manipulation}
+.ana{background:var(--koyu);color:#fff;border:3px solid var(--murekkep);border-radius:12px;padding:10px 16px;font-weight:800;min-height:48px}
+.ikincil{background:#fff;border:2px solid var(--murekkep);border-radius:12px;padding:8px 14px;font-weight:700;min-height:44px}
+table{border-collapse:collapse;width:100%;font-size:15px}
+td{border-bottom:1px solid #E7D8B4;padding:3px 4px;vertical-align:top}
+td:first-child{color:var(--soluk);width:46%}
+.genis{grid-column:1/-1}
+textarea{width:100%;font:15px/1.35 ui-monospace,Consolas,monospace;border:2px solid var(--murekkep);border-radius:10px;padding:8px;min-height:84px;background:#fff}
+.satir{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.kucuk{font-size:14px;color:var(--soluk)}
+svg{display:block;width:100%;height:100%}
+</style>
+</head>
+<body>
+<header>
+  <h1>Basit Makineler <span>tanı</span></h1>
+  <p>Tahtada bir kez açın, adımları parmakla yapın, en alttaki sonuç satırını kopyalayıp gönderin. İnternet istemez, hiçbir şey göndermez.</p>
+</header>
+<main>
+  <section class="kart" id="k0">
+    <h2><b>0</b>Kendiliğinden ölçülenler</h2>
+    <table id="olc"><tbody></tbody></table>
+  </section>
+
+  <section class="kart" id="k1">
+    <h2><b>1</b>Tam ekran</h2>
+    <p>Düğmeye basın. Ekran tam ekrana geçmeli. Çıkmak için bir daha basın.</p>
+    <div class="satir"><button class="ana" id="tamBtn" type="button">Tam ekran</button><span class="durum" id="d1"></span></div>
+  </section>
+
+  <section class="kart" id="k2">
+    <h2><b>2</b>Dokunma türü</h2>
+    <p>Kutuya parmağınızla bir kez dokunun.</p>
+    <div class="alan" id="a2" style="height:110px"></div>
+    <div class="durum" id="d2"></div>
+  </section>
+
+  <section class="kart" id="k3">
+    <h2><b>3</b>İpi çek</h2>
+    <p>Sarı tutamağı parmağınızla aşağı doğru sürükleyin, yukarıda bırakıp yeniden tutarak 3 kez çekin.</p>
+    <div class="alan" id="a3" style="height:260px"><svg viewBox="0 0 300 260" id="s3"></svg></div>
+    <div class="durum" id="d3"></div>
+  </section>
+
+  <section class="kart" id="k4">
+    <h2><b>4</b>Kolu çevir</h2>
+    <p>Sarı topu parmağınızla daire çizerek 3 tur çevirin.</p>
+    <div class="alan" id="a4" style="height:260px"><svg viewBox="0 0 300 260" id="s4"></svg></div>
+    <div class="durum" id="d4"></div>
+  </section>
+
+  <section class="kart" id="k5">
+    <h2><b>5</b>Basılı tut</h2>
+    <p>Düğmeye parmağınızla basın ve sayaç 3 olana kadar bırakmayın.</p>
+    <div class="satir"><button class="ana" id="tutBtn" type="button">Basılı tut</button><span class="durum" id="d5"></span></div>
+    <p class="kucuk">SMART tahtalarda uzun basma sağ tık sayılabilir. Burada ölçülüyor.</p>
+  </section>
+
+  <section class="kart" id="k6">
+    <h2><b>6</b>İki parmak ve avuç</h2>
+    <p>Kutuya önce iki parmağınızı birlikte koyun. Sonra bir parmakla çizerken avucunuzu kutunun kenarına dayayın.</p>
+    <div class="alan" id="a6" style="height:200px"></div>
+    <div class="durum" id="d6"></div>
+  </section>
+
+  <section class="kart" id="k7">
+    <h2><b>7</b>Sürükle ve bırak</h2>
+    <p>Kartı parmağınızla tutup kesikli kutuya bırakın.</p>
+    <div class="alan" id="a7" style="height:150px">
+      <div id="kart7" style="position:absolute;left:14px;top:40px;width:96px;height:66px;border:2px solid #26190B;border-radius:10px;background:#FFC21A;display:flex;align-items:center;justify-content:center;font-weight:800;touch-action:none">Makas</div>
+      <div id="hedef7" style="position:absolute;right:14px;top:20px;width:130px;height:106px;border:3px dashed #26190B;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#6B5A44">Kaldıraç</div>
+    </div>
+    <div class="durum" id="d7"></div>
+  </section>
+
+  <section class="kart" id="k8">
+    <h2><b>8</b>Çizim hızı</h2>
+    <p>Düğmeye basın, 4 saniye bekleyin. Ekranda makine benzeri bir çizim döner.</p>
+    <div class="satir"><button class="ana" id="hizBtn" type="button">Ölç</button><span class="durum" id="d8"></span></div>
+    <div class="alan" style="height:160px;border-style:solid"><svg viewBox="0 0 400 160" id="s8"></svg></div>
+  </section>
+
+  <section class="kart genis">
+    <h2><b>✓</b>Sonuç satırı</h2>
+    <p>Kopyala'ya basın ve bana yapıştırın. Kopyalanmazsa satırın fotoğrafını çekin.</p>
+    <textarea id="sonuc" readonly></textarea>
+    <div class="satir"><button class="ana" id="kopyala" type="button">Kopyala</button><span class="kucuk" id="kopyaNot"></span></div>
+  </section>
+</main>
+<script>
+(function(){
+"use strict";
+var R = {};          // sonuç satırı parçaları
+function $(s){ return document.querySelector(s); }
+function yaz(id, t, d){ var e=$('#'+id); e.textContent=t; e.className='durum'+(d?' '+d:''); }
+function tr(k,v){ var t=$('#olc tbody'); var r=document.createElement('tr'); r.innerHTML='<td></td><td></td>'; r.children[0].textContent=k; r.children[1].textContent=v; t.appendChild(r); }
+function guncelle(){
+  var sira=['ver','tar','sis','ekr','pen','dn','ptr','pe','ls','tam','dok','ip','cev','bas','iki','avuc','sur','fps','svg'];
+  var p=['BM-tani 1'];
+  sira.forEach(function(k){ if(R[k]!==undefined) p.push(k+':'+R[k]); });
+  $('#sonuc').value=p.join(' | ');
+}
+function virgul(x){ return String(x).replace('.',','); }
+function mm(q){ try{ return matchMedia(q).matches; }catch(e){ return false; } }
+
+/* 0 kendiliğinden */
+(function(){
+  var ua=navigator.userAgent||'', t;
+  var tar=(t=ua.match(/Firefox\/(\d+)/))?'FF '+t[1]:(t=ua.match(/Edg\/(\d+)/))?'ED '+t[1]:(t=ua.match(/Chrom(?:e|ium)\/(\d+)/))?'CR '+t[1]:'?';
+  var sis=/Windows/.test(ua)?'Win':(/Linux/.test(ua)?'Linux':(/Mac/.test(ua)?'Mac':'?'));
+  var dpr=Math.round((window.devicePixelRatio||1)*100)/100;
+  var dn=navigator.maxTouchPoints||0;
+  var ptr=mm('(any-pointer:coarse)')?'coarse':(mm('(pointer:fine)')?'fine':'none');
+  var pe=typeof window.PointerEvent==='function';
+  var ls=false; try{ localStorage.setItem('bm-tani','1'); ls=localStorage.getItem('bm-tani')==='1'; localStorage.removeItem('bm-tani'); }catch(e){}
+  R.tar=tar; R.sis=sis; R.ekr=screen.width+'x'+screen.height+'@'+dpr; R.pen=innerWidth+'x'+innerHeight; R.dn=dn; R.ptr=ptr; R.pe=pe?1:0; R.ls=ls?1:0;
+  tr('Tarayıcı', tar+(/Firefox/.test(ua)?' (ESR alt sürümü görünmez)':''));
+  tr('Sistem', sis);
+  tr('Ekran', screen.width+' × '+screen.height+', ölçek '+dpr);
+  tr('Pencere içi', innerWidth+' × '+innerHeight+(innerWidth<1280||innerHeight<600?' (küçük; tam ekran deneyin)':''));
+  tr('Dokunma noktası', dn+(dn>=2?'':' (tahta dokunmayı fare gibi iletiyor olabilir)'));
+  tr('İşaretçi', ptr==='coarse'?'parmak':'fare');
+  tr('Pointer olayları', pe?'var':'yok');
+  tr('Yerel kayıt (bitmiş görev işaretleri)', ls?'çalışıyor':'çalışmıyor');
+  window.addEventListener('resize',function(){ R.pen=innerWidth+'x'+innerHeight; guncelle(); });
+  guncelle();
+})();
+
+/* 1 tam ekran */
+$('#tamBtn').addEventListener('click',function(){
+  var d=document.documentElement;
+  try{
+    if(document.fullscreenElement||document.mozFullScreenElement){ (document.exitFullscreen||document.mozCancelFullScreen).call(document); return; }
+    var f=d.requestFullscreen||d.mozRequestFullScreen||d.webkitRequestFullscreen;
+    if(!f){ R.tam='yok'; yaz('d1','Bu tarayıcı tam ekrana izin vermiyor. F11 tuşu da olur.','sorun'); guncelle(); return; }
+    var p=f.call(d); if(p&&p.catch) p.catch(function(){ R.tam='red'; yaz('d1','Tam ekran açılamadı. F11 deneyin.','sorun'); guncelle(); });
+  }catch(e){ R.tam='hata'; yaz('d1','Tam ekran açılamadı.','sorun'); guncelle(); }
+});
+function tamDegisti(){ var on=!!(document.fullscreenElement||document.mozFullScreenElement); if(on){ R.tam='ok'; yaz('d1','Tam ekran çalışıyor.','iyi'); guncelle(); } }
+document.addEventListener('fullscreenchange',tamDegisti); document.addEventListener('mozfullscreenchange',tamDegisti);
+
+/* 2 dokunma türü */
+$('#a2').addEventListener('pointerdown',function(e){
+  var t=e.pointerType||'?';
+  R.dok=t; guncelle();
+  if(t==='touch') yaz('d2','Parmak dokunma olarak geliyor.','iyi');
+  else if(t==='pen') yaz('d2','Dokunuş kalem olarak geliyor. Uygulama bunu da kabul eder.','iyi');
+  else yaz('d2','Dokunuş fare olarak geliyor. Uygulama çalışır; iki parmak ve avuç ayırt edilemez.','sorun');
+});
+
+/* 3 ipi çek */
+(function(){
+  var s=$('#s3'), y=40, toplam=0, hareket=0, iptal=0, t0=0, tutus=0, aktif=null;
+  function ciz(){
+    var yy=40+y;
+    s.innerHTML='<line x1="150" y1="0" x2="150" y2="'+yy+'" stroke="#8A5A2B" stroke-width="5"/><circle cx="150" cy="'+yy+'" r="22" fill="#FFC21A" stroke="#26190B" stroke-width="3"/>'+
+      '<text x="12" y="248" font-size="18" font-weight="700" fill="#26190B">Çekilen: '+Math.round(toplam)+' px</text>';
+  }
+  ciz();
+  var a=$('#a3');
+  a.addEventListener('pointerdown',function(e){ if(aktif!==null) return; aktif=e.pointerId; try{a.setPointerCapture(e.pointerId);}catch(er){} t0=performance.now(); hareket=0; tutus++; e.preventDefault(); });
+  a.addEventListener('pointermove',function(e){
+    if(e.pointerId!==aktif) return; hareket++;
+    var r=a.getBoundingClientRect(); var py=(e.clientY-r.top)/r.height*260-40;
+    if(py>y){ toplam+=py-y; } y=Math.max(0,Math.min(190,py)); ciz();
+  });
+  function bit(e,ip){
+    if(e.pointerId!==aktif) return; aktif=null; if(ip) iptal++;
+    var sn=(performance.now()-t0)/1000, hz=sn>0?Math.round(hareket/sn):0;
+    y=0; ciz();
+    R.ip=(toplam>150?'ok':'az')+' '+hz+'hz c'+iptal+' t'+tutus; guncelle();
+    if(iptal) yaz('d3','Sürükleme tarayıcı tarafından kesildi ('+iptal+' kez). Haber verin.','sorun');
+    else if(toplam>150 && tutus>=3) yaz('d3','İp çekme çalışıyor. Saniyede '+hz+' hareket.','iyi');
+    else yaz('d3',tutus+'. çekiş tamam.','');
+  }
+  a.addEventListener('pointerup',function(e){ bit(e,false); });
+  a.addEventListener('pointercancel',function(e){ bit(e,true); });
+})();
+
+/* 4 kolu çevir */
+(function(){
+  var s=$('#s4'), a=$('#a4'), aci=-Math.PI/2, tur=0, iptal=0, aktif=null, son=0;
+  function ciz(){
+    var x=150+80*Math.cos(aci), y=130+80*Math.sin(aci);
+    s.innerHTML='<circle cx="150" cy="130" r="80" fill="none" stroke="#9E1F17" stroke-width="2" stroke-dasharray="6 6"/><circle cx="150" cy="130" r="20" fill="#C08A50" stroke="#26190B" stroke-width="3"/>'+
+      '<line x1="150" y1="130" x2="'+x+'" y2="'+y+'" stroke="#26190B" stroke-width="7"/><circle cx="'+x+'" cy="'+y+'" r="18" fill="#FFC21A" stroke="#26190B" stroke-width="3"/>'+
+      '<text x="12" y="28" font-size="18" font-weight="700" fill="#26190B">Tur: '+virgul((Math.abs(tur)/(2*Math.PI)).toFixed(1))+'</text>';
+  }
+  ciz();
+  function acisi(e){ var r=a.getBoundingClientRect(); var sx=r.width/300, sy=r.height/260, k=Math.min(sx,sy); var ox=r.left+(r.width-300*k)/2, oy=r.top+(r.height-260*k)/2; return Math.atan2((e.clientY-oy)/k-130,(e.clientX-ox)/k-150); }
+  a.addEventListener('pointerdown',function(e){ if(aktif!==null) return; aktif=e.pointerId; try{a.setPointerCapture(e.pointerId);}catch(er){} son=acisi(e); e.preventDefault(); });
+  a.addEventListener('pointermove',function(e){
+    if(e.pointerId!==aktif) return; var b=acisi(e), d=b-son; if(d>Math.PI) d-=2*Math.PI; if(d<-Math.PI) d+=2*Math.PI; son=b; aci+=d; tur+=d; ciz();
+  });
+  function bit(e,ip){
+    if(e.pointerId!==aktif) return; aktif=null; if(ip) iptal++;
+    var t=Math.abs(tur)/(2*Math.PI);
+    R.cev=(t>=3?'ok':'az')+' '+t.toFixed(1)+'tur c'+iptal; guncelle();
+    if(iptal) yaz('d4','Çevirme tarayıcı tarafından kesildi ('+iptal+' kez). Haber verin.','sorun');
+    else if(t>=3) yaz('d4','Kol çevirme çalışıyor.','iyi');
+    else yaz('d4',virgul(t.toFixed(1))+' tur. Devam edin.','');
+  }
+  a.addEventListener('pointerup',function(e){ bit(e,false); });
+  a.addEventListener('pointercancel',function(e){ bit(e,true); });
+})();
+
+/* 5 basılı tut */
+(function(){
+  var b=$('#tutBtn'), t0=0, zam=null, menu=0, aktif=null;
+  b.addEventListener('contextmenu',function(e){ menu++; e.preventDefault(); });
+  b.addEventListener('pointerdown',function(e){
+    if(aktif!==null) return; aktif=e.pointerId; try{b.setPointerCapture(e.pointerId);}catch(er){} e.preventDefault(); t0=performance.now();
+    zam=setInterval(function(){ var sn=(performance.now()-t0)/1000; b.textContent='Basılı: '+Math.min(3,Math.floor(sn)); if(sn>=3){ b.textContent='Bırakabilirsiniz'; } },100);
+  });
+  function bit(e,ip){
+    if(e.pointerId!==aktif) return; aktif=null; clearInterval(zam); var sn=(performance.now()-t0)/1000;
+    b.textContent='Basılı tut';
+    R.bas=sn.toFixed(1)+'s m'+menu+(ip?' c':''); guncelle();
+    if(ip) yaz('d5','Basma '+virgul(sn.toFixed(1))+' sn\'de tarayıcı tarafından kesildi. Haber verin.','sorun');
+    else if(menu) yaz('d5','Uzun basma sağ tık menüsü açmaya çalıştı; uygulama bunu engelliyor. '+virgul(sn.toFixed(1))+' sn.','iyi');
+    else if(sn>=3) yaz('d5','Basılı tutma çalışıyor ('+virgul(sn.toFixed(1))+' sn).','iyi');
+    else yaz('d5','Erken bırakıldı ('+virgul(sn.toFixed(1))+' sn). Bir daha deneyin.','');
+  }
+  b.addEventListener('pointerup',function(e){ bit(e,false); });
+  b.addEventListener('pointercancel',function(e){ bit(e,true); });
+})();
+
+/* 6 iki parmak ve avuç */
+(function(){
+  var a=$('#a6'), etkin={}, enCok=0, toplamKimlik=0, genis=0;
+  a.addEventListener('pointerdown',function(e){ e.preventDefault(); etkin[e.pointerId]=1; toplamKimlik++; var n=Object.keys(etkin).length; if(n>enCok) enCok=n; if((e.width||0)>genis) genis=e.width||0; goster(); });
+  function cik(e){ delete etkin[e.pointerId]; }
+  a.addEventListener('pointerup',cik); a.addEventListener('pointercancel',cik);
+  a.addEventListener('pointermove',function(e){ if((e.width||0)>genis) genis=e.width||0; });
+  function goster(){
+    R.iki=enCok; R.avuc=toplamKimlik+'/'+Math.round(genis); guncelle();
+    if(enCok>=2) yaz('d6','Aynı anda '+enCok+' nokta görüldü. Uygulama yalnız ilk parmağı izler.','iyi');
+    else yaz('d6','Şimdilik tek nokta. İki parmağı birlikte koyun.','');
+  }
+})();
+
+/* 7 sürükle ve bırak */
+(function(){
+  var k=$('#kart7'), h=$('#hedef7'), a=$('#a7'), aktif=null, dx=0, dy=0, iptal=0;
+  k.addEventListener('pointerdown',function(e){ if(aktif!==null) return; aktif=e.pointerId; try{k.setPointerCapture(e.pointerId);}catch(er){} var r=k.getBoundingClientRect(); dx=e.clientX-r.left; dy=e.clientY-r.top; e.preventDefault(); });
+  k.addEventListener('pointermove',function(e){ if(e.pointerId!==aktif) return; var r=a.getBoundingClientRect(); k.style.left=(e.clientX-r.left-dx)+'px'; k.style.top=(e.clientY-r.top-dy)+'px'; });
+  function bit(e,ip){
+    if(e.pointerId!==aktif) return; aktif=null; if(ip) iptal++;
+    var kr=k.getBoundingClientRect(), hr=h.getBoundingClientRect(), cx=kr.left+kr.width/2, cy=kr.top+kr.height/2;
+    var ic=cx>hr.left&&cx<hr.right&&cy>hr.top&&cy<hr.bottom;
+    R.sur=(ic?'ok':'disarda')+(iptal?' c'+iptal:''); guncelle();
+    if(ic){ yaz('d7','Sürükle ve bırak çalışıyor.','iyi'); h.style.background='#E6F2EA'; }
+    else if(iptal) yaz('d7','Sürükleme kesildi. Haber verin.','sorun');
+    else yaz('d7','Kart kutunun dışında kaldı. Bir daha deneyin.','');
+  }
+  k.addEventListener('pointerup',function(e){ bit(e,false); });
+  k.addEventListener('pointercancel',function(e){ bit(e,true); });
+})();
+
+/* 8 çizim hızı: uygulamadaki gibi her karede SVG baştan yazılır */
+$('#hizBtn').addEventListener('click',function(){
+  var s=$('#s8'), b=$('#hizBtn'), t0=performance.now(), son=t0, kare=[], cizim=[];
+  b.disabled=true; yaz('d8','Ölçülüyor…','');
+  function dis(cx,cy,n,a){ var p='',rr=n*1.4; for(var i=0;i<n;i++){ var a0=a+i*2*Math.PI/n; p+=(i?'L':'M')+(cx+(rr+4)*Math.cos(a0)).toFixed(1)+' '+(cy+(rr+4)*Math.sin(a0)).toFixed(1)+'L'+(cx+rr*Math.cos(a0+Math.PI/n)).toFixed(1)+' '+(cy+rr*Math.sin(a0+Math.PI/n)).toFixed(1); } return p+'Z'; }
+  function adim(t){
+    kare.push(t-son); son=t;
+    var c0=performance.now(), a=(t-t0)/400, o='';
+    for(var k=0;k<40;k++) o+='<line x1="'+(k*10)+'" y1="0" x2="'+(k*10)+'" y2="160" stroke="#F1E6CC"/>';
+    o+='<path d="'+dis(110,80,48,a)+'" fill="#FFC21A" stroke="#26190B" stroke-width="2"/><path d="'+dis(290,80,16,-a*3)+'" fill="#E8772E" stroke="#26190B" stroke-width="2"/>';
+    o+='<line x1="110" y1="80" x2="'+(110+60*Math.cos(a))+'" y2="'+(80+60*Math.sin(a))+'" stroke="#26190B" stroke-width="8"/>';
+    s.innerHTML=o; cizim.push(performance.now()-c0);
+    if(t-t0<4000) requestAnimationFrame(adim);
+    else{
+      kare=kare.slice(3).sort(function(x,y){return x-y;}); cizim.sort(function(x,y){return x-y;});
+      var fps=Math.round(1000/kare[Math.floor(kare.length/2)]), c95=cizim[Math.floor(cizim.length*.95)];
+      R.fps=fps; R.svg=c95.toFixed(1)+'ms'; guncelle(); b.disabled=false;
+      if(fps>=45) yaz('d8',fps+' kare/sn, çizim '+virgul(c95.toFixed(1))+' ms. Akıcı.','iyi');
+      else if(fps>=25) yaz('d8',fps+' kare/sn, çizim '+virgul(c95.toFixed(1))+' ms. Kullanılır.','');
+      else yaz('d8',fps+' kare/sn, çizim '+virgul(c95.toFixed(1))+' ms. Yavaş, haber verin.','sorun');
+    }
+  }
+  requestAnimationFrame(adim);
+});
+
+/* kopyala */
+$('#kopyala').addEventListener('click',function(){
+  var t=$('#sonuc'); t.select(); var ok=false;
+  try{ ok=document.execCommand('copy'); }catch(e){}
+  if(!ok && navigator.clipboard){ navigator.clipboard.writeText(t.value).then(function(){ $('#kopyaNot').textContent='Kopyalandı.'; },function(){ $('#kopyaNot').textContent='Kopyalanamadı; satır seçili, Ctrl+C ya da fotoğraf.'; }); return; }
+  $('#kopyaNot').textContent= ok ? 'Kopyalandı.' : 'Kopyalanamadı; satır seçili, Ctrl+C ya da fotoğraf.';
+});
+guncelle();
+})();
+</script>
+</body>
+</html>
