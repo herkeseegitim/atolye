@@ -35,6 +35,14 @@ Laboratuvarda: Chrome ve Edge'in motoru (Chromium) ile 1024×768'den 4K'ya kadar
 
 Sınıfınızın konusunu, sınıfı ve öğrenme çıktısı kodunu yazın: herkeseegitimtek@gmail.com. Her hafta gelen isteklerden birini seçip atölyesini yapıyoruz.
 
+## Eksik ya da yanlış
+
+Bir atölyede kavram, terim ya da kazanım açısından eksik gördüğünüz yeri herkeseegitimtek@gmail.com adresine yazın. Düzeltip güncelliyoruz.
+
+## Katkı verenler
+
+Düzeltme öneren öğretmenler, izinleriyle, burada ve sürüm notunda yer alır.
+
 ## Nasıl yapıldı
 
 Bu çalışmalarda takım arkadaşım Claude. Kurul (fen öğretmeni gözü, öğrenci gözü, QA) ve bağımsız doğrulayıcı incelemesinden geçti.
