@@ -7,11 +7,11 @@ Nasıl kullanıldığını YouTube'da gösteriyorum: https://www.youtube.com/@eg
 
 ## Atölyeler
 
-| Ders | Sınıf | Öğrenme çıktısı | Atölye |
+| Ders | Sınıf | Kazanım | Atölye |
 |---|---|---|---|
-| Fen Bilimleri | 8 | FB.8.2.1, FB.8.2.2 | [Basit Makineler Atölyesi](https://herkeseegitim.github.io/atolye/fen-8-fb-8-2/) |
+| Fen Bilimleri | 8 | F.8.5.1.1, F.8.5.1.2 (2027-28'den itibaren FB.8.2) | [Basit Makineler Atölyesi](https://herkeseegitim.github.io/atolye/fen-8-f-8-5/) |
 
-Her atölye kendi klasöründe durur. Klasör adı ders, sınıf ve öğrenme çıktısı kodundan gelir (ör. `fen-8-fb-8-2`).
+Her atölye kendi klasöründe durur. Klasör adı ders, sınıf ve o yıl okutulan programdaki kazanım kodundan gelir (ör. `fen-8-f-8-5`).
 
 ## Basit Makineler Atölyesi
 
