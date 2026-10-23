@@ -1280,6 +1280,7 @@ $('#ogretmen').innerHTML=
 '<li>İnternet gerekmez. Dosya tahtada, USB bellekte ya da bilgisayarda çalışır.</li>'+
 '<li>Bitmiş görevlerin işareti bu tarayıcıda saklanır.</li></ul>'+
 '<button type="button" class="ikincil" id="ilerlemeSil">Bitmiş işaretlerini temizle</button> <span id="silNot" class="kucuk"></span></div>'+
+'<div class="kart" style="grid-column:1/-1"><h2>Eksik ya da yanlış gördünüz mü?</h2><p>Bir terim, bir sayı ya da FB.8.2\'den eksik kalan bir kısım varsa yazın: herkeseegitimtek@gmail.com. Düzeltip güncelliyoruz. İzin verirseniz adınızı katkı verenler arasına yazıyoruz.</p></div>'+
 '<div class="kart" style="grid-column:1/-1"><h2>Başka bir konu için atölye</h2><p>Sınıfınızın konusunu, sınıfı ve kazanım kodunu yazın: herkeseegitimtek@gmail.com. Her hafta gelen isteklerden birini seçip atölyesini yapıyoruz. Bütün atölyeler: herkeseegitim.github.io/atolye</p><p class="kucuk">Basit Makineler Atölyesi · Herkese Eğitim · Ücretsiz, kurulumsuz, internetsiz çalışır.</p></div>';
 $('#ilerlemeSil').addEventListener('click',function(){ ilerleme={bitti:{}}; yaz(ilerleme); durumlar=G.map(function(_,i){return yeniDurum(i);}); S=durumlar[aktif]; liste(); panel(); ciz(); $('#silNot').textContent='Temizlendi.'; });
 
