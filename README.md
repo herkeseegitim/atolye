@@ -11,6 +11,7 @@ Nasıl kullanıldığını YouTube'da gösteriyorum: https://www.youtube.com/@eg
 |---|---|---|---|
 | Fen Bilimleri | 8 | F.8.5.1.1, F.8.5.1.2 (2027-28'den itibaren FB.8.2) | [Basit Makineler Atölyesi](https://herkeseegitim.github.io/atolye/fen-8-f-8-5/) |
 | Bilişim Teknolojileri ve Yazılım | 5 | BTY.5.1.5 | [Bilgisayarın İçi Atölyesi](https://herkeseegitim.github.io/atolye/bty-5-1-5/) |
+| Matematik | 7 | MAT.7.1.7 | [Yüzdeler Atölyesi](https://herkeseegitim.github.io/atolye/mat-7-1-7/) |
 
 Her atölye kendi klasöründe durur. Klasör adı ders, sınıf ve o yıl okutulan programdaki kazanım kodundan gelir (ör. `fen-8-f-8-5`).
 
@@ -52,6 +53,23 @@ Kaydetmek için: adresi açın, Ctrl+S ile bilgisayara ya da USB belleğe kayded
 Laboratuvarda: Chromium ile 1280×720, 1366×625, 1280×600, 1024×768, 1920×1080, 390×844 ve 844×390. ETAP'taki eski Firefox sürümlerinde ve gerçek tahtada henüz denenmedi. 3B sahne için WebGL 2 gerekir; yoksa tarayıcıyı güncelleme notu çıkar.
 
 Kullanılan kütüphaneler ve yazı tipi: three.js (MIT), qrcode-generator (MIT, Kazuhiko Arase), Nunito (SIL Open Font License 1.1).
+
+## Yüzdeler Atölyesi
+
+7. sınıf Matematik, MAT.7.1.7 (Gerçek yaşam durumları üzerinden doğru orantılı durumlara ilişkin problemleri çözebilme). Merak sorusu: "%20 indirimin üstüne kasada %20 daha. Toplam indirim %40 mı?"
+
+- **Yüzde şeridi:** Çubuk diyagramı ile çift sayı doğrusu tek nesnede. Öğrenci tutamağı sürükler; oran tablosu şeritteki adımlarla dolar ("aynı çarpan"), birim oran ve grafik.
+- **Görevler:** Yüzdesini bul, tamamını bul, yüzde olarak yaz, yüzdeyle artır, yüzdeyle azalt, %20 üstüne %20. Her görevde tahmin et, dene, açıkla; sayılar öğrencinin seçiminden.
+- **Kendim çalışıyorum:** Adım adım talimat, üç kademeli ipucu (cevabı söylemez), her görevin sonunda yeni sayılarla Kendin dene, öğrencinin kendi oran tablosu (Benim tablom), sonda karışık sözel problemlerle Sınava hazırlık.
+- **Öğretmen sekmesi:** Program metni, ders akışı (40 dk), sık görülen yanılgılar.
+
+Kaydetmek için: adresi açın, Ctrl+S ile bilgisayara ya da USB belleğe kaydedin.
+
+### Hangi ortamlarda denendi
+
+Laboratuvarda: Chromium ile 1280×600, 1366×768, 1024×768; Firefox 75 ve 137. Gerçek tahtada henüz denenmedi.
+
+Kullanılan kütüphaneler ve yazı tipi: qrcode-generator (MIT, Kazuhiko Arase), Nunito (SIL Open Font License 1.1).
 
 ## Konu isteği
 
