@@ -68,7 +68,7 @@ main{flex:1;display:flex;flex-direction:column;padding:0 12px 8px;gap:8px;min-he
 
 /* alt bölge */
 #alt{display:flex;gap:10px;align-items:stretch;min-height:0;flex:1 1 auto}
-#panel{flex:3 1 0;background:var(--kagit2);border:3px solid var(--murekkep);border-radius:14px;padding:8px 12px;box-shadow:4px 4px 0 var(--murekkep);min-width:0;overflow:auto}
+#panel{scroll-padding-bottom:56px;flex:3 1 0;background:var(--kagit2);border:3px solid var(--murekkep);border-radius:14px;padding:8px 12px;box-shadow:4px 4px 0 var(--murekkep);min-width:0;overflow:auto}
 #yan{flex:2 1 0;background:var(--kagit2);border:3px solid var(--murekkep);border-radius:14px;padding:8px 12px;box-shadow:4px 4px 0 var(--murekkep);min-width:0;overflow:auto}
 .asama{font-weight:900;font-size:var(--fk);color:var(--soluk);margin:0 0 4px;display:flex;align-items:center;gap:8px}
 .asama .no{display:inline-flex;align-items:center;justify-content:center;width:1.6em;height:1.6em;border-radius:50%;color:#fff;font-size:.95em}
@@ -87,11 +87,17 @@ main{flex:1;display:flex;flex-direction:column;padding:0 12px 8px;gap:8px;min-he
 #tablo th{font-size:var(--fk);text-align:left;color:var(--soluk);padding:2px 6px;border-bottom:2px solid var(--murekkep)}
 #tablo td{padding:3px 6px;border-bottom:1px dashed var(--cizgi);font-weight:800;white-space:nowrap}
 #tablo td.ok{font-size:var(--fk);color:var(--mavi);font-weight:900;width:3.6em;text-align:center}
+#tablo.oran{width:auto;min-width:min(100%,380px)}#tablo.oran th{position:sticky;top:-8px;background:var(--kagit2);z-index:1}#tablo.oran td,#tablo.oran th{padding-left:10px;padding-right:10px}
+#tablo.oran tr.gecis td{border-bottom:none;padding:0 6px;font-size:var(--fk);line-height:1.25}
+#tablo.oran td.ok{color:var(--murekkep);font-weight:900;font-size:1em;white-space:nowrap;width:4.2em;text-align:center}
+#tablo.oran td.ne{color:var(--murekkep);font-weight:700;white-space:normal;text-align:center}
+#tablo.oran tr.satir td{border-bottom:2px solid var(--cizgi)}
+.tabloAra{margin:8px 0 2px;font-size:var(--fk);font-weight:900;color:var(--soluk)}
 #tablo tr.vurgu td{background:var(--turuncuA)}
 #tablo tr.yeni td{background:#E8F6EE}
 .kavram{display:inline-block;border:2px solid var(--murekkep);border-radius:999px;padding:0 8px;font-size:var(--fk);font-weight:900;background:var(--sariA);margin:4px 4px 0 0}
 .not{font-size:var(--fk);color:var(--soluk);margin:4px 0}
-#grafik{width:100%;max-width:320px;height:auto;display:block;margin-top:4px}
+#grafik{width:100%;max-width:440px;height:auto;display:block;margin-top:4px}
 .bos{color:var(--soluk);font-weight:700}
 
 /* öğretmen */
@@ -107,8 +113,8 @@ main{flex:1;display:flex;flex-direction:column;padding:0 12px 8px;gap:8px;min-he
 #ogretmen .alinti{border-left:5px solid var(--murekkep);padding:4px 10px;background:#fff;margin:6px 0}
 
 /* kapı, paylaş, sorun */
-#kapi,#paylasPerde,#sorunPerde{position:fixed;inset:0;background:rgba(22,38,61,.55);display:flex;align-items:center;justify-content:center;z-index:60;padding:16px}
-#kapiKutu,#paylas,#sorun{background:var(--kagit);border:3px solid var(--murekkep);border-radius:16px;box-shadow:6px 6px 0 var(--murekkep);width:min(760px,100%);max-height:94vh;overflow:auto;padding:clamp(14px,1.4vw,32px);text-align:center}
+#kapi,#paylasPerde,#sorunPerde,#ozetPerde{position:fixed;inset:0;background:rgba(22,38,61,.55);display:flex;align-items:center;justify-content:center;z-index:60;padding:16px}
+#kapiKutu,#paylas,#sorun,#ozet{background:var(--kagit);border:3px solid var(--murekkep);border-radius:16px;box-shadow:6px 6px 0 var(--murekkep);width:min(760px,100%);max-height:94vh;overflow:auto;padding:clamp(14px,1.4vw,32px);text-align:center}
 #kapiKutu h2{font-size:clamp(26px,2.2vw,48px);margin:8px 0 0;font-weight:900}
 #kapiKutu h2 span{color:var(--turuncu)}
 .kapiAlt{font-size:clamp(18px,1.2vw,28px);font-weight:800;margin:8px 0 14px}
@@ -118,7 +124,7 @@ main{flex:1;display:flex;flex-direction:column;padding:0 12px 8px;gap:8px;min-he
 .kapiDug span{font-size:clamp(16px,1vw,22px);font-weight:700;color:var(--soluk)}
 .kapiDug em{font-style:normal;font-size:clamp(15px,.95vw,20px);font-weight:800;color:var(--mavi)}
 .kapiDug em:empty{display:none}
-#kapiDers{background:var(--mavi);color:#fff}#kapiDers span{color:#E3ECFF}
+#kapiDers,#kapiKendim{background:#fff}#kapiKutu:focus{outline:none}
 .kapiNot{margin:12px 0 0;font-size:var(--fk);color:var(--soluk);font-weight:700}
 #paylas{width:min(560px,100%)}
 #paylas h3{margin:0 0 8px;font-size:clamp(22px,1.5vw,32px)}
@@ -127,6 +133,9 @@ main{flex:1;display:flex;flex-direction:column;padding:0 12px 8px;gap:8px;min-he
 #paylas .adres{font-family:var(--mono);font-weight:700;word-break:break-all;margin:10px 0;font-size:var(--fk)}
 #paylas .dugmeler{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
 #sorun{width:min(860px,100%);text-align:left;font-size:var(--f);line-height:1.35}
+#ozet{text-align:left}#ozet h2{margin:0 0 8px;font-size:clamp(24px,1.5vw,44px);font-weight:900}
+.ozetTablo{width:100%;border-collapse:collapse;font-size:var(--f)}.ozetTablo th,.ozetTablo td{text-align:left;padding:6px 8px;border-bottom:2px solid var(--cizgi)}.ozetTablo th{font-size:var(--fk);color:var(--soluk)}
+#ozet .gonder{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}#ozet .kucuk{font-size:var(--fk);color:var(--soluk)}
 #sorun h2{margin:0 0 6px;font-size:clamp(24px,1.5vw,44px);font-weight:900}
 #sorun p{margin:6px 0}
 #sorun .secim{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
@@ -148,12 +157,18 @@ main{flex:1;display:flex;flex-direction:column;padding:0 12px 8px;gap:8px;min-he
 #takildim{background:#fff;border-style:dashed}
 .ipucu{flex:1 1 100%;font-weight:700;background:#fff;border-left:6px solid #C2410C;border-radius:6px;padding:4px 8px}
 body.kendim .adimDug .ad{display:none}
-body.kendim .adimDug[aria-current="step"] .ad{display:inline}
 body.kendim .bolum.gecti > .asama,body.kendim .bolum.gecti > .secenekler,body.kendim .bolum.gecti > .not{opacity:.5}
 body.kendim .bolum.gecti .secenekler button{min-height:0;padding:2px 10px;font-size:var(--fk)}
 body.kendim .bolum.gecti > .asama{display:inline-flex;margin:0 6px 0 0;vertical-align:middle}
 body.kendim .bolum.gecti > .secenekler{display:inline-flex;margin:2px 0;vertical-align:middle}
 body.kendim [data-sonraki].ana{outline:4px solid var(--sari);outline-offset:3px}
+body.kendim .bolum.eski > :not(.asama):not(.secenekler):not(.hataSatir){display:none}
+body.kendim .bolum.eski{margin:0;padding:0}
+.simdiEk{font-weight:600;color:var(--soluk);font-size:.85em}
+@media (max-height:720px){body.kendim header{padding-top:4px;padding-bottom:4px}body.kendim header h1{font-size:clamp(20px,1.6vw,30px)}body.kendim .rozet{transform:scale(.85);transform-origin:left center;margin-right:-14px}body.kendim #adimlar{padding-top:4px;padding-bottom:4px}body.kendim .adimDug{min-height:40px}}
+body.kendim.seritOdak .bolum.simdi{box-shadow:none;background:transparent}
+body.kendim .bolum .ipucu{margin:4px 0}
+.ipSatir{display:block}
 body.kendim .bolum.simdi{box-shadow:0 0 0 4px var(--sari);border-radius:10px;padding:2px 6px;background:#FFFBEA}
 body.kendim #seritAlan.simdi{box-shadow:0 0 0 5px var(--sari),4px 4px 0 var(--murekkep)}
 body.kendim #seritAlan.soluk,body.kendim #yan.soluk{opacity:.55}
@@ -166,13 +181,33 @@ body.kendim #seritAlan.soluk,body.kendim #yan.soluk{opacity:.55}
 .isaret{animation:nabiz 1.2s ease-in-out infinite}
 #tablo tr.nabiz td{animation:nabiz 1.2s ease-in-out infinite;outline:3px solid #C2410C}
 @keyframes nabiz{50%{opacity:.35}}
+#sim{width:100%;height:auto;max-height:36vh;display:block}
+#sim text{font-family:var(--el)}
+#simDug{position:absolute;right:8px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:8px}
+#simAdim{margin:0;text-align:center;font-weight:800;color:var(--soluk);font-size:15px}
+body.simAcik #seritAlan.soluk{opacity:1}
+#simDug button{min-height:48px;min-width:96px;font-size:var(--fk);padding:2px 10px}
+body.simAcik #serit,body.simAcik #ince,body.simAcik #seritNot{display:none!important}
+body.simAcik #sim,body.simAcik #simDug{display:flex}
+body.simAcik #sim{display:block}
+.afis{display:inline-flex;flex-direction:column;align-items:center;background:#FFE14D;border:4px solid var(--murekkep);border-radius:6px;padding:8px 22px;transform:rotate(-2deg);box-shadow:4px 4px 0 var(--murekkep);margin:6px 4px 10px}
+.afisUst{font-family:var(--el);font-weight:900;font-size:26px;line-height:1.1;color:#C81E33;text-align:center}
+.afisAlt{font-family:var(--el);font-weight:800;font-size:18px;text-align:center}
+.ekstra{margin-bottom:6px}.ekstra button[aria-pressed="true"]{background:var(--murekkep);color:#fff}
+.arkadasSoru{margin:4px 0 6px;padding:6px 10px;background:#FFF6D6;border-left:5px solid var(--sari);border-radius:6px}
+.isinSvg{width:100%;max-width:560px;height:auto;display:block;margin:4px 0}
+.isinSvg text{font-family:var(--el)}
+ul.yol{margin:4px 0 0 18px;padding:0}ul.yol li{margin:2px 0}
+button.vurgulu{box-shadow:0 0 0 4px var(--sari),3px 3px 0 var(--murekkep)}
+.hataSatir button{text-align:left}
+tr.verildi td{color:var(--soluk)}
 #seritNot{display:none;margin:4px 8px;font-weight:800;color:var(--soluk)}
 body.seritKapali #seritNot{display:block}
 body.seritKapali #serit,body.seritKapali #ince{display:none!important}
 body.kendim .yonerge{display:none}
 body.kendim #yan.simdi{box-shadow:0 0 0 5px var(--sari),4px 4px 0 var(--murekkep)}
-body.kendim[data-asama="acikla"] #serit{max-height:20vh}
-body.kendim.zincirde[data-asama="acikla"] #serit{max-height:31vh}
+body.kendim[data-asama="acikla"] #serit,body.kendim[data-asama="hata"] #serit{max-height:27vh}
+body.kendim.zincirde[data-asama="acikla"] #serit,body.kendim.zincirde[data-asama="hata"] #serit{max-height:31vh}
 body.kendim.ipucuVar #serit{max-height:28vh}
 body.kendim[data-asama="acikla"] .secenekler button{min-height:46px;padding:2px 12px}
 .asama small{font-weight:700;color:var(--soluk)}
@@ -193,7 +228,8 @@ body.sinavda #serit{max-height:20vh}
 .tbno{color:var(--murekkep)}
 .tbbek{color:var(--soluk)}
 .tb tr.tbuyar td{background:#FFF4E5}
-.ekran.odakta{outline:4px solid var(--sari);outline-offset:1px}
+.ekran.odakta{outline:3px solid var(--murekkep);outline-offset:1px}
+.asagi{position:sticky;bottom:0;text-align:right;padding:0;pointer-events:none;height:0;overflow:visible}.asagi button{pointer-events:auto;position:relative;top:-40px;box-shadow:2px 2px 0 var(--murekkep)}.asagi.gizli{display:none}.asagi button{font-size:var(--fk);padding:4px 12px;min-height:36px}
 .ekran{cursor:pointer}
 .tbDug{margin:4px 0}
 .tbAlan .not{margin:4px 0}
@@ -210,6 +246,8 @@ body.sinavda #serit{max-height:20vh}
     <button class="sekme ustDug" role="tab" id="sekAtolye" aria-selected="true">Atölye</button>
     <button class="sekme ustDug" role="tab" id="sekOgretmen" aria-selected="false">Öğretmen</button>
   </div>
+  <button class="ustDug" id="kendimeGec">Kendim çalışıyorum</button>
+  <button class="ustDug gizli" id="ozetDugme" title="Öğretmenine göster">Özet</button>
   <button class="ustDug gizli" id="paylasDugme">Arkadaşına gönder</button>
   <button class="ustDug" id="sorunDugme">Sorun bildir</button>
   <button class="ustDug" id="tamEkran">Tam ekran</button>
@@ -225,7 +263,9 @@ body.sinavda #serit{max-height:20vh}
     </div>
     <div id="seritAlan">
       <p id="seritNot"></p><svg id="serit" viewBox="0 0 1200 190" aria-label="Yüzde şeridi"></svg>
-      <div id="ince"><button id="geriDug" aria-label="Tutamağı bir adım sola al">◀</button><button id="ileriDug" aria-label="Tutamağı bir adım sağa al">▶</button></div>
+      <div id="ince"><button id="geriDug" aria-label="Sarı kutuyu bir adım sola al">◀</button><button id="ileriDug" aria-label="Sarı kutuyu bir adım sağa al">▶</button></div>
+      <svg id="sim" class="gizli" viewBox="0 0 1200 260" role="img" aria-label="Hesap simülasyonu"></svg>
+      <div id="simDug" class="gizli"><p id="simAdim" aria-live="polite"></p><button id="simGeri" aria-label="Bir adım geri">◀ Geri</button><button id="simIleri" class="ana">İleri ▶</button><button id="simKapat">Kapat</button></div>
     </div>
     <div id="alt">
       <section id="panel" aria-live="polite"></section>
@@ -257,16 +297,16 @@ MAT.7.1.5’ten: "öğrencilerin yüzde hesaplamalarında birim orandan yararlan
 <tr><td>5. Yüzdeyle azalt</td><td>Belirli bir yüzde ile azaltma (ayakkabı); "Başka yol: birim oran"</td><td>e, f, g</td></tr>
 <tr><td>6. %20 üstüne %20</td><td>Art arda iki azaltma; başka fiyatlarla deneme</td><td>ğ, h</td></tr>
 <tr><td>7. Sınava hazırlık</td><td>Sekiz sözel, karışık problem (dört iş ve art arda indirim); sayılar her seferinde değişir. Şerit yardımcı araç, istenirse açılır</td><td>a–h, ğ</td></tr>
-<tr><td>+ Daha ileri</td><td>Zam sonra indirim; iki %50; iki %10 zam (isteğe bağlı)</td><td>h</td></tr>
+<tr><td>+ Daha ileri</td><td>Üç bölüm, isteğe bağlı. Art arda yüzde: zam sonra indirim, iki %50, iki %10 zam. Afiş dedektifi: altı mağaza afişi; öğrenci doğru mu yanıltıcı mı diye karar verir, şeritte dener, yanıltıcı afişi düzeltir. Hangisi daha çok?: beş karşılaştırma; aynı ölçekte iki şerit büyük yüzdenin her zaman büyük miktar olmadığını gösterir</td><td>f, g, h</td></tr>
 </table>
 <h3>Yüzde şeridi</h3>
 <p>Şerit bütündür. Üstünde miktar cetveli, altında yüzde cetveli var: çubuk diyagramı ile çift sayı doğrusu tek nesnede. Öğrenci sarı kulplu tutamağı parmağıyla sürükler ya da ◀ ▶ düğmelerine basar. Tutamak görevin adımına oturur (çoğunda %5).</p>
-<p>Her görevde sıra aynı: tahmin et, dene, açıkla. Aranan değer, tahmin seçilene kadar şeritte "?" görünür. Tahmin sonradan değiştirilebilir. Oran tablosu ölçümden sonra dolar. Satırlar şeritteki adımları izler: %100’den ortak bir yüzdeye bölerek, oradan aranan yüzdeye çarparak ("aynı çarpan"). 5. görevde "Başka yol" %1’e düşen değeri, yani birim oranı kullanır. Tabloda "Grafik" düğmesi noktaları başlangıçtan çıkan ışın üzerinde gösterir.</p>
+<p>Her görevde sıra aynı: tahmin et, dene, açıkla. Aranan değer, tahmin seçilene kadar şeritte "?" görünür. Tahmin sonradan değiştirilebilir. Oran tablosu ölçümden sonra dolar. Satırlar şeritteki adımları izler. İki satır arasında, yüzde ve miktar sütunlarının iki yanında aynı ok durur (÷ 10 ↓ … ↓ ÷ 10) ve tek cümle yazar: "İkisini de 10’a böl." Toplama ve çıkarma satırları ok yerine kendi cümlesiyle gelir: "%10 ile %5’i topla: 8 + 4 = 12 cm." "Denk oran" ve "orantı" adlandırması öğrenci ekranında Derste kipinde görünür; Kendim kipinde öğrenci yalnız "İki sütun hep aynı sayıyla değişti: doğru orantı." cümlesini görür. 5. görevde "Başka yol" %1’e düşen değeri, yani birim oranı kullanır. Tabloda "Grafik" düğmesi noktaları başlangıçtan çıkan ışın üzerinde gösterir.</p>
 <p>Sayılar öğrencinin seçimine göre değişir ("Sayıları değiştir"). Bütün geri bildirimler o sayılarla yazılır. Seçilebilen sayılar her zaman tam sayı sonuç verir.</p>
 <h3>Programın terimleri ve ekrandaki sözcükler</h3>
 <table>
 <tr><th>Program</th><th>Ekranda</th></tr>
-<tr><td>Dikey çarpımsal ilişki (tabloda)</td><td>"aynı çarpan" sütunu: yüzde ile miktar aynı sayıyla çarpılır ya da bölünür</td></tr>
+<tr><td>Dikey çarpımsal ilişki (tabloda)</td><td>iki yanda aynı ok: yüzde ile miktar aynı sayıyla çarpılır ya da bölünür; toplama satırları kendi cümlesiyle görünür</td></tr>
 <tr><td>Yatay ilişki, birim oran</td><td>"Başka yol: birim oran (%1’e düşen)"</td></tr>
 <tr><td>Denk oran, orantı</td><td>Tablonun altında: "… ile … / 100 denk oranlar. İki denk oranın eşitliği bir orantı."</td></tr>
 <tr><td>Doğru orantı</td><td>Kavram çipi ve grafik notu</td></tr>
@@ -279,9 +319,16 @@ MAT.7.1.5’ten: "öğrencilerin yüzde hesaplamalarında birim orandan yararlan
 <ul>
 <li><b>Şimdi şeridi:</b> En üstte tek talimat: "Şimdi: Tahminini seç. (1/4)". O an kullanılacak yer sarı çerçeveyle parlar, öbürleri soluklaşır. Adım bitince sıradaki açılır.</li>
 <li><b>Takıldım:</b> Üç kademeli ipucu. 1) Yol gösteren soru. 2) Şeritte işaret (ör. "%10 = 24 TL"). 3) Çözümün yarısı; son adımı öğrenci kendisi bulur. İpucu cevabı söylemez. Kendin dene ve sınavda 2. ipucu bir ara değer verdiği için ondan sonra bulunan cevap "kendi başına" sayılmaz. Açıklama adımında 3. ipucu tabloyla uyuşmayan bir seçeneği kapatır.</li>
-<li><b>Kendin dene:</b> Her görevin sonunda aynı iş yeni sayılarla gelir. Şerit kapalıdır, öğrenci cevabını tuş takımıyla yazar. Sonra şeritle denetler. Görev, art arda iki denemede öğrencinin cevabı ile şeridin ölçümü aynı çıkınca tamamlanır (✓); Açıkla adımında ilk seçim tutmadıysa art arda üç doğru istenir. 2. ipucundan sonra ya da Benim tablom’da üç tutmayan satırdan sonra bulunan cevap seriye sayılmaz. Kendin dene’de %10 gelmez, ikinci denemede yüzde değişir (1. görevde %15, %35, %45, %65 gibi iki adım isteyen yüzdeler). Tutmazsa atölye "Henüz." der, nerede ayrıldığını söyler. Öğrenci yeni sayılarla bir daha dener.</li>
-<li><b>Benim tablom:</b> Kendin dene ve Sınava hazırlık ekranında sağdaki tablo öğrencinin karalama kâğıdıdır. İlk satır sorudan gelir (ör. %100 | 440 TL). Öğrenci satır ekler, yüzdeyi ve miktarı kendisi yazar; tuş takımı seçili hücreye yazar. Her satır ilk satırla aynı oranda mı diye denetlenir: ✓ ya da "Yüzdeyi 10’a böldün. Miktarı da 10’a böldün mü?" Cevabın kendisi olan satır "cevabınla denetlenir" diye bekler; tablo cevabı söylemez. Art arda indirimde bulunan ara fiyat "Yeni bütün" olur. Tabloyla çözmek "kendi başına" sayılır.</li>
-<li><b>Henüz olunca:</b> Önce öğrencinin tablosuna bakılır ("Tablonda %30 satırı ilk satırla aynı oranda değil"). Tablo yoksa bilinen yanılgı tanınır: yüzdeyi miktar sanmak, kalan parçayı yazmak, yüzde ile miktarı toplamak, yalnız artışı ya da indirimi yazmak, art arda yüzdeleri toplamak. Geri bildirim cevabı söylemez. Sınavda yanılgı cümlesi cevabı tek işlem uzağa getiriyorsa ("bu azalan kısım, soru kalanı soruyor" gibi), ardından gelen doğru cevap "kendi başına" sayılmaz; aynı türden yeni soru gelir.</li>
+<li><b>Kendin dene:</b> Her görevin sonunda aynı iş yeni sayılarla gelir. Şerit kapalıdır, öğrenci cevabını tuş takımıyla yazar. Sonra şeritle denetler. Görev, art arda iki denemede öğrencinin cevabı ile şeridin ölçümü aynı çıkınca tamamlanır (✓). 2. ipucundan sonra ya da Benim tablom’da üç tutmayan satırdan sonra bulunan cevap seriye sayılmaz. Kendin dene’de %10 gelmez, ikinci denemede yüzde değişir (1. görevde %15, %35, %45, %65 gibi iki adım isteyen yüzdeler). Tutmazsa atölye "Henüz." der, nerede ayrıldığını söyler. Öğrenci isterse "İstersen önce tablonu düzelt" ile tablosunu düzeltir, sonra yeni sayılarla bir daha dener.</li>
+<li><b>Benim tablom:</b> Kendin dene ve Sınava hazırlık ekranında sağdaki tablo öğrencinin karalama kâğıdıdır. İlk satır sorudan gelir (ör. %100 | 440 TL). Öğrenci satır ekler, yüzdeyi ve miktarı kendisi yazar; tuş takımı seçili hücreye yazar. Her satır ilk satırla aynı oranda mı diye denetlenir: ✓ ya da "Yüzdeyi 10’a böldün. Miktarı da 10’a böldün mü?" Cevabın kendisi olan satır "cevabınla denetlenir" diye bekler; tablo cevabı söylemez. Art arda indirimde bulunan ara fiyat "Yeni bütün" olur. Tabloyla çözmek "kendi başına" sayılır. Tutmayan satır, tablodaki doğru satıra bağlanarak açıklanır: "%10 satırın doğru. %40, 4 tane %10. Miktarı da 4 ile çarptın mı?" Böylece öğrenci yöntem hatasıyla hesap kaymasını ayırır.</li>
+<li><b>Hesabı zayıf öğrenci için:</b> İpuçları ve şeridin tablosu en kolay parçadan gider: %50 yarısı, %25 dörtte biri, %75 üç tane %25, 10’un katları %10’dan, %15, %35, %45, %65 ise %10 ve onun yarısı %5’ten (ör. %65 = %60 + %5). Hesap makinesi yok; çarpmayı küçültmek tabloda yapılır: ×4 iki kez ×2, ÷4 iki kez yarısı. "Henüz"den sonra öğrenci tablosundaki satırı düzeltebilir; düzeltme seriye sayılmaz, hata analizi içindir.</li>
+<li><b>Giriş teşhisi:</b> Kendim çalışıyorum seçilince üç kısa soru gelir: bütünü tanıma ("bu %10 hangi fiyatın %10’u"), üst üste yüzde (%10 zam sonra %10 indirim), hesap (%10’u bilinen bir tutarın %40’ı). Puan yoktur, cevap gösterilmez. Sonuç yalnız yol seçer: hesapta takılan öğrenci için Kendin dene’de tablo yarı hazır gelir, bütünde takılan öğrenciye her görevde "%100 hangisi" notu çıkar, üçü de tutarsa tablo boş gelir. Sonuç yalnız o cihazda kalır.</li>
+<li><b>Göz kararı ısınması:</b> Kendim kipinde 1. ve 4. görevin başında tek tur; teşhiste üç soruyu tutan öğrenciye gelmez. Şeridin bir kısmı boyalıdır; öğrenci %10, %25, %50, %75 civarından birini seçer. Doğru-yanlış yoktur, en yakın kıyas söylenir. Amaç sayı hissi: öğrenci saçma cevabı kendisi yakalasın.</li>
+<li><b>Hatayı bul:</b> Açıkla’dan sonra, Kendin dene’den önce. Bir arkadaşın çözümü gelir; içinde gerçek bir yanılgıdan tek hata vardır (yüzdeyi miktar sanmak, parçayı bütün sanmak, miktarı yüzde sanmak, yüzde ile miktarı toplamak, yalnız indirimi yazmak, ikinci indirimi ilk fiyattan almak). Öğrenci hatalı satırı bulur, nedenini seçer, doğrusunu yazar. Kendim kipinde 1, 2 ve 6. görevlerde zorunlu, öbürlerinde ve Derste isteğe bağlı. Doğru örnekten (şerit ve simülasyon) sonra gelir; hatalı örnek ancak böyle öğretir. Doğrusunu yazarken Takıldım hesap basamaklarını verir; sık yanlış girişlere (arkadaşın sayısı, bütünün kendisi, yalnız %10) ayrı geri bildirim gelir, tanınmayan bir yanlışta ilk denemede, tanınan yanlışlarda ikinci denemeden sonra somut ilk adım söylenir. Aynı sayı ikinci kez yazılırsa bir ipucu açılır.</li>
+<li><b>Yarı çözülmüş basamaklar:</b> Kendin dene’nin ilk denemelerinde tablonun ara satırları hazır gelir (öğrenci yalnız son adımı yapar), tutarsa bir sonraki denemede yalnız ilk satır hazır gelir, sonra tablo boş gelir. Basamak tutunca söner; tutmazsa aynı basamakta kalır. Boş tabloyla yapılan denemede cevap tutmazsa bir sonraki denemede ilk satır yine hazır gelir (bir görevde en çok iki kez). Tablosunda tek ara satır olan işlerde (ör. %40: önce %10) "yalnız ilk satır" basamağı ötekiyle aynı olduğu için atlanır. Kendin dene’de, Hatayı bul’daki sayılar tekrar gelmez. Ara satırları hazır gelen deneme seriye sayılmaz; yalnız ilk satırı hazır gelen deneme sayılır (işin çoğunu öğrenci yapar). Açıkla’da takılan öğrenci en çok destekle başlar; teşhiste hesap sorusunda takılan da öyle, ama bir görevde en destekli basamağı ilk denemede geçerse sonraki görevlerde bir basamak az destek alır. Teşhiste üç soruyu tutan ve görevde takılmayan desteksiz başlar.</li>
+<li><b>Derste’den Kendim çalışıyorum’a geçiş:</b> Derste kipinde üst çubukta "Kendim çalışıyorum" düğmesi vardır; evde yanlış kartı seçen öğrenci buradan geçer. Sayfa yeniden açılınca bitmiş görevler korunur, yarım kalan görev baştan açılır.</li>
+<li><b>Hesabı adım adım izle:</b> Bütün görevlerde cevap şeritte görüldükten sonra açılır (Dene adımında ve Kendin dene’de cevap yazıldıktan sonra). Bütün eşit parçalara bölünür (10, 4 ya da 2), her parçanın değeri yazılır, istenen parçalar tek tek sayılır: 12, 24, 36, 48. Üstte miktar, altta yüzde: çift sayı doğrusu; bir parçanın değeri (ör. bütünün %10’u: 12 TL) birim oran gibi iş görür. Sonunda kısa yolu söyler: "%40, %10’un 4 katı. 12 × 4 = 48 TL." %15, %35, %45, %65’te bir parçanın yarısı (%5) eklenir; artırmada artış önce bulunur, son adımda şerit %100’ün sağına uzar (yeni değer); azaltmada indirim taralı, kalan yeşil çerçevede gösterilir. Tamamını bulda bilinen parça önce "?" parçalarla gelir, bir parçanın değeri bulunur, %100’e kadar sayılır. Yüzde olarak yazda bütün litrelik parçalara bölünür, dolu parçalar sayılır. %20 üstüne %20’de birinci indirimden sonra şerit küçülür; ikinci %20 bu yeni bütünün parçalarından alınır, %40 değil %36 çıkar. Derste tahtada İleri ve Geri ile öğretmen yürütür; ok tuşları da çalışır.</li>
+<li><b>Henüz olunca:</b> Önce öğrencinin tablosuna bakılır ("%10 satırın doğru. %40 satırındaki çarpmaya bir daha bak."). Tablo yoksa bilinen yanılgı tanınır: yüzdeyi miktar sanmak, kalan parçayı yazmak, yüzde ile miktarı toplamak, yalnız artışı ya da indirimi yazmak, art arda yüzdeleri toplamak. Geri bildirim cevabı söylemez. Sınavda yanılgı cümlesi cevabı tek işlem uzağa getiriyorsa ("bu azalan kısım, soru kalanı soruyor" gibi), ardından gelen doğru cevap "kendi başına" sayılmaz; aynı türden yeni soru gelir.</li>
 <li><b>Sınava hazırlık:</b> Altı görevden sonra sekiz sözel problem. Cevap yazılır, denetim sayıyla yapılır. Şerit isteğe bağlı açılır. Sorular her seferinde karışık sırayla gelir. Şeritle, 2. ipucuyla, ikinci denemede ya da tabloda üç tutmayan satırdan sonra çözülen soru "kendi başına" sayılmaz, aynı türden yeni soru gelir. Hedef: altı türün her birinden en az bir, toplam en az 6 soru kendi başına.</li>
 </ul>
 </section>
@@ -290,15 +337,16 @@ MAT.7.1.5’ten: "öğrencilerin yüzde hesaplamalarında birim orandan yararlan
 <h2>Ders akışı (40 dakika)</h2>
 <table>
 <tr><th>Dakika</th><th>Ne olur</th></tr>
+<tr><td>Önce (10 dk, isteğe bağlı)</td><td>Somut başlangıç: kâğıt şerit ya da 10 TL’lik banknotlar (aşağıda). Uzun derse ya da bir önceki derse konur.</td></tr>
 <tr><td>0–4</td><td>"?" görevi tahtada. Sınıf tahmin eder, el kaldırarak sayılır. Cevap verilmez.</td></tr>
-<tr><td>4–12</td><td>1. görev tahtada birlikte. Tablo dolunca "aynı çarpan" adlandırılır.</td></tr>
+<tr><td>4–12</td><td>1. görev tahtada birlikte. Tablo dolunca iki yandaki aynı ok gösterilir: "Yüzdeyi ne yaptıysak miktarı da onu yaptık."</td></tr>
 <tr><td>12–20</td><td>2 ve 3. görevler. Takım arkadaşıyla ya da sırayla tahtada; "Sayıları değiştir" ile her takım başka sayı dener.</td></tr>
 <tr><td>20–27</td><td>4 ve 5. görevler. "Değişen parça, kalan parça" konuşulur.</td></tr>
 <tr><td>27–32</td><td>5. görevde "Başka yol: birim oran". İki yol karşılaştırılır.</td></tr>
-<tr><td>32–37</td><td>6. görev. Takımlar farklı fiyat dener; %36 karşılaştırılır. Açılıştaki tahminlere dönülür.</td></tr>
+<tr><td>32–37</td><td>6. görev. (İnsan şeridi tek derste yapılmaz; iki derse yayılan planda 6. görevden önce kullanılır.) Takımlar farklı fiyat dener; %36 karşılaştırılır. Açılıştaki tahminlere dönülür.</td></tr>
 <tr><td>37–40</td><td>Çıkış sorusu: "%10 zam üstüne %10 zam, %20 mi?"</td></tr>
 </table>
-<p>İki derse yayılırsa: birinci ders açılış ve 1–3, ikinci ders 4–6 ve Daha ileri.</p>
+<p>İki derse yayılırsa: birinci ders somut başlangıç, açılış ve 1–3; ikinci ders insan şeridi, 4–6 ve Daha ileri’den Afiş dedektifi.</p>
 </section>
 
 <section>
@@ -311,14 +359,42 @@ MAT.7.1.5’ten: "öğrencilerin yüzde hesaplamalarında birim orandan yararlan
 <tr><td>Yüzde ile miktarı toplamak</td><td>2. görev tahmini (dolu GB + kalan yüzde)</td></tr>
 <tr><td>Artışı yeni değer sanmak</td><td>4. görev: tabloda %100 + artış satırı</td></tr>
 <tr><td>Bütünü yanlış seçmek</td><td>2 ve 4. görevde "%100 hangisi?" sorusu</td></tr>
-<tr><td>Art arda yüzdeleri toplamak</td><td>6. görev: ikinci şerit, kesikli %40 çizgisi ve %4 fark</td></tr>
+<tr><td>Art arda yüzdeleri toplamak</td><td>6. görev: ikinci şerit, kesikli %40 çizgisi ve "fark: ilk fiyatın %4’ü"</td></tr>
 </table>
+</section>
+
+<section>
+<h2>Somut başlangıç ve insan şeridi</h2>
+<p>Atölye resimden (şerit) sayıya (tablo, işlem) gider. Şeridi bir şeye benzeten öğrenci onu daha kolay kullanır. Bu yüzden önce elle tutulur bir adım, sonra şerit, sonra sayı. Her geçişte aradaki bağ yüksek sesle söylenir.</p>
+<h3>Kâğıt şerit (5 dk)</h3>
+<ul>
+<li>Her öğrenciye A4’ün uzun kenarından kesilmiş 20 cm’lik bir şerit. "Bu şerit 240 TL. Bütün, %100."</li>
+<li>İkiye katla: "Yarısı %50. Kaç TL?" Bir daha katla: "Dörtte biri %25. Kaç TL?" Öğrenci katı açınca 4 eşit parça görür.</li>
+<li>Cetvelle her 2 cm’ye bir çizgi çek, 10 eşit parça olur: "Her parça %10, 24 TL." 4 parçayı boya: "%40, 4 tane 24 TL."</li>
+<li>Köprü cümlesi: "Az önce kâğıdı katladınız. Tahtadaki şerit aynı şey. Tablodaki ÷ 10 da aynı şey."</li>
+</ul>
+<h3>10 TL’lik banknotlar (5 dk)</h3>
+<ul>
+<li>Oyun parası ya da kâğıttan 12 tane 10 TL: toplam 120 TL. "Her 10 TL’den 1 TL indirim. Kaç TL indirim olur?" 12 TL.</li>
+<li>"Her 10 TL’den 1 TL" demek %10 demek. Bu, programdaki birim oran: 100 TL’de 10 TL, 10 TL’de 1 TL.</li>
+<li>Köprü cümlesi: "Banknot destesi şeridin parçaları. Her desteden alınan 1 TL, tablodaki %10 satırı."</li>
+</ul>
+<h3>İnsan şeridi (6. görev öncesi, 5 dk)</h3>
+<ul>
+<li>10 öğrenci tahtanın önünde yan yana durur: bu sıra %100. "Bütün 3.000 TL. Her birinize kaç TL düşer?" 300 TL.</li>
+<li>İki öğrenci bir adım öne çıkar: "%20 indirim bu, 600 TL." Kalan 8 kişi yeni fiyat: 2.400 TL.</li>
+<li>"Kasada indirimli fiyattan %20 daha." Kalan 8 kişinin yerine 10 yeni öğrenci gelir: yeni bütün 2.400 TL, her biri 240 TL. İki kişi öne çıkar: 480 TL. Sıra aynı uzunlukta, ama her kişinin tutarı küçüldü.</li>
+<li>Toplam indirim 600 + 480 = 1.080 TL. 3.000 TL’nin %36’sı. Açılıştaki tahminlere dönülür.</li>
+<li>Köprü cümlesi: "Az önce siz bu şerittiniz. 6. görevdeki ikinci şerit, öne çıkmayan sekiz kişi."</li>
+</ul>
+<p>Ad yerine sıra numarası kullanılabilir. Öne çıkmak istemeyen öğrenci sayan ya da yazan olur.</p>
 </section>
 
 <section>
 <h2>Tahtada kullanım</h2>
 <ul>
 <li>Açılışta "Derste" seçilir. "Kendim çalışıyorum" seçen öğrencinin ilerlemesi yalnız kendi cihazında kalır.</li>
+<li><b>Özet ve sıfırlama:</b> Kendim kipinde üst çubukta "Özet" düğmesi vardır (Sınava hazırlığın sonunda da "Öğretmenine göster"). Görevlerin durumu, her görevde Kendin dene deneme sayısı, Hatayı bul’un düzeltilip düzeltilmediği ve Sınava hazırlıkta kendi başına çözülen soru ile tür sayısı görünür. Öğrenci bunu öğretmenine gösterir; hiçbir şey cihazdan çıkmaz. Ortak bilgisayarda bir sonraki öğrenciden önce "Yeni öğrenci: sıfırla" ile ilerleme silinir (iki kez onay ister).</li>
 <li>Tutamak parmakla sürüklenir. Şeridin herhangi bir yerine dokunmak da tutamağı oraya getirir. İnce ayar için ◀ ▶.</li>
 <li>Klavye: tutamak seçiliyken ok tuşları bir adım, Page Up/Down %10, Home/End uçlar.</li>
 <li>Tam ekran düğmesi üstte. En küçük ekran 1280×600 için düzenlendi.</li>
@@ -330,12 +406,12 @@ MAT.7.1.5’ten: "öğrencilerin yüzde hesaplamalarında birim orandan yararlan
 <h2>Eksik ya da yanlış mı gördünüz?</h2>
 <p>Bir terim, bir sayı ya da programdan eksik kalan bir kısım varsa "Sorun bildir"e basın ya da <b>herkeseegitimtek@gmail.com</b> adresine yazın. Düzeltip güncelliyorum; katkı verenler adlarıyla yazılır (isterlerse).</p>
 <p>Atölyesini görmek istediğiniz bir konu varsa aynı adrese yazın.</p>
-<p class="not">Herkese Eğitim · Yüzdeler Atölyesi 0.3 · Bütün atölyeler: herkeseegitim.github.io/atolye</p>
+<p class="not">Herkese Eğitim · Yüzdeler Atölyesi 0.8 · Bütün atölyeler: herkeseegitim.github.io/atolye</p>
 </section>
 
 </div>
 
-<div id="kapi" class="gizli" role="dialog" aria-modal="true" aria-labelledby="kapiBaslik"><div id="kapiKutu">
+<div id="kapi" class="gizli" role="dialog" aria-modal="true" aria-labelledby="kapiBaslik"><div id="kapiKutu" tabindex="-1">
   <div class="rozet" style="display:inline-block">MATEMATİK<b>7. SINIF · MAT.7.1.7</b></div>
   <h2 id="kapiBaslik">Yüzdeler <span>Atölyesi</span></h2>
   <p class="kapiAlt">Nasıl çalışıyorsun?</p>
@@ -346,6 +422,7 @@ MAT.7.1.5’ten: "öğrencilerin yüzde hesaplamalarında birim orandan yararlan
   <p class="kapiNot">Kendim çalışıyorum seçilirse ilerlemen yalnız bu cihazda kalır.</p>
 </div></div>
 <div id="paylasPerde" class="gizli" role="dialog" aria-modal="true" aria-labelledby="paylasBaslik"><div id="paylas"></div></div>
+<div id="ozetPerde" class="gizli" role="dialog" aria-modal="true" aria-labelledby="ozetBaslik"><div id="ozet"></div></div>
 <div id="sorunPerde" class="gizli" role="dialog" aria-modal="true" aria-labelledby="sorunBaslik"><div id="sorun"></div></div>
 <script>
 
@@ -2651,7 +2728,7 @@ var qrcode = function() {
 <script>
 (function(){
 'use strict';
-var SURUM = '0.3', KOD = 'MAT.7.1.7';
+var SURUM = '0.8', KOD = 'MAT.7.1.7';
 var ATOLYE_ADRES = 'https://herkeseegitim.github.io/atolye/mat-7-1-7/#kendim';
 var ILERLEME = 'herkese-egitim/mat-7-1-7/ilerleme';
 var KAYIT = /[#&]kayit/.test(location.hash);
@@ -2705,9 +2782,16 @@ function ebob(a, b){ a = Math.round(a); b = Math.round(b); while (b) { var t = a
 function esc(s){ return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
 
 /* ---------- görevler ---------- */
-var KESIR = {10:'onda biri', 20:'beşte biri', 25:'dörtte biri', 30:'onda üçü', 40:'beşte ikisi', 50:'yarısı'};
+var KESIR = {10:'onda biri', 15:'yirmide üçü', 20:'beşte biri', 25:'dörtte biri', 30:'onda üçü', 35:'yirmide yedisi', 40:'beşte ikisi', 45:'yirmide dokuzu', 50:'yarısı', 60:'beşte üçü', 65:'yirmide on üçü', 70:'onda yedisi', 75:'dörtte üçü', 80:'beşte dördü', 90:'onda dokuzu'};
 function yol(pA, mA, pB){ // yüzde pA'dan pB'ye ortak çarpanla; satırlar
   var g = ebob(pA, pB), r = [], birim = mA / pA;
+  if (pA === 100 && pB < 100 && pB % 5 === 0) { // ipucuyla aynı yol: yarısı, dörtte biri, %10, %5
+    if (pB === 25 || pB === 50 || pB === 10) return [{y:pB, m:birim * pB, ok:'÷ ' + (100 / pB)}];
+    if (pB === 75) return [{y:25, m:birim * 25, ok:'÷ 4'}, {y:75, m:birim * 75, ok:'× 3'}];
+    if (pB % 10 === 0) return [{y:10, m:birim * 10, ok:'÷ 10'}, {y:pB, m:birim * pB, ok:'× ' + (pB / 10)}];
+    if (pB === 5) return [{y:10, m:birim * 10, ok:'÷ 10'}, {y:5, m:birim * 5, ok:'÷ 2'}];
+    if (pB === 15) return [{y:10, m:birim * 10, ok:'÷ 10'}, {y:5, m:birim * 5, ok:'÷ 2'}, {y:15, m:birim * 15, ok:'%10 + %5'}];
+    return [{y:10, m:birim * 10, ok:'÷ 10'}, {y:pB - 5, m:birim * (pB - 5), ok:'× ' + ((pB - 5) / 10)}, {y:5, m:birim * 5, ok:'%10 ÷ 2'}, {y:pB, m:birim * pB, ok:yz(pB - 5) + ' + %5'}]; }
   if (g !== pA && g !== pB) { r.push({y:g, m:birim * g, ok:'÷ ' + (pA / g)}); r.push({y:pB, m:birim * pB, ok:'× ' + (pB / g)}); }
   else if (pB < pA) r.push({y:pB, m:birim * pB, ok:'÷ ' + (pA / pB)});
   else r.push({y:pB, m:birim * pB, ok:'× ' + (pB / pA)});
@@ -2726,7 +2810,7 @@ var G = [
   durum:function(v){ return 'Kırtasiyede defter seti ' + say(v.P) + ' TL. Bugün ' + yz(v.p) + ' indirim var. <span id="soru">İndirim kaç TL?</span>'; },
   eksen:'yuzde', gizli:'miktar', max:100, adim:5, min:0, ust:100, ilk:0,
   hedef:function(v){ return v.p; }, butun:function(v){ return v.P; }, birim:'TL',
-  yonerge:function(v){ return 'Tutamağı ' + yz(v.p, 'e') + ' götür. Çizgili turuncu parça indirim.'; },
+  yonerge:function(v){ return 'Sarı kutuyu ' + yz(v.p, 'e') + ' götür. Çizgili turuncu parça indirim.'; },
   boya:function(v, h){ return [{a:0, b:h, tur:'kes', ad:'indirim'}, {a:h, b:100, tur:'kalan', ad:'ödenecek'}]; },
   etiket:function(v){ return [{y:0, m:0}, {y:100, m:v.P}]; },
   tahmin:function(v){ return [
@@ -2754,7 +2838,7 @@ var G = [
   eksen:'yuzde', gizli:'miktar', max:100, adim:5,
   min:function(v){ return v.p; }, ust:100, ilk:function(v){ return v.p; },
   hedef:function(){ return 100; }, butun:function(v){ return v.W; }, birim:'GB',
-  yonerge:function(v){ return 'Tutamağı %100’e götür. Şerit belleğin tamamı olsun.'; },
+  yonerge:function(v){ return 'Sarı kutuyu %100’e götür. Şerit belleğin tamamı olsun.'; },
   boya:function(v, h){ return [{a:0, b:v.p, tur:'dolu', ad:'dolu'}, {a:v.p, b:h, tur:'kalan', ad:'boş'}]; },
   cerceve:100,
   etiket:function(v){ return [{y:0, m:0}, {y:v.p, m:v.d, hep:true}, {y:100, m:v.W}]; },
@@ -2780,7 +2864,7 @@ var G = [
   eksen:'miktar', gizli:'yuzde', max:100,
   adim:function(v){ return v.s; }, min:0, ust:100, ilk:0,
   hedef:function(v){ return v.r; }, butun:function(v){ return v.W; }, birim:'L',
-  yonerge:function(v){ return 'Tutamağı üst cetvelde ' + say(v.d) + ' L’ye götür.'; },
+  yonerge:function(v){ return 'Sarı kutuyu ' + say(v.d) + ' L’ye götür. Üst cetvele bak.'; },
   boya:function(v, h){ return [{a:0, b:h, tur:'dolu', ad:'su'}, {a:h, b:100, tur:'kalan', ad:'boş'}]; },
   etiket:function(v){ return [{y:0, m:0}, {y:50, m:v.W / 2}, {y:100, m:v.W}]; },
   tahmin:function(v){
@@ -2814,7 +2898,7 @@ var G = [
     {m:'Yeni boyun', g:'Yeni boy henüz bilinmiyor. Uzama eski boydan hesaplanır: eski boy %100.'}]}; },
   eksen:'yuzde', gizli:'miktar', max:150, adim:5, min:100, ust:150, ilk:100,
   hedef:function(v){ return 100 + v.p; }, butun:function(v){ return v.b; }, birim:'cm',
-  yonerge:function(v){ return 'Tutamağı ' + yz(100 + v.p, 'e') + ' götür. Noktalı turuncu parça uzama.'; },
+  yonerge:function(v){ return 'Sarı kutuyu ' + yz(100 + v.p, 'e') + ' götür. Noktalı turuncu parça uzama.'; },
   boya:function(v, h){ return [{a:0, b:100, tur:'kalan', ad:'eski boy'}, {a:100, b:h, tur:'ekle', ad:'uzama'}]; },
   cizgi100:true,
   etiket:function(v){ return [{y:0, m:0}, {y:100, m:v.b, hep:true}]; },
@@ -2839,7 +2923,7 @@ var G = [
   durum:function(v){ return 'Spor ayakkabı ' + say(v.P) + ' TL. ' + yz(v.p) + ' indirimle satılıyor. <span id="soru">Kaç TL ödersin?</span>'; },
   eksen:'yuzde', gizli:'miktar', max:100, adim:5, min:0, ust:100, ilk:100,
   hedef:function(v){ return 100 - v.p; }, butun:function(v){ return v.P; }, birim:'TL',
-  yonerge:function(v){ return 'Tutamağı sola, ' + yz(100 - v.p, 'e') + ' götür. Çizgili turuncu parça indirim.'; },
+  yonerge:function(v){ return 'Sarı kutuyu sola, ' + yz(100 - v.p, 'e') + ' götür. Çizgili turuncu parça indirim.'; },
   boya:function(v, h){ return [{a:0, b:h, tur:'kalan', ad:'ödenecek'}, {a:h, b:100, tur:'kes', ad:'indirim'}]; },
   etiket:function(v){ return [{y:0, m:0}, {y:100, m:v.P, hep:true}]; },
   tahmin:function(v){ return [
@@ -2872,6 +2956,34 @@ var ILERI = [
   {ad:'%10 zam üstüne %10 zam', m:'%10 zam üstüne %10 zam', P:1000, ops:[{t:1, a:10}, {t:1, a:10}], soru:'Toplam zam %20 mi?'}
 ];
 G.push({id:'ileri', ad:'Daha ileri', tip:'ileri', baslik:'Daha ileri (isteğe bağlı)'});
+G.push({id:'afis', ad:'Afiş dedektifi', tip:'afis', baslik:'Afiş dedektifi (isteğe bağlı)'});
+G.push({id:'karsi', ad:'Hangisi daha çok?', tip:'karsi', baslik:'Hangisi daha çok? (isteğe bağlı)'});
+var AFIS = [
+  {ust:'%50 + %50 İNDİRİM', alt:'Bugün her şey BEDAVA!', P:1000, ops:[{t:-1, a:50}, {t:-1, a:50}], dogru:false,
+   sonuc:'Son fiyat 250 TL, ilk fiyatın %25’i. İkinci %50, indirimli fiyattan (500 TL) alındı. Toplam indirim %75, bedava değil.',
+   duz:[{m:'%50 + %50: toplam %50 indirim'}, {m:'%50 + %50: toplam %75 indirim', d:1}, {m:'%50 + %50: toplam %100 indirim'}]},
+  {ust:'%25 İNDİRİM', alt:'400 TL yerine 300 TL', P:400, ops:[{t:-1, a:25}], dogru:true,
+   sonuc:'400 TL’nin %25’i 100 TL. 400 − 100 = 300 TL. Afiş doğru.'},
+  {ust:'Önce %20 ZAM, sonra %20 İNDİRİM', alt:'Fiyat eski hâline döndü!', P:1000, ops:[{t:1, a:20}, {t:-1, a:20}], dogru:false,
+   sonuc:'Zamdan sonra 1.200 TL. İndirim 1.200 TL’nin %20’si: 240 TL. Son fiyat 960 TL, eski fiyatın %96’sı. Eski hâline dönmedi.',
+   duz:[{m:'Fiyat eski fiyattan %4 düşük', d:1}, {m:'Fiyat eski fiyattan %4 yüksek'}, {m:'Fiyat eski fiyatla aynı'}]},
+  {ust:'%30 İNDİRİM', alt:'500 TL yerine 470 TL', P:500, ops:[{t:-1, a:30}], dogru:false,
+   sonuc:'500 TL’nin %30’u 150 TL. İndirimli fiyat 350 TL olmalı. Afişte 150 TL yerine 30 TL düşülmüş.',
+   duz:[{m:'%30 indirim: 500 TL yerine 150 TL'}, {m:'%30 indirim: 500 TL yerine 350 TL', d:1}, {m:'%30 indirim: 500 TL yerine 470 TL'}]},
+  {ust:'%10 ZAM üstüne %10 ZAM', alt:'Toplamda %21 zam', P:1000, ops:[{t:1, a:10}, {t:1, a:10}], dogru:true,
+   sonuc:'1.000 TL → 1.100 TL → 1.210 TL. İkinci %10, 1.100 TL’nin %10’u: 110 TL. Toplam zam 210 TL, %21. Afiş doğru.'},
+  {ust:'2. ÜRÜNE %50 İNDİRİM', alt:'İki üründe toplam %50 indirim!', P:400, ops:[{t:-1, a:25}], dogru:false, ikili:true,
+   sonuc:'İki ürün 200’er TL, toplam 400 TL. İndirim yalnız ikinci üründe: 100 TL. 400 TL’de 100 TL indirim: %25.',
+   duz:[{m:'İki üründe toplam %25 indirim', d:1}, {m:'İki üründe toplam %50 indirim'}, {m:'İki üründe toplam %100 indirim'}]}
+];
+var KARSI = [
+  {soru:'Hangisinde indirim daha çok TL?', A:{ad:'300 TL’lik montta %30 indirim', W:300, p:30}, B:{ad:'500 TL’lik ayakkabıda %20 indirim', W:500, p:20}, birim:'TL'},
+  {soru:'Hangi ürünün fiyatı daha yüksek?', A:{ad:'%10’u 50 TL olan ürün', W:500, p:10}, B:{ad:'%50’si 20 TL olan ürün', W:40, p:50}, birim:'TL', butun:true},
+  {soru:'Hangisinde indirim daha çok TL?', A:{ad:'800 TL’lik bisiklette %25 indirim', W:800, p:25}, B:{ad:'1.000 TL’lik tablette %20 indirim', W:1000, p:20}, birim:'TL'},
+  {soru:'Hangisinde indirim daha çok TL?', A:{ad:'60 TL’lik kitapta %50 indirim', W:60, p:50}, B:{ad:'400 TL’lik saatte %10 indirim', W:400, p:10}, birim:'TL'},
+  {soru:'Hangi otobüste daha çok yolcu var?', A:{ad:'60 kişilik otobüsün %60’ı dolu', W:60, p:60}, B:{ad:'40 kişilik otobüsün %75’i dolu', W:40, p:75}, birim:'kişi'}
+];
+
 
 /* ---------- sınava hazırlık: sözel karışık problemler ---------- */
 var SINAV = [
@@ -2905,12 +3017,15 @@ function sinavUret(t){ var v = {}; for (var k in t.alan) { if (t.alan[k]) v[k] =
 G.splice(7, 0, {id:'sinav', ad:'Sınava hazırlık', tip:'sinav', baslik:'7. Sınava hazırlık'});
 
 /* ---------- durum ---------- */
+var TESHIS = {bitti:false, i:0, c:[]};
 var gno = 0, ST = [], KIP = 'ders', bitti = [], kancaTahmin = -1, IPUCU = {anahtar:'', seviye:0}, ISARET = null;
 function yeniDurum(i){
   var g = G[i], s = {asama:0, butun:-1, butunTamam:!g.butunSoru, tahmin:-1, vardi:false, acikla:-1, aciklaTamam:false, ekYol:false, grafik:false, kd:null, kdTamam:false, kdDeneme:0};
   if (g.tip === 'tek') { s.say = JSON.parse(JSON.stringify(g.bas)); s.v = g.hesap(s.say); s.h = deger(g.ilk, s.v); }
   if (g.tip === 'zincir') { s.say = JSON.parse(JSON.stringify(g.bas)); s.ops = g.ops; zSifirla(s); s.denemeler = []; }
   if (g.tip === 'ileri') { s.secim = -1; }
+  if (g.tip === 'afis') { s.secim = 0; afisAyarla(s); }
+  if (g.tip === 'karsi') { s.secim = 0; s.karar = -1; }
   if (g.tip === 'sinav') { sinavKur(s); }
   return s;
 }
@@ -2918,7 +3033,7 @@ function sinavKur(s){ s.sorular = SINAV.map(function(t, j){ return {j:j, v:sinav
 function deger(f, v){ return typeof f === 'function' ? f(v) : f; }
 function zSifirla(s){ s.k = 0; s.h = 100; s.V = [1]; s.zBitti = false; }
 for (var i = 0; i < G.length; i++) { ST.push(yeniDurum(i)); bitti.push(false); }
-var GI = {bul:1, tamam:2, yuzde:3, artir:4, azalt:5, kanca:6, sinav:7, ileri:8};
+var GI = {bul:1, tamam:2, yuzde:3, artir:4, azalt:5, kanca:6, sinav:7, ileri:8, afis:9, karsi:10};
 
 /* etkin şerit: görev, Kendin dene ya da sınav aracı */
 function aracG(s){
@@ -2939,15 +3054,22 @@ function aracAc(){
 
 /* ---------- ilerleme (yalnız Kendim) ---------- */
 function ilerlemeOku(){ try { var x = JSON.parse(localStorage.getItem(ILERLEME) || 'null'); return x && typeof x === 'object' ? x : null; } catch (e) { return null; } }
-function ilerlemeYaz(){ if (KIP !== 'kendim') return; try { localStorage.setItem(ILERLEME, JSON.stringify({bitti:bitti.slice(), kanca:kancaTahmin})); } catch (e) {} }
+var OZET = {kd:{}, hata:{}, sinav:null}; // Öğretmenine göster: yalnız bu cihazda
+function ozetTopla(){ for (var i = 1; i <= 6; i++) { var t = ST[i]; if (!t) continue; var eski = OZET.kd[i], en = typeof eski === 'number' ? eski : eski ? eski.n : 0;
+    if (t.kdDeneme && t.kdDeneme >= en) OZET.kd[i] = {n:t.kdDeneme, d:t.kdDestek || 0, h:t.kdHenuz || 0};
+    if (t.hataTamam && t.hata) { var Vo = hataVeri(G[i], t.hata.say), il = t.hata.ilkNeden; var eh = OZET.hata[i]; if (!eh || (t.hata.yan || 0) >= (eh.yan || 0)) OZET.hata[i] = {yan:t.hata.yan || 0, ilk:il !== undefined && !Vo.nd[il].d ? Vo.nd[il].m : ''}; } }
+  var sv = ST[GI.sinav]; if (sv && sv.sorular) { var cz = 0, tr = {}; sv.sorular.forEach(function(q){ if (!q.tuttu) return; cz++; var tp = SINAV[q.j].tip; tr[tp] = tr[tp] === 'k' || !q.destekli ? 'k' : 'd'; });
+    if (cz && (!OZET.sinav || cz >= OZET.sinav.cozulen)) OZET.sinav = {cozulen:cz, bag:sinavBagimsiz(sv), tur:6 - sinavEksik(sv).length, tr:tr}; } }
+function ilerlemeYaz(){ if (KIP !== 'kendim') return; ozetTopla(); try { localStorage.setItem(ILERLEME, JSON.stringify({bitti:bitti.slice(), kanca:kancaTahmin, teshis:TESHIS.bitti ? {butun:TESHIS.butun, carpim:TESHIS.carpim, hesap:TESHIS.hesap} : null, ozet:OZET})); } catch (e) {} }
 function bitir(i){ if (!bitti[i]) { bitti[i] = true; ilerlemeYaz(); adimlarCiz(); } }
 
 /* ---------- görev şeridi ---------- */
 function adimlarCiz(){
   var n = el('adimNav'), h = '';
   G.forEach(function(g, i){
-    var no = g.tip === 'acilis' ? '?' : (g.tip === 'ileri' ? '+' : String(i));
-    h += '<button class="adimDug" data-git="' + i + '"' + (i === gno ? ' aria-current="step"' : '') + ' title="' + esc(g.ad) + '"><span class="no">' + no + '</span><span class="ad">' + esc(g.ad) + '</span>' + (bitti[i] ? ' <span class="tik" aria-label="tamamlandı">✓</span>' : '') + '</button>';
+    if (g.tip === 'afis' || g.tip === 'karsi') return; // Daha ileri'nin içinden açılır
+    var no = g.tip === 'acilis' ? '?' : g.tip === 'ileri' ? '+' : g.tip === 'afis' ? '★' : g.tip === 'karsi' ? '⚖' : String(i);
+    h += '<button class="adimDug" data-git="' + i + '"' + (i === gno || (g.tip === 'ileri' && (G[gno].tip === 'afis' || G[gno].tip === 'karsi')) ? ' aria-current="step"' : '') + ' title="' + esc(g.ad) + '"><span class="no">' + no + '</span><span class="ad">' + esc(g.ad) + '</span>' + (bitti[i] ? ' <span class="tik" aria-label="tamamlandı">✓</span>' : '') + '</button>';
   });
   n.innerHTML = h;
 }
@@ -3006,6 +3128,10 @@ function tekCiz(){
   });
   var mik = v ? (g.butun(v) * s.h / 100) : 0;
   var verili = g.id === 'tamam' && v && Math.abs(s.h - v.p) < 1e-6;
+  if (v && acik && g.id !== 'tamam' && G[gno].tip !== 'sinav' && !ortuluMu()) {
+    var etY = g.etiket(v).map(function(e){ return e.y; }), aralik = 10 / max * W;
+    for (var pt = 10; pt < s.h - 1e-6; pt += 10) { if (etY.some(function(y){ return Math.abs(y - pt) < 1e-6; })) continue; if (Math.abs(px(pt) - px(s.h)) < 80 || aralik < 54) continue;
+      h += metin(px(pt), yS - 20, say(g.butun(v) * pt / 100), {f:17, w:700, renk:'#7B8A9B'}); } }
   var ust = (g.gizli === 'miktar' && !acik && !verili) ? '? ' + g.birim : say(mik) + ' ' + g.birim;
   var alt = (g.gizli === 'yuzde' && !acik) ? '% ?' : '%' + say(s.h);
   var ekM = g.eksen === 'miktar', aria = 'aria-valuemin="' + (ekM ? 0 : deger(g.min, v)) + '" aria-valuemax="' + (ekM ? g.butun(v) : g.ust) + '" aria-valuenow="' + (ekM ? mik : s.h) + '" aria-valuetext="' + esc((g.gizli === 'yuzde' && !acik ? 'yüzde gizli' : 'yüzde ' + say(s.h)) + ', ' + (g.gizli === 'miktar' && !acik ? 'miktar gizli' : say(mik) + ' ' + g.birim)) + '" aria-label="Tutamak"';
@@ -3034,6 +3160,9 @@ function zinCiz(){
   function px(f){ return ZA + f / maxE * W; }
   var acik = s.tahmin >= 0, h = DEFS, yb = [62, 178], yy = 50;
   var gorunur = Math.min(s.k, ops.length - 1), sonuc = s.zBitti && !s.serbest;
+  // alt şeritte sürüklenen sarı kutuyun balonu üst şeridin yüzde yazılarına binmesin: balonun altında kalan yazılar çizilmez
+  var tk = (!s.zBitti && s.k >= 1 && s.k < ops.length) ? s.k : -1, hX = 0, hG = 0;
+  if (tk >= 0) { var hv = Vt[tk] * s.h / 100; hX = px(hv); hG = Math.max(80, ((acik && !s.gizliTutar) ? say(P * hv) + ' TL' : '? TL').length * 15 + 24); }
   for (var k = 0; k <= gorunur; k++) {
     var y = yb[k], V = Vt[k], op = ops[k], hh = (k === s.k && !s.zBitti) ? s.h : 100 + op.t * op.a;
     var son = V * hh / 100, hedefY = 100 + op.t * op.a;
@@ -3048,11 +3177,14 @@ function zinCiz(){
     for (var p = 0; p <= 100 + (op.t > 0 ? op.a : 0); p += 10) {
       var buyuk = p % 50 === 0 || p === hedefY;
       h += '<line x1="' + px(V * p / 100) + '" y1="' + (y + yy) + '" x2="' + px(V * p / 100) + '" y2="' + (y + yy + (p % 50 === 0 ? 12 : 6)) + '" stroke="#16263D" stroke-width="' + (p % 50 === 0 ? 2 : 1) + '"/>';
-      if (!sonuc || buyuk) h += metin(px(V * p / 100), y + yy + 32, '%' + p, {f:buyuk ? 25 : 21, w:buyuk ? 900 : 700, renk:buyuk ? '#16263D' : '#5B6B7D'});
+      var lx = px(V * p / 100), ortu = k === tk - 1 && Math.abs(lx - hX) < hG / 2 + ('%' + p).length * (buyuk ? 8 : 7) + 6;
+      if ((!sonuc || buyuk) && !ortu) h += metin(lx, y + yy + 32, '%' + p, {f:buyuk ? 25 : 21, w:buyuk ? 900 : 700, renk:buyuk ? '#16263D' : '#5B6B7D'});
     }
     h += metin(ZA - 10, y + 34, k === 0 ? 'fiyat' : (k + 1) + '. adım', {a:'end', f:22, renk:'#5B6B7D'});
     var tutarAcik = acik && !s.gizliTutar, uc = (tutarAcik || k === 0 ? say(P * V) : '?') + ' TL';
     if (op.t < 0) h += metin(px(V) + 12, y + yy / 2 + 9, uc, {a:'start', f:24, w:800, renk:'#5B6B7D'});
+    else if (s.zBitti && k === 0 && !s.serbest) { var tp0 = 0; ops.forEach(function(o){ tp0 += o.t * o.a; }); var sx0 = px(1 + tp0 / 100), yakin0 = Math.abs(sx0 - px(V)) < uc.length * 8 + 14;
+      h += yakin0 ? metin(Math.min(px(V), sx0) - 10, y - 8, uc, {a:'end', f:24, w:800, renk:'#5B6B7D'}) : metin(px(V), y - 8, uc, {f:24, w:800, renk:'#5B6B7D'}); }
     else h += metin(px(V), y - 8, uc, {f:24, w:800, renk:'#5B6B7D'});
     if (k === s.k && !s.zBitti) {
       if (ISARET && ISARET.zin) h += isaretSvg(px(V * ISARET.p / 100), y, y + yy, ISARET.yazi);
@@ -3066,14 +3198,21 @@ function zinCiz(){
     h += '<line x1="' + px(Vs) + '" y1="' + yb[0] + '" x2="' + px(Vs) + '" y2="' + (yb[gorunur] + yy) + '" stroke="#16263D" stroke-width="3"/>';
     if (saf >= 0 && !s.serbest) {
       var a = Math.min(px(saf), px(Vs)), b = Math.max(px(saf), px(Vs));
-      if (b - a > 1) h += '<rect x="' + a + '" y="' + (yb[0] - 2) + '" width="' + (b - a) + '" height="' + (yAlt - yb[0] + 2) + '" fill="#FFD43B" opacity=".75"/>';
+      if (b - a > 1) for (var kb = 0; kb <= gorunur; kb++) h += '<rect x="' + a + '" y="' + (yb[kb] - 2) + '" width="' + (b - a) + '" height="' + (yy + 4) + '" fill="#FFD43B" opacity=".75"/>';
       h += '<line x1="' + px(saf) + '" y1="' + yUst + '" x2="' + px(saf) + '" y2="' + yAlt + '" stroke="#5B6B7D" stroke-width="4" stroke-dasharray="10 7"/>';
-      var gy = top === 0 ? 'Fiyat hiç değişmeseydi' : 'Tek seferde ' + (top < 0 ? yz(-top) + ' indirim' : yz(top) + ' zam') + ' olsaydı', sol = px(saf) - 10 - gy.length * 12.5 > 4;
+      var gy = ops.length < 2 ? '' : top === 0 ? 'Fiyat hiç değişmeseydi' : 'Tek seferde ' + (top < 0 ? yz(-top) + ' indirim' : yz(top) + ' zam') + ' olsaydı', sol = px(saf) - 10 - gy.length * 12.5 > 4;
       h += metin(sol ? px(saf) - 10 : px(saf) + 10, yUst + 4, gy, {a:sol ? 'end' : 'start', f:24, w:800, renk:'#5B6B7D'});
       var fark = Math.round(Math.abs(Vs - saf) * 10000) / 100;
-      if (fark > 0) { var fy = yz(fark) + ' fark', fw = fy.length * 21 + 28, fsol = a - ZA > fw + 30, fx = fsol ? a - 14 - fw : b + 14, fyy = yb[gorunur] + 2;
-        h += '<rect x="' + fx + '" y="' + fyy + '" width="' + fw + '" height="48" rx="10" fill="#fff" stroke="#16263D" stroke-width="4"/>' + metin(fx + fw / 2, fyy + 36, fy, {f:34, w:900});
-        h += '<line x1="' + (fsol ? fx + fw : fx) + '" y1="' + (fyy + 24) + '" x2="' + (fsol ? a : b) + '" y2="' + (fyy + 24) + '" stroke="#16263D" stroke-width="3"/>'; }
+      if (fark > 0) { var fy = 'fark: ilk fiyatın ' + yz(fark, 'i'), ff = 26, fh = 42, fw = fy.length * 14 + 28, fsol = a - ZA > fw + 30, fx = fsol ? a - 14 - fw : b + 14, fyy = yb[gorunur] + 2, bag = true;
+        if (!fsol) { // sağda son şeridin uç tutarına (ör. 500 TL) ya da kenara binecekse yer değiştir
+          var lop = ops[gorunur], ucX = lop.t < 0 ? px(Vt[gorunur]) + 12 : 1e9, ucS = ucX + (say(P * Vt[gorunur]) + ' TL').length * 15 + 12;
+          if ((fx < ucS && fx + fw > ucX - 12) || fx + fw > VW - 8) {
+            var kw = fy.length * 12 + 20;
+            if (b - a >= fw + 16) { bag = false; fx = (a + b) / 2 - fw / 2; fyy = yb[0] + 1; } // sarı bandın içinde, üst şeritte
+            else if (b - a >= kw + 12) { bag = false; ff = 22; fh = 36; fw = kw; fx = (a + b) / 2 - fw / 2; fyy = yb[0] + 5; }
+            else if (ucS + 8 + fw <= VW - 8) { fx = ucS + 8; bag = false; } } }
+        h += '<rect x="' + fx + '" y="' + fyy + '" width="' + fw + '" height="' + fh + '" rx="10" fill="#fff" stroke="#16263D" stroke-width="4"/>' + metin(fx + fw / 2, fyy + fh * .75, fy, {f:ff, w:900});
+        if (bag) h += '<line x1="' + (fsol ? fx + fw : fx) + '" y1="' + (fyy + 24) + '" x2="' + (fsol ? a : b) + '" y2="' + (fyy + 24) + '" stroke="#16263D" stroke-width="3"/>'; }
     }
     if (!s.serbest) h += '<line x1="' + px(Vs) + '" y1="' + (yb[gorunur] + yy) + '" x2="' + px(Vs) + '" y2="' + 270 + '" stroke="#16263D" stroke-width="2" stroke-dasharray="4 4"/>' + metin(Math.max(ZA + 260, Math.min(ZB - 260, px(Vs))), 296, 'son fiyat: ' + say(P * Vs) + ' TL = ilk fiyatın ' + yz(Math.round(Vs * 10000) / 100, 'i'), {f:26, w:900});
   }
@@ -3099,11 +3238,16 @@ function acilisCiz(){
   SVG.setAttribute('viewBox', '0 0 1200 190');
   SVG.innerHTML = h;
 }
-function bosCiz(yazi){ var W = X1 - X0; SVG.setAttribute('viewBox', '0 0 1200 190'); SVG.innerHTML = metin(X0 + W / 2, 100, yazi, {f:24, w:800, renk:'#5B6B7D'}); }
+function bosCiz(yazi, ince){ var W = X1 - X0; SVG.setAttribute('viewBox', ince ? '0 0 1200 64' : '0 0 1200 190'); SVG.innerHTML = metin(X0 + W / 2, ince ? 40 : 100, yazi, {f:24, w:800, renk:'#5B6B7D'}); }
 function seritCiz(){
   var g = G[gno], s = ST[gno];
+  if ((g.tip === 'tek' || g.tip === 'zincir') && isinmaVar() && !s.isinmaTamam) return bosCiz('Göz kararı aşağıda.');
+  if (g.tip === 'acilis' && KIP === 'kendim' && !TESHIS.bitti) return bosCiz('Üç kısa soru aşağıda.');
+  if (KIP === 'kendim' && (g.tip === 'tek' || g.tip === 'zincir') && simdiki() === 'hata' && !SIM) return bosCiz('Şimdi arkadaşının çözümüne bakıyorsun. Sayılar aşağıda.', true);
   if (g.tip === 'acilis') return acilisCiz();
   if (g.tip === 'ileri') { if (s.secim < 0) return bosCiz('Aşağıdan bir durum seç.'); return zinCiz(); }
+  if (g.tip === 'afis') return s.tahmin < 0 ? bosCiz('Önce karar ver: afiş doğru mu?') : zinCiz();
+  if (g.tip === 'karsi') return karsiCiz();
   if (g.tip === 'sinav') { if (!s.arac) return bosCiz(s.i < s.sorular.length ? 'Şerit yardımcı araç. Gerekirse “Şeridi aç”a bas.' : 'Bütün soruları çözdün.'); return s.arac.ops ? zinCiz() : tekCiz(); }
   if (g.tip === 'zincir') return zinCiz();
   return tekCiz();
@@ -3117,9 +3261,9 @@ function svgY(e){ return svgNokta(e).y; }
 function zincirMi(){ var s = SS(); return !!(s && s.ops); }
 function sinir(){
   var g = GG(), s = SS();
-  if (G[gno].tip === 'acilis' || (G[gno].tip === 'ileri' && !s.ops) || (G[gno].tip === 'sinav' && !ST[gno].arac)) return null;
+  if (G[gno].tip === 'acilis' || G[gno].tip === 'karsi' || ((G[gno].tip === 'ileri' || G[gno].tip === 'afis') && !s.ops) || (G[gno].tip === 'sinav' && !ST[gno].arac)) return null;
   if (ortuluMu()) return null;
-  if (zincirMi()) { if (s.zBitti) return null; var o = s.ops[s.k]; return {min:Math.min(100, 100 + o.t * o.a), max:Math.max(100, 100 + o.t * o.a), adim:5}; }
+  if (zincirMi()) { if (s.zBitti) return null; var o = s.ops[s.k]; return {min:0, max:Math.max(100, 100 + o.t * o.a), adim:5}; }
   if (s.serbest && g.eksen !== 'miktar') return {min:deger(g.min, s.v), max:g.ust, adim:5};
   return {min:deger(g.min, s.v), max:g.ust, adim:deger(g.adim, s.v)};
 }
@@ -3132,8 +3276,13 @@ function xdenYuzde(x){
 function yerlestir(p){
   var b = sinir(); if (!b) return;
   p = Math.round(p / b.adim) * b.adim; p = Math.round(p * 100) / 100;
+  var sS = SS(); if (KIP === 'kendim' && !zincirMi() && simdiki() === 'dene' && !sS.vardi) { var hdS = GG().hedef(sS.v); if ((p < b.min && hdS > sS.h) || (p > b.max && hdS < sS.h)) { if (!sS.tersMesaj) { sS.tersMesaj = true; setTimeout(rehberCiz, 0); } } }
   p = Math.max(b.min, Math.min(b.max, p));
-  var s = SS(); if (p === s.h) return; s.h = p; degisti();
+  var s = SS(); if (p === s.h) return;
+  if (!s.serbest && (zincirMi() ? s.zBitti : s.vardi)) return; // hedefe kilitlendi: şerit ile tablo aynı sayıyı göstersin
+  if (KIP === 'kendim' && zincirMi() && !s.zBitti) { var oz = s.ops[s.k], hz = 100 + oz.t * oz.a, uzz = Math.abs(p - hz) > Math.abs(s.h - hz), gcz = (s.h - hz) * (p - hz) < 0; s.ters = uzz ? (s.ters || 0) + 1 : 0; var tz = s.ters >= 2 || gcz; s.gecti = gcz || (hz - 100) * (p - hz) > 0; if (tz !== !!s.tersMesaj) { s.tersMesaj = tz; setTimeout(rehberCiz, 0); } }
+  if (KIP === 'kendim' && !zincirMi() && (simdiki() === 'dene' || (ST[gno].kd && ST[gno].kd.asama === 'denetle')) && !s.vardi) { var hd0 = GG().hedef(s.v), uz = Math.abs(p - hd0) > Math.abs(s.h - hd0), gc0 = (s.h - hd0) * (p - hd0) < 0; s.ters = uz ? (s.ters || 0) + 1 : 0; var tm = s.ters >= 2 || gc0; var bs0 = deger(GG().ilk, s.v); s.gecti = gc0 || (hd0 - bs0) * (p - hd0) > 0; if (tm !== !!s.tersMesaj) { s.tersMesaj = tm; setTimeout(rehberCiz, 0); } }
+  s.h = p; degisti();
 }
 SVG.addEventListener('pointerdown', function(e){
   var b = sinir(); if (!b) return;
@@ -3143,7 +3292,7 @@ SVG.addEventListener('pointerdown', function(e){
   yerlestir(xdenYuzde(svgX(e))); e.preventDefault();
 });
 SVG.addEventListener('pointermove', function(e){ if (surukle) yerlestir(xdenYuzde(svgX(e))); });
-function birak(){ if (surukle) { surukle = false; var t = SVG.querySelector('.tutamak'); if (t) try { t.focus({preventScroll:true}); } catch (h) {} } }
+function birak(){ if (surukle) { surukle = false; degisti(); var t = SVG.querySelector('.tutamak'); if (t) try { t.focus({preventScroll:true}); } catch (h) {} } }
 SVG.addEventListener('pointerup', birak); SVG.addEventListener('pointercancel', birak);
 SVG.addEventListener('keydown', function(e){
   var b = sinir(); if (!b) return; var s = SS(), d = 0;
@@ -3165,10 +3314,11 @@ function degisti(){
   var g = GG(), s = SS(), ana = ST[gno], odak = document.activeElement && document.activeElement.classList && document.activeElement.classList.contains('tutamak');
   var degis = false;
   if (!zincirMi()) {
-    if (!s.serbest) { var hd = g.hedef(s.v); if (!s.vardi && s.tahmin >= 0 && Math.abs(s.h - hd) < 1e-6) { s.vardi = true; degis = true; } }
-  } else if (zKontrol()) degis = true;
+    if (!s.serbest && !surukle) { var hd = g.hedef(s.v); if (!s.vardi && s.tahmin >= 0 && Math.abs(s.h - hd) < 1e-6) { s.vardi = true; degis = true; } } // hedefe varınca sürükleme biter: yerleşim değişse de tutamak kaymaz
+  } else if (!surukle && zKontrol()) degis = true;
   if (degis && ana.kd && ana.kd.asama === 'denetle' && (s.vardi || s.zBitti)) kdSonuc();
   if (degis) { ISARET = null; panelCiz(); tabloCiz(); }
+  if (KIP === 'kendim' && zincirMi()) rehberCiz();
   seritCiz();
   if (odak) { var t = SVG.querySelector('.tutamak'); if (t) try { t.focus({preventScroll:true}); } catch (h) {} }
 }
@@ -3176,58 +3326,70 @@ function degisti(){
 /* ---------- rehber: Şimdi şeridi ve Takıldım (Kendim kipi) ---------- */
 function asamalar(){
   var g = G[gno], s = ST[gno], a = [];
-  if (g.tip === 'tek') { if (g.butunSoru) a.push('butun'); a.push('tahmin', 'dene', 'acikla'); if (KIP === 'kendim') a.push('kd'); }
-  else if (g.tip === 'zincir') { a.push('tahmin', 'dene1', 'dene2', 'acikla'); if (KIP === 'kendim') a.push('kd'); }
+  if (g.tip === 'tek') { if (isinmaVar()) a.push('isinma'); if (g.butunSoru) a.push('butun'); a.push('tahmin', 'dene', 'acikla'); if (hataZorunlu()) a.push('hata'); if (KIP === 'kendim') a.push('kd'); }
+  else if (g.tip === 'zincir') { if (isinmaVar()) a.push('isinma'); a.push('tahmin', 'dene1', 'dene2', 'acikla'); if (hataZorunlu()) a.push('hata'); if (KIP === 'kendim') a.push('kd'); }
   return a;
 }
 function simdiki(){
   var g = G[gno], s = ST[gno];
   if (g.tip === 'tek') {
+    if (isinmaVar() && !s.isinmaTamam) return 'isinma';
     if (g.butunSoru && !s.butunTamam) return 'butun'; if (s.tahmin < 0) return 'tahmin'; if (!s.vardi) return 'dene'; if (!s.aciklaTamam) return 'acikla';
-    if (KIP === 'kendim' && !s.kdTamam) return 'kd'; return 'bitti';
+    if (hataZorunlu() && !s.hataTamam) return 'hata'; if (KIP === 'kendim' && !s.kdTamam) return 'kd'; return 'bitti';
   }
   if (g.tip === 'zincir') {
+    if (isinmaVar() && !s.isinmaTamam) return 'isinma';
     if (s.tahmin < 0) return 'tahmin'; if (!s.zBitti) return s.k === 0 ? 'dene1' : 'dene2'; if (!s.aciklaTamam) return 'acikla';
-    if (KIP === 'kendim' && !s.kdTamam) return 'kd'; return 'bitti';
+    if (hataZorunlu() && !s.hataTamam) return 'hata'; if (KIP === 'kendim' && !s.kdTamam) return 'kd'; return 'bitti';
   }
   return '';
 }
+// Şimdi çubuğu: önce fiil, en çok 6 sözcük; ayrıntı "||" sonrasında küçük yazıyla
+function zTersYazi(z){ var o = z.ops[z.k], hz = 100 + o.t * o.a, yon = hz > z.h ? 'sağa' : 'sola', gecti = !!z.gecti; return (gecti ? 'Geçtin: ' : 'Ters yön: ') + yon + ' sürükle.||Ya da ' + (yon === 'sağa' ? '▶' : '◀') + '’ye bas.'; }
+function surukleYaz(t){ var b = t.split('. '), m = /^Sarı kutuyu (.*) götür\.?$/.exec(b[0]); return m ? 'Sürükle: sarı kutuyu ' + m[1] + '.' + (b.length > 1 ? '||' + b.slice(1).join('. ') : '') : t; }
 function talimat(){
   var g = G[gno], s = ST[gno], a = simdiki();
-  if (g.tip === 'acilis') return kancaTahmin < 0 ? 'Tahminini seç.' : '1. göreve geç.';
-  if (g.tip === 'sinav') return s.i < s.sorular.length ? 'Soruyu çöz, cevabını yaz. Kendi başına: ' + sinavBagimsiz(s) + '/6 · soru türü: ' + (6 - sinavEksik(s).length) + '/6' : 'Bütün soruları çözdün.';
-  if (g.tip === 'ileri') return 'Bir durum seç, tahmin et, şeritte dene.';
+  if (g.tip === 'acilis') return KIP === 'kendim' && !TESHIS.bitti ? 'Seç: cevabını (' + (TESHIS.i + 1) + '/3).||Üç kısa soru. Puan yok.' : kancaTahmin < 0 ? 'Seç: tahminin.' : 'Bas: 1. göreve geç.';
+  if (g.tip === 'sinav') return s.i < s.sorular.length ? 'Yaz: cevabını.||Kendi başına: ' + Math.min(6, sinavBagimsiz(s)) + '/6 · soru türü: ' + (6 - sinavEksik(s).length) + '/6' : 'Bütün soruları çözdün.||Özet’e bakabilirsin.';
+  if (g.tip === 'ileri') return 'Seç: bir durum.||Sonra tahmin et, şeritte dene.';
+  if (SIM) return SIM.i >= SIM.plan.kare.length - 1 ? 'Bas: Kapat.||Hesabı izledin.' : 'Bas: İleri.||Hesabı adım adım izle.';
+  if (g.tip === 'afis') { var fa = AFIS[s.secim]; if (s.tahmin < 0) return 'Seç: afiş doğru mu?'; if (!s.zBitti) { var oa = s.ops[s.k], hdA = 100 + oa.t * oa.a; return 'Sürükle: kutuyu ' + yz(hdA, 'e') + '.||' + (oa.t < 0 ? 'Ödenecek kısmın sonu. ' : 'Yeni fiyatın sonu. ') + (s.h !== hdA && s.h !== 100 ? 'Kutu ' + yz(s.h, 'de') + '. ' : '') + (s.k ? 'Alt şerit. ' : '') + yz(oa.a) + (oa.t < 0 ? ' indirim.' : ' zam.'); } if (!fa.dogru && !(s.duz >= 0 && fa.duz[s.duz].d)) return 'Seç: afişin doğrusunu.'; return 'Bas: Sonraki afiş.'; }
+  if (g.tip === 'karsi') return s.karar < 0 ? 'Seç: göz kararın.' : 'Bak: iki şeride.||Sonra Sonraki’ye bas.';
   var L = asamalar(), n = L.indexOf(a) + 1, N = L.length, t = '';
-  if (a === 'butun') t = '%100’ün ne olduğunu seç.';
-  else if (a === 'tahmin') t = 'Tahminini seç.';
-  else if (a === 'dene') t = g.yonerge(s.v);
-  else if (a === 'dene1') t = 'Üst şeritte tutamağı %80’e götür.';
-  else if (a === 'dene2') t = 'Alt şeritte tutamağı %80’e götür.';
-  else if (a === 'acikla') t = 'Durumu anlatan cümleyi seç.';
-  else if (a === 'kd') { var k = s.kd; t = !k ? 'Kendin dene: yeni sayılarla çöz.' : k.asama === 'yaz' ? 'Yeni sayılarla şeritsiz çöz, cevabını yaz.' : k.asama === 'denetle' ? 'Şeritle denetle: ' + (g.tip === 'zincir' ? 'iki şeritte tutamağı %80’e götür.' : g.yonerge(k.st.v)) : (s.kdTamam ? 'Görev tamam.' : k.tuttu && k.ip3 ? 'İpucusuz bir tane daha dene.' : k.tuttu ? 'Bir tane daha: art arda ' + kdSayi(s) + ' doğru cevap.' : 'Yeni sayılarla bir daha dene.'); }
-  else if (a === 'bitti') return 'Görev tamam. Sıradaki göreve geç.';
-  return t + (n ? ' (' + n + '/' + N + ')' : '');
+  if (a === 'butun') t = 'Seç: %100 hangisi?';
+  else if (a === 'tahmin') t = 'Seç: tahminin.||Hesap yok, içinden geçeni seç.';
+  else if (a === 'dene') { t = surukleYaz(g.yonerge(s.v)); if (s.tersMesaj) { var hdT = g.hedef(s.v); var gcT = !!s.gecti; t = (gcT ? 'Geçtin: ' : 'Ters yön: ') + (hdT > s.h ? 'sağa sürükle.||Ya da ▶’ye bas.' : 'sola sürükle.||Ya da ◀’ye bas.'); } }
+  else if (a === 'dene1' || a === 'dene2') { var zh = s.h; t = (s.tersMesaj ? zTersYazi(s) : a === 'dene1' ? 'Sürükle: şeritte %80’e.' : 'Sürükle: alt şeritte %80’e.') + '||' + (zh !== 80 && zh !== 100 ? 'Kutu ' + yz(zh, 'de') + '. %20 gidince ne kalır?' : a === 'dene1' ? 'Sarı kutuyu taşı.' : 'Alt şerit indirimli fiyat.'); }
+  else if (a === 'acikla') t = 'Seç: durumu anlatan cümleyi.';
+  else if (a === 'hata') { var oh = s.hata; t = !oh || !oh.bulundu ? 'Bul: hatalı satırı.||Arkadaşının çözümünde bir satır hatalı.' : !oh.nedenTamam ? 'Seç: neden hatalı?' : 'Yaz: doğrusunu.||' + hataVeri(g, oh.say).soru; }
+  else if (a === 'isinma') t = s.isin && s.isin.l[s.isin.tur].secim >= 0 ? 'Bas: Göreve başla.' : 'Seç: boyalı kısım yüzde kaç?';
+  else if (a === 'kd') { var k = s.kd, kz = k && k.st; t = !k ? 'Bas: Kendin dene.||Yeni sayılarla kendin çözeceksin.' : k.asama === 'yaz' ? 'Yaz: cevabını.||Yeni sayılar, şerit kapalı.' : k.asama === 'denetle' ? (kz && kz.tersMesaj ? (g.tip === 'zincir' ? zTersYazi(kz).split('||')[0] : (kz.gecti ? 'Geçtin: ' : 'Ters yön: ') + (g.hedef(kz.v) > kz.h ? 'sağa' : 'sola') + ' sürükle.') + '||Şeritle denetle.' : g.tip === 'zincir' ? (kz.k ? 'Sürükle: alt şeritte %80’e.' : 'Sürükle: şeritte %80’e.') + '||Şeritle denetle.' : surukleYaz(g.yonerge(k.st.v)).split('||')[0] + '||Şeritle denetle.') : (s.kdTamam ? 'Bas: Sonraki görev.||Görev tamam.' : 'Bas: Yeni sayılarla dene.||' + (g.tip === 'tek' && s.kdSoluk > 0 ? 'Tablonun bir kısmı hazır gelecek.' : k.tuttu && k.ip3 ? 'Bu kez ipucusuz.' : k.tuttu ? 'Art arda ' + kdSayi(s) + ' doğru cevap.' : 'Bir daha dene.')); }
+  else if (a === 'bitti') return 'Bas: Sonraki görev.||Görev tamam.';
+  var pr = t.split('||'); return pr[0] + (n ? ' (' + n + '/' + N + ')' : '') + (pr[1] ? '||' + pr[1] : '');
 }
+function talimatDuz(){ return talimat().replace('||', ' '); }
 
 /* ipucu: soru → şeritte işaret → çözümün yarısı; cevap yok */
+function birimYuzde(p){ return p === 50 ? 50 : p % 25 === 0 ? 25 : p % 10 === 0 ? 10 : 5; } // en kolay parça: yarısı, dörtte biri, onda biri, %5
 function hesapIpucu(tip, v, birim){
   var B = birim ? ' ' + birim : '';
-  if (tip === 'bul') { var W = v.P !== undefined ? v.P : v.N, p = v.p;
-    if (p === 10) return [ '%10, bütünün onda biri.', {p:10, yazi:'%10 = bütünün onda biri'}, 'Bütünü 10 eşit parçaya böl. Bir parça ne kadar?' ];
-    var r = (p % 10 === 0) ? 10 : 5, mr = W * r / 100;
-    return [ 'Önce bütünün küçük bir parçasını bul: ' + yz(r) + ' ne kadar?', {p:r, yazi:yz(r) + ' = ' + say(mr) + B},
-      yz(r) + ' = ' + say(mr) + B + '. ' + yz(p) + ' içinde kaç tane ' + yz(r) + ' var?' ]; }
+  if (tip === 'bul') { var W = v.P !== undefined ? v.P : v.N, p = v.p, KS = {10:[10, 'onda biri'], 25:[4, 'dörtte biri'], 50:[2, 'yarısı']};
+    if (KS[p]) return [ yz(p, 'in') + ' bütünün kaçta kaçı olduğunu düşün.', {p:p, yazi:yz(p) + ' = bütünün ' + KS[p][1]}, 'Bütünü ' + KS[p][0] + ' eşit parçaya böl.' + (p === 25 ? ' Önce yarısını al, sonra onun da yarısını.' : '') + ' Bir parça ne kadar?' ];
+    if (p === 75) { var m25 = W / 4; return [ 'Önce bütünün dörtte birini bul: %25 ne kadar?', {p:25, yazi:'%25 = ' + say(m25) + B}, '%25 = ' + say(m25) + B + '. %75 içinde kaç tane %25 var?' ]; }
+    if (p % 10 === 0) { var m10 = W / 10; return [ 'Önce bütünün küçük bir parçasını bul: %10 ne kadar?', {p:10, yazi:'%10 = ' + say(m10) + B}, '%10 = ' + say(m10) + B + '. ' + yz(p) + ' içinde kaç tane %10 var?' ]; }
+    var m5 = W / 20; return [ 'Önce %10’u bul. %5, %10’un yarısı.', {p:5, yazi:'%5 = ' + say(m5) + B},
+      '%5 = ' + say(m5) + B + '. ' + yz(p) + ' = ' + yz(p - 5) + ' + %5. ' + yz(p - 5) + ' kaç' + B + '?' ]; }
   if (tip === 'tamam') { var d = v.d !== undefined ? v.d : v.W * v.p / 100, p2 = v.p, g1 = ebob(p2, 100), k1 = p2 / g1, q = d / k1;
-    return [ 'Bilinen parça ' + yz(p2) + '. Önce ' + yz(g1) + '’lik bir parçanın ne kadar olduğunu bul.', k1 === 1 ? {p:100, yazi:'%100 = kaç tane ' + yz(g1) + '?'} : {p:g1, yazi:yz(g1) + ' = ' + say(q) + B},
+    return [ k1 === 1 ? 'Bilinen parça ' + yz(p2) + '. Şeritte %100’e kadar kaç tane ' + yz(p2) + ' sığar?' : 'Bilinen parça ' + yz(p2) + '. Önce ' + yz(g1) + '’lik bir parçanın ne kadar olduğunu bul.', k1 === 1 ? {p:100, yazi:'%100 = kaç tane ' + yz(g1) + '?'} : {p:g1, yazi:yz(g1) + ' = ' + say(q) + B},
       (k1 === 1 ? yz(g1) + ' = ' + say(d) + B + '. %100 içinde kaç tane ' + yz(g1) + ' var?' : yz(g1) + ' = ' + say(q) + B + ' (' + say(d) + ' ÷ ' + k1 + '). %100 içinde kaç tane ' + yz(g1) + ' var?') ]; }
   if (tip === 'yuzde') { var u = v.W / ebob(v.W, 100); if (v.W % 10 === 0 && v.d % (v.W / 10) === 0 && v.d / (v.W / 10) >= 2) u = v.W / 10; else if (v.W % 20 === 0 && v.d % (v.W / 20) === 0 && v.d / (v.W / 20) >= 2) u = v.W / 20; var s = 100 * u / v.W;
     return [ 'Bütün ' + say(v.W) + B + ' = %100. Küçük bir parçanın yüzdesini bul.', {p:s, yazi:say(u) + B + ' = ' + yz(s)},
       say(u) + B + ' = ' + yz(s) + '. ' + say(v.d) + B + ' içinde kaç tane ' + say(u) + B + ' var?' ]; }
   if (tip === 'artir') { var b0 = v.b !== undefined ? v.b : v.P, a0 = b0 * v.p / 100;
-    return [ 'Yeni değer = eski değer + artış. Önce artışı bul.', {p:110, yazi:'%10 artış = ' + say(b0 / 10) + B},
+    var ua = birimYuzde(v.p); return [ 'Yeni değer = eski değer + artış. Önce artışı bul.', {p:100 + ua, yazi:yz(ua) + ' = ' + say(b0 * ua / 100) + B},
       'Artış: ' + say(b0) + B + '’nin ' + yz(v.p, 'i') + ' = ' + say(a0) + B + '. Yeni değer için ne yaparsın?' ]; }
   if (tip === 'azalt') { var P = v.P, i2 = P * v.p / 100;
-    return [ 'Kalan = bütün − azalan. Ya da: %100 − ' + yz(v.p) + ' = ' + yz(100 - v.p) + '.', {p:90, yazi:'%10 = ' + say(P / 10) + B},
+    var uz = birimYuzde(v.p); return [ 'Kalan = bütün − azalan. Ya da: %100 − ' + yz(v.p) + ' = ' + yz(100 - v.p) + '.', {p:100 - uz, yazi:yz(uz) + ' = ' + say(P * uz / 100) + B},
       'Azalan: ' + say(P) + B + '’nin ' + yz(v.p, 'i') + ' = ' + say(i2) + B + '. Kalan için ne yaparsın?' ]; }
   if (tip === 'zincir') { var P0 = v.P, a1 = v.a || 20, b1 = v.b || 20, P1 = P0 * (100 - a1) / 100, x = P1 * b1 / 100;
     return [ 'İkinci indirim hangi fiyattan alınıyor: ilk fiyattan mı, indirimli fiyattan mı?', 'İlk indirimden sonra fiyat ' + say(P1) + ' TL. İkinci ' + yz(b1) + ' bunun ' + yz(b1, 'i') + '.',
@@ -3238,40 +3400,61 @@ var TIP = {bul:'bul', tamam:'tamam', yuzde:'yuzde', artir:'artir', azalt:'azalt'
 function ipuclari(){
   var g = G[gno], s = ST[gno], a = simdiki();
   if (g.tip === 'sinav') { var q = s.sorular[s.i]; if (!q) return null; var t = SINAV[q.j]; return hesapIpucu(t.tip, q.v, t.birim === '%' ? '' : t.birim); }
+  if (g.tip === 'acilis' && KIP === 'kendim' && !TESHIS.bitti) return null;
   if (g.tip === 'acilis') return ['Fiyat 1.000 TL olsa, %20 indirimden sonra kaç TL olurdu? İkinci %20 hangi fiyattan alınır?'];
+  if (g.tip === 'afis') return s.tahmin < 0 ? ['İki yüzde art arda uygulanıyor. İkinci yüzde hangi fiyattan alınır?', 'İlk adımdan sonra kalan fiyat yeni bütün olur. Kararını ver, şeritte görürsün.'] : !s.zBitti ? ['Kutuyu ' + (s.ops[s.k].t < 0 ? 'ödenecek kısmın' : 'yeni fiyatın') + ' sonuna götür.', s.ops[s.k].t < 0 ? yz(s.ops[s.k].a) + ' indirim: geriye ' + yz(100 - s.ops[s.k].a) + ' kalır.' : yz(s.ops[s.k].a) + ' zam: ' + yz(100 + s.ops[s.k].a) + ' olur.'] : ['Son fiyatı ilk fiyatla karşılaştır. Tablonun son satırına bak.'];
+  if (g.tip === 'karsi') return ['Yüzdeyi değil miktarı karşılaştır. Önce iki bütüne bak.', 'Bütünü büyük olanın küçük yüzdesi daha çok olabilir. İki şeridin boyuna bak.'];
   if (g.tip !== 'tek' && g.tip !== 'zincir') return null;
   var v = g.tip === 'tek' ? s.v : {P:s.say.P, a:20, b:20};
   if (a === 'butun') return ['Yüzde hep bir şeyin yüzdesidir. Soru neyin yüzdesini soruyor?', 'Şeride bak: çerçeveli şerit %100.', g.id === 'artir' ? 'Yeni boy henüz bilinmiyor. Uzama, bilinen eski boydan hesaplanır.' : 'Bilinen parça bütünün bir kısmı. Bir kısım %100 olamaz.'];
-  if (a === 'dene') { var hd = g.hedef(v); return [g.eksen === 'miktar' ? 'Üst cetvelde ' + say(v.d) + ' ' + g.birim + ' nerede?' : 'Alttaki yüzde cetvelinde ' + yz(hd) + ' nerede?', {p:hd, yazi:'buraya'}, '◀ ▶ düğmeleriyle tutamağı adım adım götürebilirsin.']; }
-  if (a === 'dene1' || a === 'dene2') return ['Bu şeridin yüzde cetvelinde %80 nerede?', {p:80, yazi:'%80', zin:true}, '◀ ▶ düğmeleriyle adım adım götürebilirsin.'];
+  if (a === 'dene') { var hd = g.hedef(v); return [g.eksen === 'miktar' ? 'Üst cetvelde ' + say(v.d) + ' ' + g.birim + ' nerede? Sarı kutuyu sürükle ya da ◀ ▶ düğmelerine bas.' : 'Alttaki yüzde cetvelinde ' + yz(hd) + ' nerede? Sarı kutuyu sürükle ya da ◀ ▶ düğmelerine bas.', {p:hd, yazi:'buraya'}, '◀ ▶ düğmeleriyle sarı kutuyu adım adım götürebilirsin.']; }
+  if (a === 'dene1' || a === 'dene2') return ['Bu şeridin yüzde cetvelinde %80 nerede? Sarı kutuyu sürükle ya da ◀ ▶ düğmelerine bas.', {p:80, yazi:'%80', zin:true}, '◀ ▶ düğmeleriyle adım adım götürebilirsin.'];
   if (a === 'acikla') return ['Tablodaki satırları oku. Hangi cümle onlarla uyuşuyor?', {tablo:true}, {ele:true}];
+  if (a === 'hata' && s.hata && s.hata.nedenTamam && !s.hata.tamam) { var hv = g.tip === 'tek' ? g.hesap(s.hata.say) : {P:s.hata.say.P * 0.8, a:20, b:0}; return g.tip === 'tek' ? hesapIpucu(TIP[g.id], hv, g.birim) : ['2. indirim, yeni fiyatın %20’si. Yeni fiyat ' + say(hv.P) + ' TL.', 'Önce ' + say(hv.P) + ' TL’nin %10’unu bul: ' + say(hv.P) + ' ÷ 10.', '%20, iki tane %10. ' + say(hv.P / 10) + ' TL’yi kaç ile çarparsın?']; }
+  if (a === 'hata' && s.hata && s.hata.bulundu) return ['Hatalı satırı ilk satırla karşılaştır. %100 hangisi?', 'Yüzde ile miktar karışmış mı?', 'Seçenekleri tek tek hatalı satıra uygula: hangisi o satırdaki hatayı anlatıyor?'];
+  if (a === 'hata') return ['Satırları sırayla oku. Her satır bir öncekiyle uyuşuyor mu?', 'Yüzde ile miktar karışmış mı? %100 hangisi?', 'Satırları kendi hesabınla dene: hangi satırdan sonra sonuç değişiyor?'];
+  if (a === 'isinma') return ['Şeridi ikiye böldüğünü düşün: boyalı kısım yarısından az mı, çok mu?'];
   if (a === 'tahmin') return [g.tip === 'zincir' ? 'İkinci %20 hangi fiyattan alınıyor: ilk fiyattan mı, indirimli fiyattan mı? İçinden geçeni seç; sonra şeritte denersin.' : ({bul:'İndirim fiyatın küçük bir parçası. Yarısından az mı, çok mu?', tamam:'Bütün, bilinen parçadan büyük olur. Ne kadar büyük?', yuzde:'Dolu kısım bidonun yarısından az mı, çok mu?', artir:'Yeni boy eski boydan büyük olur. Ne kadar büyük?', azalt:'Ödeyeceğin tutar fiyattan küçük olur. Ne kadar küçük?'}[g.id] + ' İçinden geçeni seç; hesabı sonra şeritte yaparsın.')];
   if (a === 'kd' && s.kd) { var kv = g.tip === 'tek' ? s.kd.st.v : {P:s.kd.st.say.P, a:20, b:20}; return hesapIpucu(TIP[g.id], kv, g.birim); }
   return hesapIpucu(TIP[g.id], v, g.tip === 'tek' ? g.birim : 'TL');
 }
-function ipucuAnahtar(){ var s = ST[gno]; return gno + '|' + simdiki() + '|' + (s.i || 0) + '|' + (s.sorular ? s.sorular.length : 0) + '|' + (s.kd ? s.kd.no + s.kd.asama : 0) + '|' + JSON.stringify(s.say || ''); }
+function ipucuAnahtar(){ var s = ST[gno]; return gno + '|' + simdiki() + '|' + (s.i || 0) + '|' + (s.sorular ? s.sorular.length : 0) + '|' + (s.kd ? s.kd.no + s.kd.asama : 0) + '|' + (s.hata ? (s.hata.bulundu ? 1 : 0) + (s.hata.nedenTamam ? 1 : 0) : '') + '|' + JSON.stringify(s.say || ''); }
 function rehberCiz(){
   var r = el('simdi'), g = G[gno];
   if (KIP !== 'kendim') { r.className = 'gizli'; document.body.removeAttribute('data-asama'); return; }
   r.className = '';
   if (IPUCU.anahtar !== ipucuAnahtar()) { IPUCU = {anahtar:ipucuAnahtar(), seviye:0}; ISARET = null; }
-  var ip = ipuclari(), lv = IPUCU.seviye, h = '<span class="simdiYazi"><b>Şimdi:</b> ' + esc(talimat()) + '</span>';
+  var ip = ipuclari(), lv = IPUCU.seviye, tl = talimat().split('||'), h = '<span class="simdiYazi"><b>Şimdi:</b> ' + esc(tl[0]) + (tl[1] ? ' <span class="simdiEk">' + esc(tl[1]) + '</span>' : '') + '</span>';
   if (ip && simdiki() !== 'bitti' && lv < ip.length) h += '<button id="takildim" class="ustDug">' + (lv ? 'Bir ipucu daha' : 'Takıldım') + '</button>';
-  if (ip && lv) {
+  else if (ip && lv >= ip.length && !SIM && simKaynak()) h += '<button id="takildimSim" class="ustDug">Hesabı izle</button>';
+  if (false) {
     var son = ip[lv - 1], yazi = '';
     if (typeof son === 'string') yazi = son;
     else if (son && son.yazi) yazi = (lv === 2 && typeof ip[0] === 'string' ? ip[0] + ' ' : '') + (son.yazi === 'buraya' ? 'Şeritte işaretli yere bak.' : 'Şeritte işaret: ' + son.yazi + '.');
-    else if (son && son.tablo) yazi = 'Tablodaki sarı satıra bak. Hangi cümle o satırı anlatıyor?';
+    else if (son && son.tablo) yazi = 'Tablodaki renkli satıra bak. Hangi cümle o satırı anlatıyor?';
     else if (son && son.ele) yazi = 'Bir seçenek kapandı: tabloyla uyuşmuyor.';
     if ((ortuluMu() || (g.tip === 'sinav' && !ST[gno].arac)) && son && son.yazi) yazi = son.yazi + '.';
     h += '<span class="ipucu" aria-live="polite">İpucu ' + lv + '/' + ip.length + ': ' + esc(yazi) + '</span>';
   }
   r.innerHTML = h;
+  var bs = el('takildimSim'); if (bs) bs.addEventListener('click', function(){ simAc(); });
   var b = el('takildim'); if (b) b.addEventListener('click', function(){ IPUCU.seviye = Math.min(ip.length, IPUCU.seviye + 1); var S = ST[gno];
     if (IPUCU.seviye >= 2) { if (S.kd && simdiki() === 'kd') S.kd.ip3 = true; if (G[gno].tip === 'sinav' && S.sorular[S.i]) S.sorular[S.i].ip3 = true; }
-    ipucuUygula(); });
+    ipucuUygula(); sonuGoster('.ipucu'); });
   odakSinif();
 }
+function ipucuMetin(){ var g = G[gno]; if (KIP !== 'kendim' || IPUCU.anahtar !== ipucuAnahtar() || !IPUCU.seviye) return '';
+  var ip = ipuclari(), lv = IPUCU.seviye; if (!ip || !ip[lv - 1]) return '';
+  var h = '';
+  for (var i = 0; i < lv; i++) { var son = ip[i], yazi = '';
+    if (typeof son === 'string') yazi = son;
+    else if (son && son.yazi) yazi = son.yazi === 'buraya' ? 'Şeritte işaretli yere bak.' : 'Şeritte işaret: ' + son.yazi + '.';
+    else if (son && son.tablo) yazi = 'Tablodaki renkli satıra bak. Hangi cümle o satırı anlatıyor?';
+    else if (son && son.ele) yazi = 'Bir seçenek kapandı: tabloyla uyuşmuyor. Kalanlardan seç.';
+    if ((ortuluMu() || (g.tip === 'sinav' && !ST[gno].arac)) && son && son.yazi) yazi = son.yazi + (/[.?]$/.test(son.yazi) ? '' : '.');
+    h += '<span class="ipSatir">İpucu ' + (i + 1) + '/' + ip.length + ': ' + esc(yazi) + '</span>'; }
+  return '<p class="ipucu" aria-live="polite">' + h + (lv >= ip.length ? '<span class="ipSatir">' + (simKaynak() ? 'İpuçları bitti. Hesabı izle’ye bas.' : 'İpuçları bitti.') + '</span>' : '') + '</p>'; }
+function ipucuPanel(){ var m = ipucuMetin(); if (!m) return; var b = PANEL.querySelector('.bolum.simdi'); if (b) b.insertAdjacentHTML('beforeend', m); else PANEL.insertAdjacentHTML('beforeend', m); }
 function ipucuUygula(){
   var ip = ipuclari(), lv = IPUCU.seviye, son = ip ? ip[lv - 1] : null;
   ISARET = null;
@@ -3286,13 +3469,13 @@ function odakSinif(){
   b.classList.toggle('seritKapali', !!kp); el('seritNot').textContent = kp; b.classList.toggle('ipucuVar', KIP === 'kendim' && IPUCU.seviye > 0); b.classList.toggle('sinavda', G[gno].tip === 'sinav'); b.classList.toggle('zincirde', zincirMi());
   b.setAttribute('data-asama', KIP === 'kendim' ? (a || G[gno].tip) : '');
   var sa = el('seritAlan'), yan = el('yan');
-  sa.classList.remove('simdi', 'soluk'); yan.classList.remove('simdi', 'soluk');
+  sa.classList.remove('simdi', 'soluk'); yan.classList.remove('simdi', 'soluk'); b.classList.remove('seritOdak');
   if (KIP !== 'kendim') return;
   var k = ST[gno].kd;
-  if (a === 'dene' || a === 'dene1' || a === 'dene2' || (a === 'kd' && k && k.asama === 'denetle')) { sa.classList.add('simdi'); yan.classList.add('soluk'); }
-  else if (a === 'acikla') { if (!zincirMi()) sa.classList.add('soluk'); yan.classList.add('simdi'); }
+  if (a === 'dene' || a === 'dene1' || a === 'dene2' || (a === 'kd' && k && k.asama === 'denetle')) { sa.classList.add('simdi'); yan.classList.add('soluk'); b.classList.add('seritOdak'); }
+  else if (a === 'acikla') { if (!zincirMi()) sa.classList.add('soluk'); }
   else if (a === 'kd' && k && k.asama === 'yaz') { if (!ISARET) sa.classList.add('soluk'); }
-  else if (a === 'butun' || a === 'tahmin') { yan.classList.add('soluk'); if (!ISARET) sa.classList.add('soluk'); }
+  else if (a === 'butun' || a === 'tahmin' || a === 'isinma' || a === 'hata') { yan.classList.add('soluk'); if (!ISARET) sa.classList.add('soluk'); }
 }
 
 /* ---------- panel ---------- */
@@ -3309,38 +3492,55 @@ function secenekHtml(liste, secili, ad, dikey, tohum, kapali){
 function tohumu(v){ var t = 0; for (var k in v) t += Math.round(Math.abs(v[k])) * 7; return t; }
 function bolum(ad, html){
   var L = asamalar(), a = simdiki(), cls = '';
-  if (KIP === 'kendim' && L.length) { if (ad === a) cls = ' simdi'; else if (L.indexOf(ad) >= 0 && (a === 'bitti' || L.indexOf(ad) < L.indexOf(a))) cls = ' gecti'; }
+  if (KIP === 'kendim' && L.length) { if (ad === a) cls = ' simdi'; else if (L.indexOf(ad) >= 0 && (a === 'bitti' || L.indexOf(ad) < L.indexOf(a))) cls = ' gecti' + (a !== 'bitti' && L.indexOf(ad) < L.indexOf(a) - 1 ? ' eski' : ''); }
   return '<div class="bolum' + cls + '" data-b="' + ad + '">' + html + '</div>';
 }
-function eleIndeks(liste, secili){ if (!(ELE && simdiki() === 'acikla')) return -1; for (var i = 0; i < liste.length; i++) if (!liste[i].d && i !== secili) return i; return -1; }
+function eleIndeks(liste, secili){ if (!(ELE && simdiki() === 'acikla')) return -1; var S0 = ST[gno]; if (S0.eleIdx !== undefined && liste[S0.eleIdx] && !liste[S0.eleIdx].d) return S0.eleIdx; if (secili >= 0 && liste[secili] && !liste[secili].d) return (S0.eleIdx = secili); for (var i = 0; i < liste.length; i++) if (!liste[i].d && i !== secili) return (S0.eleIdx = i); return -1; }
 
-function panelCiz(){
+var PANEL_GNO = -1, PANEL_ADIM = '';
+function panelCiz(){ var st = PANEL.scrollTop, adim = '';
+  try { adim = talimat(); } catch (e) {}
+  var ayni = PANEL_GNO === gno, yeni = ayni && adim !== PANEL_ADIM;
+  panelCiz0(); ipucuPanel(); PANEL.insertAdjacentHTML('beforeend', '<div class="asagi gizli"><button data-asagi="1">↓ Aşağıda devamı var</button></div>'); if (ayni) PANEL.scrollTop = st; setTimeout(asagiIsaret, 0); PANEL_GNO = gno; PANEL_ADIM = adim;
+  if (yeni) setTimeout(function(){ try { var bb = PANEL.querySelectorAll('.bolum'), b = PANEL.querySelector('.bolum.simdi') || bb[bb.length - 1]; if (!b) return; var tu = b.querySelector('.tusAlan'); if (tu && b.querySelector('.geri')) { var s0 = PANEL.scrollTop; tu.scrollIntoView({block:'nearest'}); if (PANEL.scrollTop !== s0) KAYMA = Date.now(); return; }
+    var on = b.previousElementSibling, gb = on ? on.querySelectorAll('.geri') : [], sg = gb.length ? gb[gb.length - 1] : null; // önceki adımın geri bildirimi de görünsün
+    var st1 = PANEL.scrollTop; if (sg && b.getBoundingClientRect().top - sg.getBoundingClientRect().top + 90 < PANEL.clientHeight) sg.scrollIntoView({block:'start'}); else b.scrollIntoView({block:b.getBoundingClientRect().height < PANEL.clientHeight - 60 ? 'nearest' : 'start'}); if (PANEL.scrollTop !== st1) KAYMA = Date.now(); } catch (e) {} }, 0); }
+function asagiIsaret(){ try { var a = PANEL.querySelector('.asagi'); if (a) a.classList.toggle('gizli', PANEL.scrollHeight - PANEL.scrollTop - PANEL.clientHeight < 12); } catch (e) {} }
+PANEL.addEventListener('scroll', asagiIsaret);
+function sonuGoster(sel){ setTimeout(function(){ try { var x = PANEL.querySelectorAll(sel), y = x[x.length - 1], st0 = PANEL.scrollTop; if (y) y.scrollIntoView({block:'nearest'}); if (PANEL.scrollTop !== st0) KAYMA = Date.now(); } catch (e) {} }, 0); }
+function panelCiz0(){
   var g = G[gno], s = ST[gno], h = '';
   el('gorevAd').textContent = g.baslik;
   el('degistir').className = ((g.tip === 'tek' || g.tip === 'zincir') && !s.kd && KIP !== 'kendim') ? '' : 'gizli';
   el('ince').className = sinir() ? '' : 'gizli';
   if (simdiki() !== 'acikla') ELE = false;
+  if (g.tip === 'acilis' && KIP === 'kendim' && !TESHIS.bitti) { el('durum').innerHTML = 'Başlamadan önce üç kısa soru. <span id="soru">Puan yok.</span>'; PANEL.innerHTML = teshisHtml(); rehberCiz(); return; }
   if (g.tip === 'acilis') {
     el('durum').innerHTML = g.durum();
+    if (KIP === 'kendim' && TESHIS.bitti) h += '<div class="bolum gecti"><p class="asama a1"><span class="no">✓</span>Senin yolun</p><ul class="yol">' + teshisYol().map(function(t){ return '<li>' + esc(t) + '</li>'; }).join('') + '</ul></div>';
     h += '<div class="bolum' + (KIP === 'kendim' && kancaTahmin < 0 ? ' simdi' : '') + '"><p class="asama a1"><span class="no">1</span>Tahmin et</p>' + secenekHtml(KANCA_SEC, kancaTahmin, 'kanca', false) + '</div>';
     if (kancaTahmin >= 0) h += '<p class="geri">Tahminin: ' + esc(KANCA_SEC[kancaTahmin].m) + '. Cevabı 6. görevde şeritte bulacaksın.' + (KIP === 'kendim' ? '' : ' Derste sınıfça sayabilirsiniz: kaç kişi hangisini seçti?') + '</p><div class="satirDug"><button class="ana" data-sonraki="1">1. göreve geç</button></div>';
     PANEL.innerHTML = h; rehberCiz(); return;
   }
   if (g.tip === 'ileri') { ileriPanel(); rehberCiz(); return; }
+  if (g.tip === 'afis') { afisPanel(); rehberCiz(); return; }
+  if (g.tip === 'karsi') { karsiPanel(); rehberCiz(); return; }
   if (g.tip === 'sinav') { sinavPanel(); rehberCiz(); return; }
   if (g.tip === 'zincir') { zinPanel(); rehberCiz(); return; }
   var v = s.v, adimNo = 1;
-  el('durum').innerHTML = s.kd ? g.durum(s.kd.st.v) : g.durum(v);
-  if (s.kd) { PANEL.innerHTML = '<p class="ozet">Tahmin et, dene, açıkla bitti.' + (s.kdDeneme ? ' Kendin dene: ' + s.kdDeneme + ' deneme.' : '') + '</p>' + bolum('kd', kdHtml(g, s, asamalar().length)); rehberCiz(); panelSon(); return; }
+  el('durum').innerHTML = s.kd ? g.durum(s.kd.st.v) : (KIP === 'kendim' && simdiki() === 'hata' ? '<b>Arkadaşının sorusu:</b> ' + esc(hataVeri(g, hataSay(g, s).say).metin) : g.durum(v));
+  if (isinmaVar() && !s.isinmaTamam) { PANEL.innerHTML = bolum('isinma', isinmaHtml(s)); rehberCiz(); panelSon(); isinmaGoster(); return; }
+  if (s.kd) { PANEL.innerHTML = '<p class="ozet">Bitenler: tahmin, dene, açıkla.' + (s.kdDeneme ? ' Kendin dene: ' + s.kdDeneme + ' deneme' + (s.kdTamam ? '.' : ', art arda doğru: ' + (s.kdSeri || 0) + '/' + kdHedef(s) + '.') : '') + '</p>' + bolum('kd', kdHtml(g, s, asamalar().length)); rehberCiz(); panelSon(); return; }
   if (g.butunSoru) {
     var bs = g.butunSoru(v), hb = '';
     hb += '<p class="asama a1"><span class="no">' + (adimNo++) + '</span>' + esc(bs.soru) + '</p>';
     hb += secenekHtml(bs.sec, s.butun, 'butun', false, tohumu(v) + 3);
-    if (s.butun >= 0) hb += '<p class="geri' + (bs.sec[s.butun].d ? ' tamam' : '') + '">' + esc(bs.sec[s.butun].g) + '</p>';
+    if (s.butun >= 0) hb += '<p class="geri' + (bs.sec[s.butun].d ? ' tamam' : '') + '">' + esc(bs.sec[s.butun].g) + (TEKRAR === 'bt' + s.butun ? ' Şeritte çerçeveli şeridin tamamına bak: %100 o. Aşağıda bir ipucu açıldı.' : '') + '</p>';
     h += bolum('butun', hb);
     if (!s.butunTamam) { PANEL.innerHTML = h; rehberCiz(); panelSon(); return; }
   }
   var th = g.tahmin(v), ht = '';
+  if (KIP === 'kendim' && TESHIS.bitti && !TESHIS.butun && !g.butunSoru && BUTUN_AD[g.id]) ht += '<p class="not">Önce: bu soruda %100, ' + esc(BUTUN_AD[g.id]) + '.</p>';
   ht += '<p class="asama a1"><span class="no">' + (adimNo++) + '</span>Tahmin et: ' + esc(soruDuz(g.durum(v))) + '</p>';
   ht += secenekHtml(th, s.tahmin, 'tahmin', false, tohumu(v));
   if (s.tahmin < 0) ht += '<p class="not">Tahminini seçince şeritteki ' + (g.gizli === 'miktar' ? 'miktar' : 'yüzde') + ' görünür. Sonra değiştirebilirsin.</p>';
@@ -3348,55 +3548,346 @@ function panelCiz(){
   if (s.tahmin < 0) { PANEL.innerHTML = h; rehberCiz(); panelSon(); return; }
   var hd = '<p class="asama a2"><span class="no">' + (adimNo++) + '</span>Dene</p>';
   if (!s.vardi) hd += '<p class="yonerge">' + esc(g.yonerge(v)) + '</p>';
-  else hd += '<p class="geri' + (th[s.tahmin].d ? ' tamam' : '') + '">' + esc(g.sonuc(v)) + ' ' + esc(th[s.tahmin].d ? th[s.tahmin].g : 'Tahminin: ' + th[s.tahmin].m + '. ' + th[s.tahmin].g) + '</p>';
+  else hd += '<p class="geri' + (th[s.tahmin].d ? ' tamam' : '') + '">' + esc(g.sonuc(v)) + ' ' + esc(th[s.tahmin].d ? th[s.tahmin].g : 'Tahminin: ' + th[s.tahmin].m + '. ' + th[s.tahmin].g) + '</p>' + (simKaynak() && !s.aciklaTamam ? '<div class="satirDug">' + simDugme() + '</div>' : '');
   h += bolum('dene', hd);
   if (s.vardi) {
     var ac = g.acikla(v), ha = '';
     ha += '<p class="asama a3"><span class="no">' + (adimNo++) + '</span>Açıkla: hangisi bu durumu anlatıyor?</p>';
     ha += secenekHtml(ac, s.acikla, 'acikla', true, tohumu(v) + 1, eleIndeks(ac, s.acikla));
-    if (s.acikla >= 0) ha += '<p class="geri' + (ac[s.acikla].d ? ' tamam' : '') + '">' + esc(ac[s.acikla].g) + '</p>';
-    if (s.aciklaTamam) ha += '<div class="satirDug">' + (g.birimYol && !s.ekYol ? '<button data-ekyol="1">Başka yol: birim oran</button>' : '') + (KIP === 'kendim' ? '' : '<button class="ana" data-sonraki="1">Sonraki görev</button>') + '</div>';
+    if (s.acikla >= 0) ha += '<p class="geri' + (ac[s.acikla].d ? ' tamam' : '') + '">' + esc(ac[s.acikla].g) + (TEKRAR === 'ac' + s.acikla ? tekrarYazi() : '') + '</p>';
+    if (s.aciklaTamam) ha += '<div class="satirDug">' + (g.birimYol && !s.ekYol ? '<button data-ekyol="1">Başka yol: birim oran</button>' : '') + (!s.kd ? simDugme() : '') + (KIP === 'kendim' ? '' : '<button class="ana" data-sonraki="1">Sonraki görev</button>') + '</div>';
     h += bolum('acikla', ha);
-    if (s.aciklaTamam && KIP === 'kendim') h += bolum('kd', kdHtml(g, s, adimNo));
+    if (s.aciklaTamam) { h += bolum('hata', hataHtml(g, s, adimNo++, !hataZorunlu())); if (KIP === 'kendim' && (s.hataTamam || !hataZorunlu())) h += bolum('kd', kdHtml(g, s, adimNo)); }
   }
   PANEL.innerHTML = h; rehberCiz(); panelSon();
 }
 function panelSon(){ try { setTimeout(function(){ var y = PANEL.querySelector('.bolum.simdi .ana, .bolum.simdi button, [data-sonraki], [data-kdbasla]'); if (y && document.documentElement.scrollHeight > window.innerHeight + 4) { var r = y.getBoundingClientRect(); if (r.bottom > window.innerHeight || r.top < 0) y.scrollIntoView({block:'nearest'}); } }, 0); var x = PANEL.querySelector('.bolum.simdi'); if (x && KIP === 'kendim') { var o = x.previousElementSibling; var hedef = o && o.classList.contains('bolum') ? Math.min(o.offsetTop + Math.max(0, o.offsetHeight - 70), x.offsetTop) : x.offsetTop; PANEL.scrollTop = Math.max(0, hedef - PANEL.offsetTop - 6); } else PANEL.scrollTop = PANEL.scrollHeight; } catch (e) {} }
 function soruDuz(html){ var m = /<span id="soru">([^<]*)<\/span>/.exec(html); return m ? m[1] : ''; }
 
+
+/* ---------- Hesabı izle: yüzde almanın simülasyonu (cevap bilindikten sonra) ---------- */
+// Bütün eşit parçalara bölünür, her parçanın değeri yazılır, istenen parçalar tek tek sayılır (çift sayı doğrusu).
+var SIM = null;
+function simPlan(tip, v, B){
+  var Bs0 = B ? ' ' + B : '', F0 = [];
+  if (tip === 'tamam') { var g1 = ebob(v.p, 100), kp1 = 100 / g1, k1 = v.p / g1, q = v.d / k1;
+    F0.push({k:kp1, c:k1, soru:true, yaz:'Bilinen: dolu kısım ' + say(v.d) + Bs0 + ', bütünün ' + yz(v.p, 'i') + '. Bütün kaç' + Bs0 + '?'});
+    F0.push({k:kp1, c:k1, yaz:k1 === 1 ? yz(v.p) + ' bir parça: ' + say(v.d) + Bs0 + '. Bütün ' + kp1 + ' parça.' : yz(v.p) + ', ' + k1 + ' parça: ' + say(v.d) + ' ÷ ' + k1 + ' = ' + say(q) + '. Her parça bütünün ' + yz(g1, 'i') + ': ' + say(q) + Bs0 + '.'});
+    for (var i1 = k1 + 1; i1 <= kp1; i1++) F0.push({k:kp1, c:i1, yaz:i1 + ' parça, bütünün ' + yz(g1 * i1, 'i') + ': ' + say(q * (i1 - 1)) + ' + ' + say(q) + ' = ' + say(q * i1) + Bs0 + '.'});
+    F0.push({k:kp1, c:kp1, son:true, wAcik:true, yaz:'Bütün: %100 = ' + say(v.W) + Bs0 + '.'});
+    if (kp1 > 1) F0.push({k:kp1, c:kp1, son:true, wAcik:true, yaz:'Kısa yol: %100, ' + yz(g1, 'in') + ' ' + kp1 + ' katı. ' + say(q) + ' × ' + kp1 + ' = ' + say(v.W) + Bs0 + '.'});
+    return {W:v.W, p:v.p, u:g1, X:q, B:B, tip:tip, Wgizli:true, bil:v.d, k1:k1, kare:F0}; }
+  if (tip === 'yuzde') { var kp2 = v.W / v.u, c2 = v.d / v.u;
+    F0.push({k:0, c:0, yaz:'Bütün: ' + say(v.W) + Bs0 + ' = %100.'});
+    F0.push({k:kp2, c:0, yaz:'Bütünü ' + kp2 + ' eşit parçaya böl: her parça ' + say(v.u) + Bs0 + '. %100 ÷ ' + kp2 + ' = ' + yz(v.s) + '.'});
+    F0.push({k:kp2, c:c2, yaz:'Dolu kısım ' + say(v.d) + Bs0 + ': ' + c2 + ' parça. ' + c2 + ' × ' + yz(v.s) + ' = ' + yz(v.r) + '.'});
+    F0.push({k:kp2, c:c2, son:true, yaz:'Sonuç: bidonun ' + yz(v.r, 'i') + ' dolu.'});
+    return {W:v.W, p:v.r, u:v.s, X:v.u, B:B, tip:tip, kare:F0}; }
+  if (tip === 'zincir') { var P0 = v.P, X1 = P0 / 10, P1 = P0 * 0.8, X2 = P1 / 10, R0 = P0 * 0.64;
+    F0.push({k:0, c:0, W:P0, yaz:'İlk fiyat: ' + say(P0) + ' TL = %100.'});
+    F0.push({k:10, c:0, W:P0, X:X1, yaz:'Fiyatı 10 eşit parçaya böl: her parça bütünün %10’u, ' + say(X1) + ' TL.'});
+    F0.push({k:10, c:2, kes:true, W:P0, X:X1, kalanYazi:'yeni fiyat: ' + say(P1) + ' TL', yaz:'1. indirim %20, 2 parça: ' + say(X1) + ' + ' + say(X1) + ' = ' + say(2 * X1) + ' TL. Yeni fiyat ' + say(P1) + ' TL.'});
+    F0.push({k:0, c:0, b2:true, W:P1, yaz:'Kasada yeni bütün bu: ' + say(P1) + ' TL = %100.'});
+    F0.push({k:10, c:0, b2:true, W:P1, X:X2, yaz:'Yeni bütünü 10 parçaya böl: ' + say(P1) + ' ÷ 10 = ' + say(X2) + ' TL.'});
+    F0.push({k:10, c:2, b2:true, kes:true, W:P1, X:X2, kalanYazi:'son fiyat: ' + say(R0) + ' TL', yaz:'2. indirim %20, 2 parça: ' + say(X2) + ' + ' + say(X2) + ' = ' + say(2 * X2) + ' TL.'});
+    F0.push({k:10, c:2, b2:true, kes:true, son:true, W:P1, X:X2, kalanYazi:'son fiyat: ' + say(R0) + ' TL', yaz:'Son fiyat ' + say(R0) + ' TL, ilk fiyatın %64’ü. Toplam indirim %36, %40 değil.'});
+    return {W:P0, P0:P0, p:20, u:10, X:X1, B:'TL', tip:tip, kare:F0}; }
+  var n = nrm(tip, v), W = n.W, p = n.p, u, kp, yarim = false;
+  if (p === 50) u = 50; else if (p % 25 === 0) u = 25; else if (p % 10 === 0) u = 10; else { u = 10; yarim = true; }
+  kp = 100 / u; var X = W / kp, say1 = yarim ? (p - 5) / 10 : p / u, R = W * p / 100, F = [], tp = 0, Bs = B ? ' ' + B : '';
+  var ad = tip === 'artir' ? 'Artış' : tip === 'azalt' ? 'İndirim' : 'Sonuç', bulda = tip === 'bul';
+  F.push({k:0, c:0, yaz:'Bütün: ' + say(W) + Bs + ' = %100.'});
+  F.push({k:kp, c:0, yaz:'%100’ü ' + kp + ' eşit parçaya böl: ' + say(W) + ' ÷ ' + kp + ' = ' + say(X) + '. Her parça bütünün ' + yz(u, 'i') + ': ' + say(X) + Bs + '.'});
+  for (var i = 1; i <= say1; i++) { var once = tp; tp += X;
+    F.push({k:kp, c:i, yaz:i === 1 ? '1 parça, bütünün ' + yz(u, 'i') + ': ' + say(X) + Bs + '.' : i + ' parça, bütünün ' + yz(u * i, 'i') + ': ' + say(once) + ' + ' + say(X) + ' = ' + say(tp) + Bs + '.'}); }
+  if (yarim) { var Y = X / 2; F.push({k:kp, c:say1, yarim:true, yaz:'Bir parçanın yarısı daha: %5’i ' + say(X) + ' ÷ 2 = ' + say(Y) + Bs + '.'});
+    F.push({k:kp, c:say1, yarim:true, son:bulda, yaz:ad + ', bütünün ' + yz(p, 'i') + ': ' + say(tp) + ' + ' + say(Y) + ' = ' + say(R) + Bs + '.'}); }
+  else { F.push({k:kp, c:say1, son:bulda, yaz:ad + ', bütünün ' + yz(p, 'i') + ': ' + say(R) + Bs + '.'});
+    if (say1 > 1) F.push({k:kp, c:say1, son:bulda, yaz:'Kısa yol: ' + yz(p) + ', ' + yz(u, 'in') + ' ' + say1 + ' katı. ' + say(X) + ' × ' + say1 + ' = ' + say(R) + Bs + '.'}); }
+  if (tip === 'artir') F.push({k:kp, c:say1, yarim:yarim, son:true, ek:true, yaz:'Yeni değer: %100 + ' + yz(p) + ' = ' + yz(100 + p) + '. ' + say(W) + ' + ' + say(R) + ' = ' + say(W + R) + Bs + '.'});
+  if (tip === 'azalt') F.push({k:kp, c:say1, yarim:yarim, son:true, kes:true, yaz:'Kalan: %100 − ' + yz(p) + ' = ' + yz(100 - p) + '. ' + say(W) + ' − ' + say(R) + ' = ' + say(W - R) + Bs + '.'});
+  return {W:W, p:p, u:u, X:X, B:B, tip:tip, kare:F};
+}
+function simKaynak(){ // şu an simülasyonu açılabilir sayılar (cevap bilinmiyorsa null)
+  var g = G[gno], s = ST[gno];
+  if (g.tip === 'zincir') { if (s.kd) return s.kd.asama === 'sonuc' ? {P:s.kd.st.say.P} : null; return s.zBitti ? {P:s.say.P} : null; }
+  if (g.tip !== 'tek') return null;
+  if (s.kd) return s.kd.asama === 'sonuc' ? s.kd.st.v : null;
+  return s.vardi ? s.v : null;
+}
+function simDugme(){ return simKaynak() ? '<button data-simac="1"' + '' + '>Hesabı adım adım izle</button>' : ''; }
+function simAc(){ var v = simKaynak(); if (!v) return; var g = G[gno]; SIM = {gno:gno, plan:simPlan(TIP[g.id], v, g.birim || 'TL'), i:0}; simCiz(); try { el('simIleri').focus({preventScroll:true}); } catch (e) {} }
+function simKapat(){ if (!SIM) return; SIM = null; simCiz(); }
+function simCiz(){
+  if (SIM && (SIM.gno !== gno || !simKaynak())) SIM = null;
+  if (KIP === 'kendim' && (simCiz.son !== !!SIM || SIM)) { simCiz.son = !!SIM; rehberCiz(); }
+  document.body.classList.toggle('simAcik', !!SIM); el('sim').classList.toggle('gizli', !SIM); el('simDug').classList.toggle('gizli', !SIM); if (!SIM) return;
+  var P = SIM.plan, f = P.kare[SIM.i], A = 70, ZT = 960, Z = P.tip === 'artir' ? A + (ZT - A) * 100 / (100 + P.p) : ZT, y0 = 72, y1 = 132, h = DEFS.replace(/id="p(Kes|Ekle)"/g, 'id="s$1"');
+  var X = f.X !== undefined ? f.X : P.X, WV = f.W !== undefined ? f.W : P.W, U = P.u, st = f.k > 10 ? f.k / 10 : 1;
+  if (f.b2) { h += '<rect x="' + A + '" y="' + y0 + '" width="' + (ZT - A) + '" height="' + (y1 - y0) + '" fill="none" stroke="#9AA6B4" stroke-width="2" stroke-dasharray="8 6"/>' + metin(ZT, y0 - 14, 'ilk fiyat ' + say(P.P0), {f:18, w:700, renk:'#9AA6B4'}); Z = A + (ZT - A) * 0.8; }
+  var w = (Z - A) / (f.k || 1);
+  h += '<rect x="' + A + '" y="' + y0 + '" width="' + (Z - A) + '" height="' + (y1 - y0) + '" fill="#B9C8DE"/>';
+  var KS = !!f.kes || (P.tip === 'azalt' && !f.ek), sx = function(j){ return KS ? Z - j * w : A + j * w; }; // kesilen (indirim) parçalar sağdan sayılır
+  for (var i = 0; i < f.k; i++) { var xs = A + i * w, x = KS ? Z - (i + 1) * w : xs, sayildi = i < f.c && !f.ek;
+    if (sayildi) h += '<rect x="' + x + '" y="' + y0 + '" width="' + w + '" height="' + (y1 - y0) + '" fill="' + (f.kes ? 'url(#sKes)' : P.k1 && i >= P.k1 ? 'url(#sEkle)' : '#F07D21') + '"/>';
+    if (i === f.c && f.yarim && !f.ek) h += '<rect x="' + (KS ? x + w / 2 : x) + '" y="' + y0 + '" width="' + (w / 2) + '" height="' + (y1 - y0) + '" fill="' + (f.kes ? 'url(#sKes)' : '#F07D21') + '"/><line x1="' + (x + w / 2) + '" y1="' + y0 + '" x2="' + (x + w / 2) + '" y2="' + y1 + '" stroke="#16263D" stroke-width="2" stroke-dasharray="6 5"/>';
+    if (i > 0 && w >= 8) h += '<line x1="' + xs + '" y1="' + (y0 - 6) + '" x2="' + xs + '" y2="' + (y1 + 6) + '" stroke="#16263D" stroke-width="3"/>';
+    var yari = i === f.c && f.yarim && !f.ek, lx = yari ? (KS ? x + 3 * w / 4 : x + w / 4) : x + w / 2;
+    if (w >= 40) h += '<text x="' + lx + '" y="' + ((y0 + y1) / 2 + 9) + '" text-anchor="middle" font-size="' + (w > 110 ? 26 : 22) + '" font-weight="900" fill="#16263D" paint-order="stroke" stroke="#fff" stroke-width="5">' + (f.soru ? '?' : say(yari ? X / 2 : X)) + '</text>';
+    if (yari && !f.ek) h += '<text x="' + (KS ? x + w / 4 : x + 3 * w / 4) + '" y="' + ((y0 + y1) / 2 + 9) + '" text-anchor="middle" font-size="22" font-weight="900" fill="#5B6B7D" paint-order="stroke" stroke="#fff" stroke-width="5">' + say(P.X / 2) + '</text>';
+    var sinir = KS ? (f.yarim ? -1 : f.k - f.c) : f.c, koyu = KS ? i + 1 >= sinir : i + 1 <= f.c;
+    if ((i + 1) % st === 0) h += metin(xs + w, y1 + 34, '%' + say(U * (i + 1)), {f:20, w:!f.ek && i + 1 === sinir ? 900 : 700, renk:!f.ek && koyu ? '#16263D' : '#5B6B7D'}); }
+  h += '<rect x="' + A + '" y="' + y0 + '" width="' + (Z - A) + '" height="' + (y1 - y0) + '" fill="none" stroke="#16263D" stroke-width="4"/>';
+  h += metin(A, y1 + 34, '%0', {f:20, w:700, renk:'#5B6B7D'}) + metin(A, y0 - 14, '0', {f:20, w:800, renk:'#5B6B7D'});
+  if (f.b2) { h += metin((A + Z) / 2, y0 - 40, 'yeni bütün', {f:20, w:900, renk:'#16263D'}) + metin(A - 8, y1 + 58, 'yüzdeler yeni bütüne göre', {a:'start', f:16, w:700, renk:'#5B6B7D'});
+    if (f.son) { var x64 = A + (ZT - A) * 0.64; h += '<line x1="' + x64 + '" y1="' + (y0 - 30) + '" x2="' + x64 + '" y2="' + y1 + '" stroke="#C81E33" stroke-width="3" stroke-dasharray="6 4"/>' + metin(x64 - 8, y0 - 12, 'ilk fiyatın %64’ü', {a:'end', f:18, w:900, renk:'#C81E33'}); } }
+  if (!f.k || (st > 1 && f.k % st)) h += metin(Z, y1 + 34, '%100', {f:20, w:900});
+  if (f.ek) { var R2 = P.W * P.p / 100; h += '<rect x="' + Z + '" y="' + y0 + '" width="' + (ZT - Z) + '" height="' + (y1 - y0) + '" fill="url(#sEkle)" stroke="#16263D" stroke-width="4"/>' + metin((Z + ZT) / 2, (y0 + y1) / 2 + 9, say(R2), {f:22, w:900}) + metin(ZT, y1 + 34, yz(100 + P.p), {f:20, w:900}) + metin(ZT, y0 - 40, say(P.W + R2) + (P.B ? ' ' + P.B : ''), {f:24, w:900, renk:'#1F7A3A'}) + '<rect x="' + (A - 2) + '" y="' + (y0 - 4) + '" width="' + (ZT - A + 4) + '" height="' + (y1 - y0 + 8) + '" fill="none" stroke="#2E9E4F" stroke-width="4"/>'; }
+  if (f.kes) { var ka = Z - (f.c + (f.yarim ? 0.5 : 0)) * w; h += '<rect x="' + A + '" y="' + (y0 - 2) + '" width="' + (ka - A) + '" height="' + (y1 - y0 + 4) + '" fill="none" stroke="#2E9E4F" stroke-width="5"/>' + metin((ka + A) / 2, y1 + 64, f.kalanYazi || ('kalan: ' + yz(100 - P.p, 'i') + ', ' + say(P.W - P.W * P.p / 100) + (P.B ? ' ' + P.B : '')), {f:20, w:900, renk:'#1F7A3A'}); }
+  if (f.c < f.k || !f.k) h += metin(Z, y0 - 14, P.Wgizli && !f.wAcik ? '?' : say(WV), {f:20, w:800, renk:'#5B6B7D'});
+  for (var j = 1; j <= (f.ek ? 0 : f.c); j++) { if (f.soru && j !== f.c) continue; if (!f.soru && j % st && j !== f.c) continue;
+    if (KS) continue; // indirim parçaları sağdan: toplam, bölgenin üstüne yazılır (cetvel değeri değil)
+    h += metin(sx(j), y0 - 14, say(f.soru ? P.bil : X * j), {f:j === f.c ? 24 : 20, w:900, renk:j === f.c ? '#16263D' : '#5B6B7D'}); }
+  if (KS && (f.c || f.yarim)) { var kb0 = Z - (f.c + (f.yarim ? 0.5 : 0)) * w, kt = X * f.c + (f.yarim ? X / 2 : 0);
+    h += '<path d="M' + kb0 + ' ' + (y0 - 30) + ' v-8 H' + Z + ' v8" fill="none" stroke="#C2410C" stroke-width="3"/>' + metin((kb0 + Z) / 2, y0 - 46, 'indirim ' + say(kt), {f:22, w:900, renk:'#C2410C'}); }
+  if (f.yarim && !f.ek && !KS) { var xy = KS ? Z - (f.c + 0.5) * w : A + (f.c + 0.5) * w; h += '<line x1="' + xy + '" y1="' + (y0 - 2) + '" x2="' + xy + '" y2="' + (y0 - 34) + '" stroke="#16263D" stroke-width="2"/>' + metin(xy, y0 - 40, say(P.X * f.c + P.X / 2), {f:24, w:900}) + (KS ? '' : metin(xy, y1 + 64, '%' + say(P.u * f.c + 5), {f:20, w:900}) + '<line x1="' + xy + '" y1="' + (y1 + 2) + '" x2="' + xy + '" y2="' + (y1 + 38) + '" stroke="#16263D" stroke-width="2"/>'); }
+  h += '<rect x="' + (A - 10) + '" y="202" width="' + (ZT - A + 20) + '" height="50" rx="10" fill="' + (f.son ? '#E5F4E3' : '#FFF6D6') + '" stroke="#16263D" stroke-width="3"/>' + metin((A + ZT) / 2, 236, f.yaz, {f:f.yaz.length > 60 ? 21 : 25, w:800});
+  el('sim').innerHTML = h;
+  el('simAdim').textContent = 'Adım ' + (SIM.i + 1) + ' / ' + P.kare.length; el('simKapat').classList.toggle('vurgulu', SIM.i >= P.kare.length - 1); if (SIM.i >= P.kare.length - 1) ST[gno].simIzlendi = true; el('simGeri').disabled = SIM.i === 0; el('simIleri').disabled = SIM.i >= P.kare.length - 1;
+  el('sim').setAttribute('aria-label', 'Hesap simülasyonu, adım ' + (SIM.i + 1) + '/' + P.kare.length + ': ' + f.yaz);
+}
+el('simIleri').addEventListener('click', function(){ if (SIM && SIM.i < SIM.plan.kare.length - 1) { SIM.i++; simCiz(); } });
+el('simGeri').addEventListener('click', function(){ if (SIM && SIM.i > 0) { SIM.i--; simCiz(); } });
+el('simKapat').addEventListener('click', function(){ simKapat(); try { var b = PANEL.querySelector('[data-simac]'); if (b) b.focus(); } catch (e) {} });
+document.addEventListener('keydown', function(e){ if (!SIM) return; if (el('sorunPerde').className === '' || el('paylasPerde').className === '' || el('ozetPerde').className === '') return;
+  if (e.key === 'Escape') { e.preventDefault(); simKapat(); } else if (e.key === 'ArrowRight') { if (SIM.i < SIM.plan.kare.length - 1) { e.preventDefault(); SIM.i++; simCiz(); } } else if (e.key === 'ArrowLeft') { if (SIM.i > 0) { e.preventDefault(); SIM.i--; simCiz(); } } });
+
+
+
+
+/* ---------- Afiş dedektifi ve Hangisi daha çok? (isteğe bağlı) ---------- */
+function ekstraSecim(){ var h = '<div class="satirDug ekstra" role="group" aria-label="Daha ileri">';
+  [[GI.ileri, 'Art arda yüzde'], [GI.afis, '★ Afiş dedektifi'], [GI.karsi, '⚖ Hangisi daha çok?']].forEach(function(r){ h += '<button data-git="' + r[0] + '" aria-pressed="' + (gno === r[0]) + '">' + r[1] + '</button>'; });
+  return h + '</div>'; }
+function karsiCevap(k){ var a = k.butun ? k.A.W : k.A.W * k.A.p / 100, b = k.butun ? k.B.W : k.B.W * k.B.p / 100; return esit(a, b) ? 2 : (a > b ? 0 : 1); }
+function afisKart(f){ return '<div class="afis' + (f.ikili ? ' ikili' : '') + '"><span class="afisUst">' + esc(f.ust) + '</span><span class="afisAlt">' + esc(f.alt) + '</span></div>'; }
+function afisAyarla(s){ var f = AFIS[s.secim]; s.ops = f.ops; s.say = {P:f.P}; s.tahmin = -1; s.duz = -1; zSifirla(s); }
+function afisPanel(){
+  var s = ST[gno], f = AFIS[s.secim], h = ekstraSecim();
+  el('durum').innerHTML = 'Afiş ' + (s.secim + 1) + '/' + AFIS.length + '. <span id="soru">Bu afiş doğru mu, yanıltıcı mı?</span>';
+  h += '<div class="bolum"><p class="asama a1"><span class="no">1</span>Afişi oku, karar ver</p>' + afisKart(f) + (f.ikili ? '<p class="not">İki ürün de 200’er TL.</p>' : '') + secenekHtml([{m:'Doğru'}, {m:'Yanıltıcı'}], s.tahmin, 'akarar', false) + '</div>';
+  if (s.tahmin >= 0) {
+    var hd = '<p class="asama a2"><span class="no">2</span>Şeritte dene</p>';
+    if (!s.zBitti) { var o = s.ops[s.k]; hd += '<p class="yonerge">' + (s.k ? 'Alt şeritte' : 'Şeritte') + ' sarı kutuyu ' + yz(100 + o.t * o.a, 'e') + ' götür.</p>'; }
+    else { var tut = (s.tahmin === 0) === f.dogru;
+      hd += '<p class="geri' + (tut ? ' tamam' : '') + '">' + (tut ? 'Kararın tuttu. ' : 'Kararın şeritle uyuşmadı. ') + (f.dogru ? esc(f.sonuc) : 'Afiş yanıltıcı. Şeride ve tablonun son satırına bak.') + '</p>';
+      if (!f.dogru) { hd += '<p class="asama a3"><span class="no">3</span>Afişi düzelt: doğrusu hangisi?</p>' + secenekHtml(f.duz, s.duz, 'aduz', true);
+        if (s.duz >= 0) hd += '<p class="geri' + (f.duz[s.duz].d ? ' tamam' : '') + '">' + (f.duz[s.duz].d ? 'Evet, afiş böyle olmalıydı. ' + esc(f.sonuc) : 'Henüz. Tablonun son satırına bak.') + '</p>'; }
+      if (f.dogru || (s.duz >= 0 && f.duz[s.duz].d)) hd += '<div class="satirDug"><button class="ana" data-asonraki="1">' + (s.secim < AFIS.length - 1 ? 'Sonraki afiş' : 'Baştan') + '</button></div>'; }
+    h += '<div class="bolum">' + hd + '</div>';
+  }
+  PANEL.innerHTML = h; panelSon();
+}
+function karsiPanel(){
+  var s = ST[gno], k = KARSI[s.secim], h = ekstraSecim(), c = karsiCevap(k);
+  el('durum').innerHTML = 'Karşılaştırma ' + (s.secim + 1) + '/' + KARSI.length + '. <span id="soru">' + esc(k.soru) + '</span>';
+  h += '<div class="bolum"><p class="asama a1"><span class="no">1</span>Önce göz kararı seç</p>' + secenekHtml([{m:'A: ' + k.A.ad}, {m:'B: ' + k.B.ad}, {m:'İkisi aynı'}], s.karar, 'ksec', true) + '</div>';
+  if (s.karar >= 0) {
+    var a = k.A.W * k.A.p / 100, b = k.B.W * k.B.p / 100, B = ' ' + k.birim, ac;
+    if (k.butun) ac = 'A: %10’u 50 TL ise bütün 10 × 50 = 500 TL. B: %50’si 20 TL ise bütün 2 × 20 = 40 TL. Küçük yüzde, büyük bütünü gösterebilir.';
+    else { var Bn = k.birim === 'TL' ? ' TL’nin ' : ' kişinin '; ac = 'A: ' + say(k.A.W) + Bn + yz(k.A.p, 'i') + ' ' + say(a) + B + '. B: ' + say(k.B.W) + Bn + yz(k.B.p, 'i') + ' ' + say(b) + B + '. ' + (c === 2 ? 'Yüzdeler ve bütünler farklı, miktar aynı.' : ((c === 0) === (k.A.p > k.B.p) ? 'Burada yüzdesi büyük olan, miktarı da büyük.' : 'Yüzdesi büyük olan daha az: bütünü küçük.')); }
+    h += '<div class="bolum"><p class="asama a2"><span class="no">2</span>Şeritte bak</p><p class="geri' + (s.karar === c ? ' tamam' : '') + '">' + (s.karar === c ? 'Tuttu. ' : 'Henüz. ') + esc(ac) + '</p><div class="satirDug"><button class="ana" data-ksonraki="1">' + (s.secim < KARSI.length - 1 ? 'Sonraki' : 'Baştan') + '</button></div></div>';
+  }
+  PANEL.innerHTML = h; panelSon();
+}
+function karsiCiz(){
+  var s = ST[gno], k = KARSI[s.secim];
+  if (s.karar < 0) return bosCiz('Önce göz kararı seç. Sonra iki şerit aynı ölçekte açılır.');
+  var M = Math.max(k.A.W, k.B.W), A = 120, Z = 1040, h = DEFS, sat = [[k.A, 'A', 40], [k.B, 'B', 120]];
+  sat.forEach(function(r){ var o = r[0], y = r[2], x1 = A + (Z - A) * o.W / M, xp = A + (x1 - A) * o.p / 100, m = o.W * o.p / 100;
+    h += '<rect x="' + A + '" y="' + y + '" width="' + (x1 - A) + '" height="40" fill="#B9C8DE"/><rect x="' + A + '" y="' + y + '" width="' + (xp - A) + '" height="40" fill="#F07D21"/><rect x="' + A + '" y="' + y + '" width="' + (x1 - A) + '" height="40" fill="none" stroke="#16263D" stroke-width="3"/>';
+    h += metin(A - 14, y + 29, r[1], {a:'end', f:28, w:900}) + metin(x1 + 8, y + 28, say(o.W) + ' ' + k.birim, {a:'start', f:20, w:800, renk:'#5B6B7D'});
+    h += metin(Math.max(A + 4, xp - 4), y + 64, yz(o.p) + ' = ' + say(m) + ' ' + k.birim, {a:xp - A > 160 ? 'end' : 'start', f:20, w:900}); });
+  SVG.setAttribute('viewBox', '0 0 1200 190'); SVG.innerHTML = h;
+}
+
+/* ---------- Giriş teşhisi (Kendim, açılışta 3 soru; puan yok, yol seçer) ---------- */
+var TQ = [
+  {soru:'Bir kitap 200 TL. %10 indirimle 180 TL’ye satılıyor. Bu %10, hangi fiyatın %10’u?', sec:[{m:'180 TL’nin'}, {m:'200 TL’nin', d:1}, {m:'İkisinin de'}], alan:'butun'},
+  {soru:'Bir ürüne önce %10 zam, sonra %10 indirim yapıldı. Son fiyat, ilk fiyata göre nasıl olur?', sec:[{m:'Biraz düşük', d:1}, {m:'Biraz yüksek'}, {m:'Aynı'}], alan:'carpim'},
+  {soru:'240 TL’nin %10’u 24 TL. %40’ı kaç TL?', sec:[{m:'28 TL'}, {m:'64 TL'}, {m:'96 TL', d:1}], alan:'hesap'}
+];
+function teshisYol(){
+  var L = [];
+  if (!TESHIS.butun) L.push('Her görevde önce “%100 hangisi?” sorusuna bakarsın.');
+  if (!TESHIS.carpim) L.push('Yüzdelerin üst üste gelişini şeritte göreceksin. Arkadaşının çözümündeki hatayı bulmak burada işine yarayacak.');
+  if (!TESHIS.hesap) L.push('Kendin dene’de tablo önce yarı hazır gelecek. Hesabı adım adım izleyebilirsin.');
+  if (!L.length) L.push('Üç soru da tuttu. Kendin dene’de tablo boş gelecek. İstersen doğrudan Sınava hazırlığa geçebilirsin.');
+  return L;
+}
+function teshisHtml(){
+  var q = TQ[TESHIS.i];
+  return '<div class="bolum simdi"><p class="asama a1"><span class="no">' + (TESHIS.i + 1) + '</span>Soru ' + (TESHIS.i + 1) + '/3</p><p class="arkadasSoru"><b>' + esc(q.soru) + '</b></p>' + secenekHtml(q.sec, -1, 'teshis', false) + '<p class="not">Puan yok. Cevabına göre atölye sana uygun yoldan gider.</p></div>';
+}
+function teshisKaydet(){ TESHIS.bitti = true; TQ.forEach(function(q, i){ TESHIS[q.alan] = !!q.sec[TESHIS.c[i]].d; }); ilerlemeYaz(); }
+
+/* ---------- Göz kararı ısınması (Kendim, her görevin başında 2 tur) ---------- */
+var KOVA = [10, 25, 50, 75];
+var BUTUN_AD = {bul:'defter setinin fiyatı', yuzde:'bidonun tamamı', artir:'fidanın eski boyu', azalt:'ayakkabının fiyatı'};
+function isinmaKur(s){ if (s.isin) return s.isin; var a = [], k1 = sec(KOVA);
+  [k1].forEach(function(k){ var t; do { t = k + sec([-3, -2, -1, 0, 1, 2, 3]); } while (t <= 0); a.push({k:k, t:t, secim:-1}); });
+  s.isin = {tur:0, l:a}; return s.isin; }
+function isinmaGoster(){ setTimeout(function(){ try { var b = PANEL.querySelector('[data-isinson]'); if (b) b.scrollIntoView({block:'nearest'}); } catch (e) {} }, 0); }
+function isinmaSvg(t, goster){
+  var A = 20, Z = 580, x = A + (Z - A) * t / 100, h = '<svg class="isinSvg" viewBox="0 0 600 76" role="img" aria-label="' + (goster ? 'Boyalı kısım %' + t : 'Boyalı şerit') + '">';
+  h += '<rect x="' + A + '" y="10" width="' + (Z - A) + '" height="34" fill="#B9C8DE"/><rect x="' + A + '" y="10" width="' + (x - A) + '" height="34" fill="#F07D21"/><rect x="' + A + '" y="10" width="' + (Z - A) + '" height="34" fill="none" stroke="#16263D" stroke-width="3"/>';
+  if (goster) { [10, 25, 50, 75].forEach(function(p){ var xp = A + (Z - A) * p / 100; h += '<line x1="' + xp + '" y1="44" x2="' + xp + '" y2="54" stroke="#16263D" stroke-width="2"/><text x="' + xp + '" y="70" text-anchor="middle" font-size="15" font-weight="700" fill="#5B6B7D">%' + p + '</text>'; });
+    h += '<text x="' + x + '" y="34" text-anchor="middle" font-size="16" font-weight="900" fill="#16263D" paint-order="stroke" stroke="#fff" stroke-width="4">%' + t + '</text>'; }
+  return h + '</svg>';
+}
+function isinmaHtml(s){
+  var I = isinmaKur(s), r = I.l[I.tur], h = '<p class="asama a1"><span class="no">1</span>Göz kararı: boyalı kısım şeridin yaklaşık yüzde kaçı?</p>' + isinmaSvg(r.t, r.secim >= 0);
+  h += secenekHtml(KOVA.map(function(k){ return {m:'%' + k + ' civarı'}; }), r.secim, 'isin', false);
+  if (r.secim >= 0) { var yak = KOVA[r.secim] === r.k;
+    h += '<p class="geri' + (yak ? ' tamam' : '') + '">' + (yak ? 'Göz kararın iyi: boyalı kısım %' + r.t + ', en yakın %' + r.k + '.' : 'Boyalı kısım %' + r.t + '. En yakın %' + r.k + '. ' + (r.t < 50 ? 'Yarısından az; ' : r.t > 50 ? 'Yarısından çok; ' : 'Tam yarısı; ') + {10:'onda bire', 25:'dörtte bire', 50:'yarıya', 75:'dörtte üçe'}[r.k] + ' yakın.') + '</p>';
+    h += '<div class="satirDug"><button class="ana" data-isinson="1">' + 'Göreve başla' + '</button></div>'; }
+  return h;
+}
+
+/* ---------- Hatayı bul: arkadaşın çözümü (hatalı örnek; tek hata, bul → neden → düzelt) ---------- */
+function isinmaVar(){ return KIP === 'kendim' && (gno === GI.bul || gno === GI.artir) && !(TESHIS.bitti && TESHIS.butun && TESHIS.carpim && TESHIS.hesap); }
+function hataZorunlu(){ return KIP === 'kendim' && (gno === GI.bul || gno === GI.tamam || gno === GI.kanca); }
+function hataCakis(g, y, a){ // ortak bütün ya da hatalı örneğin cevabı ana sorudaki bir sayıya eşit
+  for (var k in y) if (k !== 'p' && y.hasOwnProperty(k) && y[k] === a[k]) return true;
+  var dog = hataVeri(g, y).dog, v = g.hesap(a), n;
+  for (n in a) if (a.hasOwnProperty(n) && esit(a[n], dog)) return true;
+  for (n in v) if (v.hasOwnProperty(n) && typeof v[n] === 'number' && esit(v[n], dog)) return true;
+  return false; }
+function hataSay(g, s){
+  if (s.hata) return s.hata;
+  var yeni, n = 0;
+  do { yeni = g.uret(); n++; } while (n < 200 && (JSON.stringify(yeni) === JSON.stringify(s.say) || (g.tip === 'zincir' && [1, 0.8, 0.64, 0.6].some(function(a){ return [1, 0.8, 0.64].some(function(b){ return esit(yeni.P * a, s.say.P * b); }); })) || (g.id === 'bul' && (yeni.P / 10 === yeni.p || yeni.p === 10)) || (g.tip === 'tek' && hataCakis(g, yeni, s.say))));
+  s.hata = {say:yeni, satir:-1, bulundu:false, neden:-1, nedenTamam:false, giris:'', son:null, tamam:false};
+  return s.hata;
+}
+function hataVeri(g, o){
+  var v = g.tip === 'tek' ? g.hesap(o) : null, S, h, nd, soru, dog, B;
+  if (g.id === 'bul') { B = 'TL'; h = 1; dog = v.ind; soru = say(v.P) + ' TL’de ' + yz(v.p) + ' indirim kaç TL?';
+    S = ['Fiyat: ' + say(v.P) + ' TL = %100.', yz(v.p) + ' indirim, ' + say(v.p) + ' TL demek.', 'Öyleyse indirim ' + say(v.p) + ' TL.'];
+    nd = [{d:1, m:yz(v.p) + ', fiyatın 100 parçasından ' + say(v.p) + ek(v.p, 'i') + '; ' + say(v.p) + ' TL değil.'}, {m:yz(v.p) + ' indirim, ödenecek tutar demek.'}, {m:'Fiyat olarak başka bir sayı alınmalı.'}]; }
+  else if (g.id === 'tamam') { B = 'GB'; h = 1; dog = v.W; soru = 'Dolu kısım ' + say(v.d) + ' GB, belleğin ' + yz(v.p, 'i') + '. Bütün bellek kaç GB?'; var q = v.d * v.p / 100;
+    S = ['Dolu kısım ' + say(v.d) + ' GB, belleğin ' + yz(v.p, 'i') + '.', say(v.d) + ' GB = %100.', 'Bunun ' + yz(v.p, 'i') + ' ' + say(q) + ' GB.', 'Bütün bellek: ' + say(q) + ' GB.'];
+    nd = [{d:1, m:'Dolu kısım bütün değil; bütün bellek %100.'}, {m:yz(v.p, 'i') + ' yerine ' + yz(100 - v.p, 'i') + ' alınmalı.'}, {m:'Dolu kısma ' + yz(v.p) + ' eklenmeli.'}]; }
+  else if (g.id === 'yuzde') { B = '%'; h = 2; dog = v.r; soru = say(v.W) + ' L’lik bidonda ' + say(v.d) + ' L su var. Bidonun yüzde kaçı dolu?';
+    S = ['Bütün: ' + say(v.W) + ' L = %100.', say(v.u) + ' L = ' + yz(v.s) + '.', 'Bidonda ' + say(v.d) + ' L su var: ' + yz(v.d) + ' dolu.'];
+    nd = [{d:1, m:say(v.d) + ' L, ' + yz(v.d) + ' değil; ' + say(v.u) + ' L’lik parçaları saymalı.'}, {m:'Bir parçanın yüzdesinde hata var.'}, {m:'Dolu kısım %100 alınmalı.'}]; }
+  else if (g.id === 'artir') { B = 'cm'; h = 2; dog = v.yeni; soru = say(v.b) + ' cm’lik fidan ' + yz(v.p) + ' uzadı. Yeni boyu kaç cm?';
+    S = ['Eski boy: ' + say(v.b) + ' cm = %100.', 'Artış ' + yz(v.p) + ': ' + say(v.art) + ' cm.', 'Yeni boy: ' + say(v.b) + ' + ' + say(v.p) + ' = ' + say(v.b + v.p) + ' cm.'];
+    nd = [{d:1, m:'Eklenecek ' + say(v.p) + ' değil, artış: ' + say(v.art) + ' cm.'}, {m:'Artış eski boydan çıkarılmalı.'}, {m:'Artışın hesabında hata var.'}]; }
+  else if (g.id === 'azalt') { B = 'TL'; h = 2; dog = v.ode; soru = say(v.P) + ' TL’ye ' + yz(v.p) + ' indirim var. Kaç TL ödersin?';
+    S = ['Fiyat: ' + say(v.P) + ' TL = %100.', 'İndirim ' + yz(v.p) + ': ' + say(v.ind) + ' TL.', 'Ödenecek: ' + say(v.ind) + ' TL.'];
+    nd = [{d:1, m:say(v.ind) + ' TL indirim; ödenecek, kalan kısım.'}, {m:'İndirimin hesabında hata var.'}, {m:'Ödenecek, fiyat ile indirimin toplamı.'}]; }
+  else { var P = o.P, i1 = P / 5, P1 = P - i1; B = 'TL'; h = 2; dog = P1 / 5; soru = 'Yeni fiyat ' + say(P1) + ' TL. 2. indirim kaç TL?';
+    S = ['İlk fiyat: ' + say(P) + ' TL = %100.', '1. indirim %20: ' + say(i1) + ' TL. Yeni fiyat ' + say(P1) + ' TL.', '2. indirim: ' + say(P) + ' TL’nin %20’si, ' + say(i1) + ' TL.', 'Son fiyat: ' + say(P - 2 * i1) + ' TL.'];
+    nd = [{d:1, m:'İkinci %20, indirimli fiyattan (' + say(P1) + ' TL) alınır.'}, {m:'İkinci indirim, iki indirimin toplamından (%40) alınır.'}, {m:'Birinci indirimin hesabında hata var.'}]; }
+  var metin = (g.tip === 'zincir' ? g.kdDurum(o) : g.durum(v)).replace(/<[^>]+>/g, ''), ip;
+  if (g.id === 'bul') ip = v.p === 10 ? '%10, fiyatın onda biri: ' + say(v.P) + ' TL’yi 10 eşit parçaya böl.' : v.p % 10 === 0 ? 'Önce fiyatın %10’unu bul: ' + say(v.P) + ' ÷ 10. Sonra ' + v.p / 10 + ' katını al.' : v.p % 25 === 0 ? yz(v.p) + ', fiyatın ' + (v.p === 25 ? 'dörtte biri' : v.p === 50 ? 'yarısı' : 'dörtte üçü') + '. ' + say(v.P) + ' TL’yi ' + (v.p === 50 ? '2' : '4') + ' eşit parçaya böl.' : 'Önce %10’u bul, sonra yarısını al: bu %5.';
+  else if (g.id === 'tamam') ip = say(v.d) + ' GB bütünün ' + yz(v.p, 'i') + '. Önce bir parçayı bul, sonra %100’e kadar say.';
+  else if (g.id === 'yuzde') ip = say(v.W) + ' L’yi ' + say(v.u) + ' L’lik parçalara böl. ' + say(v.d) + ' L kaç parça?';
+  else if (g.id === 'artir') ip = 'Artış 2. satırda doğru. Yeni boy, eski boy ile artışın toplamı.';
+  else if (g.id === 'azalt') ip = 'İndirim 2. satırda doğru. Ödenecek, fiyattan indirim çıkınca kalan.';
+  else ip = '2. indirim, yeni fiyatın %20’si. Önce ' + say(P1) + ' TL’nin %10’unu bul.';
+  var tur = [];
+  if (g.id === 'bul') tur = [[v.p, 'Bu, arkadaşının bulduğu sayı. Hatalı satırı düzeltince sonuç değişir.'], [v.P, 'Bu fiyatın tamamı, yani %100. Sana ' + yz(v.p, 'i') + ' lazım.'], [v.P / 10, say(v.P / 10) + ' TL, fiyatın %10’u. Sana ' + yz(v.p, 'i') + ' lazım.'], [v.P - v.ind, 'Bu ödenecek tutar. Soru indirimi soruyor.']];
+  else if (g.id === 'tamam') tur = [[v.d * v.p / 100, 'Bu, arkadaşının bulduğu sayı. Hatalı satırı düzeltince sonuç değişir.'], [v.d, 'Bu dolu kısım, bütün değil. Bütün daha büyük.'], [v.d + v.p, 'Dolu kısma yüzdeyi ekledin. ' + yz(v.p) + ' bir miktar değil, bütünün parçası.']];
+  else if (g.id === 'yuzde') tur = [[v.d, 'Bu, arkadaşının bulduğu sayı: litre, yüzde değil.'], [v.W, 'Bu bidonun tamamı. Sana dolu kısmın yüzdesi lazım.']];
+  else if (g.id === 'artir') tur = [[v.b + v.p, 'Bu, arkadaşının bulduğu sayı. Hatalı satırı düzeltince sonuç değişir.'], [v.art, 'Bu yalnız artış. Eski boya ekle.'], [v.b, 'Bu eski boy. Fidan uzadı.']];
+  else if (g.id === 'azalt') tur = [[v.ind, 'Bu indirim. Ödenecek, fiyattan indirim çıkınca kalan.'], [v.P, 'Bu fiyatın tamamı. İndirimden sonra daha az ödersin.']];
+  else tur = [[i1, 'Bu 1. indirim, ilk fiyattan alınmış. 2. indirim yeni fiyattan alınır.'], [P1, 'Bu yeni fiyat. Sana yeni fiyatın %20’si lazım.']];
+  return {S:S, h:h, nd:nd, soru:soru, dog:dog, B:B, metin:metin, ip:ip, tur:tur};
+}
+function hataGeri(V, o){ for (var i = 0; i < V.tur.length; i++) if (!esit(V.tur[i][0], V.dog) && esit(o.son, V.tur[i][0])) return V.tur[i][1] + ((o.yan || 0) >= 2 ? ' ' + V.ip : '');
+  return V.ip; }
+function hataHtml(g, s, no, istege){
+  var o = hataSay(g, s), V = hataVeri(g, o.say), h = '<p class="asama a3"><span class="no">' + no + '</span>Hatayı bul' + (istege ? ' (isteğe bağlı)' : '') + '</p>';
+  h += '<p class="arkadasSoru">Bir arkadaşın şu soruyu çözmüş: <b>' + esc(V.metin) + '</b> Çözümünde bir satır hatalı. Hangisi?</p><div class="secenekler dikey hataSatir">';
+  V.S.forEach(function(t, i){ h += '<button data-hsatir="' + i + '" aria-pressed="' + (o.satir === i) + '">' + (i + 1) + '. ' + esc(t) + (o.bulundu && i === V.h ? ' <b>← hata burada</b>' : '') + '</button>'; });
+  h += '</div>';
+  if (o.satir >= 0 && !o.bulundu) h += '<p class="geri">' + (o.satir < V.h ? 'Bu satır doğru. Sonraki satırlara bak.' : 'Bu satır bir önceki satırdan geliyor. Hata daha önce.') + (TEKRAR === 'hs' + o.satir ? (TEKRAR_N >= 3 ? ' Aynı satırı ' + TEKRAR_N + '. kez seçtin.' : '') + (o.satir < V.h ? ' Bu satır yine doğru. Bir sonrakine bak.' + ipSon() : ' Yukarıdaki satırlara bak.' + ipSon()) : '') + '</p>';
+  if (!o.bulundu) return h;
+  h += '<p class="asama a2">Neden hatalı?</p>' + secenekHtml(V.nd, o.neden, 'hneden', true, tohumu(o.say) + 5);
+  if (o.neden >= 0 && !o.nedenTamam) h += '<p class="geri">Henüz. Hatalı satır: “' + esc(V.S[V.h]) + '” Bu seçim o satırdaki hatayı anlatmıyor. ' + (g.tip === 'zincir' ? 'Satırı 2. satırdaki yeni fiyatla karşılaştır.' : 'Satırı ilk satırla karşılaştır.') + (TEKRAR === 'hn' + o.neden ? tekrarYazi() : '') + '</p>';
+  if (!o.nedenTamam) return h;
+  if (!o.tamam) return h + '<p class="asama a2">Doğrusunu yaz: ' + esc(V.soru) + '</p>' + (o.son !== null ? '<p class="geri">Henüz. Sen ' + esc(sayBirim(o.son, V.B)) + ' yazdın' + (TEKRAR === 'hy' + o.son ? (TEKRAR_N >= 3 ? ', aynı sayıyı ' + TEKRAR_N + '. kez. ' : ', yine aynı sayı. ') + esc(V.ip) + ipSon() : '. ' + esc(hataGeri(V, o))) + '</p>' : '') + tusTakimi(o.giris, V.B, 'htamam', 'Doğrusu bu');
+  return h + '<p class="geri tamam">Tuttu: ' + esc(sayBirim(V.dog, V.B)) + '. Hatayı buldun, nedenini söyledin, düzelttin.</p>';
+}
+
 /* ---------- Kendin dene (Kendim kipi) ---------- */
 function kdBasla(){
   var g = G[gno], s = ST[gno], st, n = 0, yeni;
   if (g.tip === 'tek') { var onceki = s.kd ? s.kd.st.say : s.say, seri = s.kdSeri || 0;
     // Kendin dene: %10 gelmez, yüzde bir öncekinden farklı; 1. görevde ikinci deneme %15, %35, %45, %65 gibi iki adım ister
-    do { yeni = g.kdUret ? g.kdUret(seri) : g.uret(); n++; } while (n < 60 && (JSON.stringify(yeni) === JSON.stringify(onceki) || (yeni.p !== undefined && (yeni.p === 10 || yeni.p === onceki.p))));
+    if (s.kdSoluk === undefined) s.kdSoluk = solukBaslangic(g, s);
+    var gerek = s.kdSoluk === 2 ? 1 : s.kdSoluk === 1 ? 2 : 0, araSay = function(u){ return g.tablo(g.hesap(u)).length - 2; };
+    if (gerek === 2) { var olur = false; for (var d0 = 0; d0 < 200 && !olur; d0++) olur = araSay(g.kdUret ? g.kdUret(seri) : g.uret()) >= 2; if (!olur) gerek = 1; } // bu görevin sayılarında tek ara satır var: o satır hazır gelir
+    do { yeni = g.kdUret ? g.kdUret(seri) : g.uret(); n++; } while (n < 200 && (JSON.stringify(yeni) === JSON.stringify(onceki) || JSON.stringify(yeni) === JSON.stringify(s.say) || (s.hata && JSON.stringify(yeni) === JSON.stringify(s.hata.say)) || (yeni.p !== undefined && (yeni.p === 10 || yeni.p === onceki.p)) || (g.id === 'bul' && yeni.P / 10 === yeni.p) || araSay(yeni) < gerek));
     var v = g.hesap(yeni); st = {say:yeni, v:v, h:deger(g.ilk, v), tahmin:-1, vardi:false, butunTamam:true}; }
-  else { var P; do { P = g.uret().P; n++; } while (P === s.say.P && n < 30); st = {say:{P:P}, ops:g.ops, tahmin:-1}; zSifirla(st); }
-  s.kd = {st:st, asama:'yaz', giris:'', cevap:null, tuttu:false, no:(s.kd ? s.kd.no : 0) + 1};
+  else { var P; do { P = g.uret().P; n++; } while ((P === s.say.P || (s.hata && P === s.hata.say.P) || (s.kd && P === s.kd.st.say.P)) && n < 60); st = {say:{P:P}, ops:g.ops, tahmin:-1}; zSifirla(st); }
+  s.kd = {st:st, asama:'yaz', giris:'', cevap:null, tuttu:false, no:(s.kd ? s.kd.no : 0) + 1, soluk:0};
+  if (g.tip === 'tek') { // yarı çözülmüş: ara satırlar hazır gelir, geriden söner (başarıya bağlı)
+    var ara = g.tablo(st.v).slice(1, -1), lv = (s.kdSeri || 0) >= 1 ? 0 : s.kdSoluk;
+    if (lv && !ara.length) lv = 0; // uygun sayı bulunamadıysa bu deneme desteksiz (seyrek)
+    s.kd.soluk = lv;
+    if (lv) { var bgs = tbBaglam(), tbs = tbAl(bgs); (lv === 2 ? ara : ara.slice(0, 1)).forEach(function(r){ tbs.bl[0].sat.push({y:say(r.y), m:say(r.m), denet:true, verildi:true}); }); }
+  }
   ISARET = null;
+}
+function solukBaslangic(g, s){
+  var th = g.tahmin(s.v), takildi = s.aciklaYanlis || !(th[s.tahmin] && th[s.tahmin].d);
+  if (s.aciklaYanlis) return 2;
+  if (TESHIS.bitti && TESHIS.butun && TESHIS.carpim && TESHIS.hesap) return takildi ? 1 : 0;
+  if (TESHIS.bitti && !TESHIS.hesap) return 2;
+  return takildi ? 2 : 1;
 }
 function kdDogru(g, st){ if (g.tip === 'tek') { var th = g.tahmin(st.v); for (var i = 0; i < th.length; i++) if (th[i].d) return th[i].x; } return st.say.P * 0.64; }
 function kdBirim(g){ return g.id === 'yuzde' ? '%' : g.tip === 'zincir' ? 'TL' : g.birim; }
-function kdSonuc(){ var g = G[gno], s = ST[gno], k = s.kd; k.asama = 'sonuc'; k.olcum = kdDogru(g, k.st); k.tuttu = Math.abs(k.cevap - k.olcum) < 1e-6; s.kdDeneme++;
-  if (k.tuttu && !k.ip3 && !(k.tbYanlis >= 3)) s.kdSeri = (s.kdSeri || 0) + 1; else s.kdSeri = 0;
-  if (s.kdSeri >= kdHedef(s)) { s.kdTamam = true; bitir(gno); } }
-function kdHedef(s){ return s.aciklaYanlis ? 3 : 2; }
+function kdSonuc(){ var g = G[gno], s = ST[gno], k = s.kd; k.asama = 'sonuc'; k.olcum = kdDogru(g, k.st); k.tuttu = Math.abs(k.cevap - k.olcum) < 1e-6; s.kdDeneme++; if (k.soluk) s.kdDestek = (s.kdDestek || 0) + 1; if (!k.tuttu) s.kdHenuz = (s.kdHenuz || 0) + 1;
+  if (k.soluk === 1 && k.tuttu && !k.ip3 && !(k.tbYanlis >= 3)) { s.kdSoluk = 0; s.kdSeri = (s.kdSeri || 0) + 1; if (s.kdSeri >= kdHedef(s)) { s.kdTamam = true; bitir(gno); } ilerlemeYaz(); return; } // ilk satırı hazır deneme: işin çoğunu öğrenci yaptı, seriye sayılır
+  if (k.soluk === 2) { s.kdS2 = (s.kdS2 || 0) + 1; if (s.kdS2 >= 2 && !k.tuttu) s.kdSoluk = 1; } // yarı çözülmüş deneme en çok iki kez
+  if (k.soluk) { if (k.tuttu && !k.ip3 && !(k.tbYanlis >= 3)) { s.kdSoluk = k.soluk - 1; if (k.soluk === 2 && TESHIS.bitti && !TESHIS.hesap) { TESHIS.hesap = true; ilerlemeYaz(); } } return; } // yarı çözülmüş deneme seriye sayılmaz
+  if (k.tuttu && !k.ip3 && !(k.tbYanlis >= 3)) s.kdSeri = (s.kdSeri || 0) + 1; else { s.kdSeri = 0; if (!k.tuttu && g.tip === 'tek' && (s.kdGeri || 0) < 2) { s.kdSoluk = 1; s.kdGeri = (s.kdGeri || 0) + 1; } }
+  if (s.kdSeri >= kdHedef(s)) { s.kdTamam = true; bitir(gno); } ilerlemeYaz(); }
+function kdHedef(s){ return 2; }
 function kdSayi(s){ return kdHedef(s) === 3 ? 'üç' : 'iki'; }
-function tusTakimi(giris, birim, ad){
-  var h = '<div class="tusAlan"><div class="tusUst"><div class="ekran" aria-live="polite">' + (birim === '%' ? '%' : '') + esc(giris || ' ') + (birim !== '%' ? ' ' + esc(birim) : '') + '</div><button class="ana" data-' + ad + '="1">Cevabım bu</button></div><div class="tuslar">';
+function tusTakimi(giris, birim, ad, etiket){
+  var h = '<div class="tusAlan"><div class="tusUst"><div class="ekran" aria-live="polite">' + (birim === '%' ? '%' : '') + esc(giris || ' ') + (birim !== '%' ? ' ' + esc(birim) : '') + '</div><button class="ana" data-' + ad + '="1">' + (etiket || 'Cevabım bu') + '</button></div><div class="tuslar">';
+  ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', ',', '⌫'].forEach(function(t){ h += '<button data-tus="' + t + '" aria-label="' + (t === '⌫' ? 'Sil' : t) + '">' + t + '</button>'; });
+  return h + '</div></div>';
+}
+function tbDuzeldi(){ // Henüz'den sonra: tablodaki bütün satırlar ✓ ve cevabın satırı da var mı
+  var bg = tbBaglam(); if (!bg || !bg.nesne.tb) return false; var tb = bg.nesne.tb, var1 = false;
+  for (var bi = 0; bi < tb.bl.length; bi++) for (var si = 0; si < tb.bl[bi].sat.length; si++) { var d = tbDurum(bg, tb, bi, si), r = tb.bl[bi].sat[si];
+    if (d === 'bos') continue; if (d !== 'tutar') return false; if (arananTam(bg.n, bi, tbSay(r.y), tbSay(r.m))) var1 = true; }
+  return var1;
+}
+function tbTuslar(){ // yalnız Benim tablom'a yazar (cevap kutusu yok)
+  var h = '<div class="tusAlan tbYalniz"><div class="tuslar">';
   ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', ',', '⌫'].forEach(function(t){ h += '<button data-tus="' + t + '" aria-label="' + (t === '⌫' ? 'Sil' : t) + '">' + t + '</button>'; });
   return h + '</div></div>';
 }
 function kdHtml(g, s, no){
   var k = s.kd, h = '<p class="asama a1"><span class="no">' + no + '</span>Kendin dene</p>';
-  if (!k) return h + '<p class="not">Aynı işi yeni sayılarla, önce şeritsiz çöz. Sonra şeritle denetle. Art arda ' + kdSayi(s) + ' doğru cevapla görev tamamlanır.</p><div class="satirDug"><button class="ana" data-kdbasla="1">Kendin dene</button></div>';
+  if (!k) return h + '<p class="not">Aynı işi yeni sayılarla, önce şeritsiz çöz. Sonra şeritle denetle. Art arda ' + kdSayi(s) + ' doğru cevapla görev tamamlanır. İkinci ipucunu açarsan o deneme yardımla sayılır.</p><div class="satirDug"><button class="ana" data-kdbasla="1">Kendin dene</button></div>';
   var B = kdBirim(g);
-  if (k.asama === 'yaz') return h + '<p class="yonerge">Yeni sayılar üstte. Şerit kapalı. Cevabını yaz.</p>' + tusTakimi(k.giris, B, 'kdtamam');
-  if (k.asama === 'denetle') return h + '<p class="geri">Cevabın: ' + esc(sayBirim(k.cevap, B)) + '. Şimdi şeritle denetle.</p><p class="yonerge">' + esc(g.tip === 'zincir' ? 'İki şeritte tutamağı %80’e götür.' : g.yonerge(k.st.v)) + '</p>';
-  if (k.tuttu && (k.ip3 || k.tbYanlis >= 3)) return h + '<p class="geri">Yardımla tuttu: ' + esc(sayBirim(k.olcum, B)) + '. Şimdi bir tane daha, bu kez ipucusuz.</p><div class="satirDug"><button class="ana" data-kdbasla="1">Yeni sayılarla dene</button></div>';
-  if (k.tuttu && !s.kdTamam) return h + '<p class="geri">Tuttu: ' + esc(sayBirim(k.olcum, B)) + '. Bir tane daha: art arda ' + kdSayi(s) + ' doğru cevapla görev tamamlanır.</p><div class="satirDug"><button class="ana" data-kdbasla="1">Yeni sayılarla dene</button></div>';
-  if (k.tuttu) return h + '<p class="geri tamam">Tuttu, art arda ' + (kdHedef(s) === 3 ? 'üçüncü' : 'ikinci') + ' kez. Sen ' + esc(sayBirim(k.cevap, B)) + ' yazdın, şerit de ' + esc(sayBirim(k.olcum, B)) + ' diyor.</p><div class="satirDug"><button class="ana" data-sonraki="1">Sonraki görev</button></div>';
-  return h + '<p class="geri">Henüz. Sen ' + esc(sayBirim(k.cevap, B)) + ' yazdın, şerit ' + esc(sayBirim(k.olcum, B)) + ' diyor. ' + esc(k.tani || 'Takıldım’a bakabilirsin.') + '</p><div class="satirDug"><button class="ana" data-kdbasla="1">Yeni sayılarla dene</button></div>';
+  if (k.asama === 'yaz') return h + (k.soluk ? '<p class="arkadasSoru">' + (k.soluk === 2 ? 'Yarı çözülmüş: tablondaki ara satırlar hazır. Son adımı sen yap, cevabını yaz. Bu deneme seriye sayılmaz.' : 'Tablonda ilk satır hazır. Sonrasını sen kur, cevabını yaz. Tutarsa seriye sayılır.') + '</p>' : '<p class="yonerge">Yeni sayılar üstte. Şerit kapalı. Cevabını yaz.</p>') + tusTakimi(k.giris, B, 'kdtamam');
+  if (k.asama === 'denetle') return h + '<p class="geri">Cevabın: ' + esc(sayBirim(k.cevap, B)) + '. Şimdi şeritle denetle.</p><p class="yonerge">' + esc(g.tip === 'zincir' ? 'İki şeritte sarı kutuyu %80’e götür.' : g.yonerge(k.st.v)) + '</p>' + ((s.kdSeri || 0) >= 1 ? '<div class="satirDug"><button data-kdgec="1">Şeritsiz sonucu gör</button></div>' : '');
+  if (k.soluk === 1 && k.tuttu && !k.ip3 && !(k.tbYanlis >= 3)) return h + '<p class="geri tamam">Tuttu: ' + esc(sayBirim(k.olcum, B)) + '. Bu deneme sayıldı: art arda ' + (s.kdSeri || 0) + '/' + kdHedef(s) + '.' + (s.kdTamam ? '' : ' Şimdi tablo boş gelecek.') + '</p><div class="satirDug">' + (s.kdTamam ? '<button class="ana" data-sonraki="1">Sonraki görev</button>' : '<button class="ana" data-kdbasla="1">Yeni sayılarla dene</button>') + simDugme() + '</div>';
+  if (k.soluk && k.tuttu) return h + '<p class="geri' + (s.kdSoluk < k.soluk ? ' tamam' : '') + '">Tuttu: ' + esc(sayBirim(k.olcum, B)) + '. ' + (s.kdSoluk >= k.soluk ? 'Yardımla buldun; aynı basamakta bir tane daha.' : s.kdSoluk === 1 ? 'Yarı çözülmüş deneme seriye sayılmaz. Şimdi tabloda daha az satır hazır gelecek.' : 'Yarı çözülmüş deneme seriye sayılmaz. Şimdi tablo boş gelecek; kendi başına dene, seri buradan başlar.') + '</p><div class="satirDug"><button class="ana" data-kdbasla="1">Yeni sayılarla dene</button>' + simDugme() + '</div>';
+  if (k.tuttu && (k.ip3 || k.tbYanlis >= 3)) return h + '<p class="geri">Yardımla tuttu: ' + esc(sayBirim(k.olcum, B)) + '. Şimdi bir tane daha, bu kez ipucusuz.</p><div class="satirDug"><button class="ana" data-kdbasla="1">Yeni sayılarla dene</button>' + simDugme() + '</div>';
+  if (k.tuttu && !s.kdTamam) return h + '<p class="geri">Tuttu: ' + esc(sayBirim(k.olcum, B)) + '. Bir tane daha: art arda ' + kdSayi(s) + ' doğru cevapla görev tamamlanır.</p><div class="satirDug"><button class="ana" data-kdbasla="1">Yeni sayılarla dene</button>' + simDugme() + '</div>';
+  if (k.tuttu) return h + '<p class="geri tamam">Tuttu, art arda ' + (kdHedef(s) === 3 ? 'üçüncü' : 'ikinci') + ' kez. Sen ' + esc(sayBirim(k.cevap, B)) + ' yazdın, şerit de ' + esc(sayBirim(k.olcum, B)) + ' diyor.</p><div class="satirDug"><button class="ana" data-sonraki="1">Sonraki görev</button>' + simDugme() + '</div>';
+  var duz = !k.tbIlkDuzgun && tbDuzeldi();
+  return h + '<p class="geri">' + (duz ? '' : 'Henüz. ') + 'Sen ' + esc(sayBirim(k.cevap, B)) + ' yazdın, şerit ' + esc(sayBirim(k.olcum, B)) + ' diyor. ' + esc(duz ? 'Tablonu düzelttin. Yeni sayılarla bir daha dene.' : (k.tani || 'Takıldım’a bakabilirsin.')) + '</p><div class="satirDug"><button class="ana" data-kdbasla="1">Yeni sayılarla dene</button>' + simDugme() + '</div>' + (k.tb && k.tb.bl[0].sat.length && !duz && !tbDuzeldi() ? (k.duzeltAcik ? '<p class="not">Tablonda bir hücreye dokun, düzelt.</p>' + tbTuslar() : '<div class="satirDug"><button data-tbduzelt="1">İstersen önce tablonu düzelt</button></div>') : '');
 }
 function sayBirim(x, B){ return B === '%' ? yz(x) : say(x) + ' ' + B; }
 function sayiOku(t){ if (!t) return NaN; t = String(t).replace(/\s/g, '').replace(/\./g, ''); t = t.replace(',', '.'); if (!/^\d+(\.\d+)?$/.test(t)) return NaN; return parseFloat(t); }
@@ -3436,9 +3927,9 @@ function arananTam(n, bi, y, m){
 function tbBaglam(){
   var g = G[gno], s = ST[gno];
   if (g.tip === 'sinav') { var q = s.sorular && s.sorular[s.i]; if (!q) return null; var t = SINAV[q.j], ar = t.arac(q.v);
-    return {n:nrm(t.tip, q.v), nesne:q, acik:true, birim:t.tip === 'yuzde' ? (ar.birim || '') : t.birim}; }
+    return {n:nrm(t.tip, q.v), nesne:q, acik:true, sinav:true, birim:t.tip === 'yuzde' ? (ar.birim || '') : t.birim}; }
   if (s.kd && (g.tip === 'tek' || g.tip === 'zincir')) { var st = s.kd.st;
-    return {n:nrm(TIP[g.id], g.tip === 'tek' ? st.v : {P:st.say.P, a:20, b:20}), nesne:s.kd, acik:s.kd.asama === 'yaz', birim:g.tip === 'zincir' ? 'TL' : g.birim}; }
+    return {n:nrm(TIP[g.id], g.tip === 'tek' ? st.v : {P:st.say.P, a:20, b:20}), nesne:s.kd, acik:s.kd.asama === 'yaz' || (s.kd.asama === 'sonuc' && !s.kd.tuttu && !!s.kd.tb && s.kd.tb.bl[0].sat.length > 0), birim:g.tip === 'zincir' ? 'TL' : g.birim}; }
   return null;
 }
 function tbAl(bg){ var o = bg.nesne; if (!o.tb) o.tb = {bl:[{taban:bg.n.taban, sat:[]}], odak:null, bitti:false}; return o.tb; }
@@ -3450,12 +3941,26 @@ function tbDurum(bg, tb, bi, si){ // 'bos' | 'yarim' | 'tutar' | 'tutmaz' | 'bek
   if (arananMi(bg.n, bi, y, m) && !tb.bitti) return 'bekle';
   return ok ? 'tutar' : 'tutmaz';
 }
+var PAY = {2:'yarısı', 3:'üçte biri', 4:'dörtte biri', 5:'beşte biri', 10:'onda biri'};
+// satırı tablodaki ✓ satıra (yoksa ilk satıra) bağla: tam kat ya da tam bölüm
+function tbBag(bg, tb, bi, si){
+  var b = tb.bl[bi], y = tbSay(b.sat[si].y), aday = [];
+  for (var j = b.sat.length - 1; j >= 0; j--) if (j !== si && tbDurum(bg, tb, bi, j) === 'tutar') aday.push({y:tbSay(b.sat[j].y), ilk:false});
+  aday.push({y:b.taban.y, ilk:true});
+  for (var i = 0; i < aday.length; i++) { var a = aday[i];
+    if (esit(y, a.y)) return {a:a, k:1, tur:'ayni'};
+    if (kat(y, a.y)) return {a:a, k:Math.round(y / a.y), tur:'carp'};
+    if (kat(a.y, y)) return {a:a, k:Math.round(a.y / y), tur:'bol'}; }
+  return null;
+}
 function tbNot(bg, tb, bi, si){
-  var b = tb.bl[bi], r = b.sat[si], y = tbSay(r.y), ty = b.taban.y, k;
-  if (esit(y, ty)) return 'Bu yüzde ilk satırda var. Miktar da ilk satırdaki gibi olmalı.';
-  if (y > 0 && ty % y === 0 && ty / y > 1) { k = ty / y; return 'Yüzdeyi ' + k + ek(k, 'e') + ' böldün. Miktarı da ' + k + ek(k, 'e') + ' böldün mü?'; }
-  if (y > 0 && y % ty === 0 && y / ty > 1) { k = y / ty; return 'Yüzdeyi ' + k + ' ile çarptın. Miktarı da ' + k + ' ile çarptın mı?'; }
-  return 'İlk satırla aynı oranda değil. Önce ' + yz(ebob(ty, y > 0 ? Math.round(y) : ty), 'e') + ' in, oradan çık.';
+  var b = tb.bl[bi], y = tbSay(b.sat[si].y), t = tbBag(bg, tb, bi, si), on;
+  if (t) { on = t.a.ilk ? '' : yz(t.a.y) + ' satırın doğru. ';
+    if (t.tur === 'ayni') return on + 'Bu yüzde tablonda var. Miktar da aynı olmalı.';
+    if (t.tur === 'carp') return on + yz(y) + ', ' + t.k + ' tane ' + yz(t.a.y) + '. Miktarı da ' + t.k + ' ile çarptın mı?' + (t.k === 4 ? ' (×4 = iki kez ×2)' : '');
+    return on + (PAY[t.k] ? yz(y) + ', ' + yz(t.a.y, 'in') + ' ' + PAY[t.k] + '. ' : '') + 'Miktarı da ' + t.k + ek(t.k, 'e') + ' böldün mü?' + (t.k > 10 && y < 10 && 10 % y === 0 ? ' Daha kolayı: önce %10 satırını kur. ' + yz(y) + ', onun ' + (PAY[10 / y] || (10 / y) + ek(10 / y, 'de') + ' biri') + '.' : ''); }
+  var u = b.taban.y === 100 ? (y % 10 === 0 ? 10 : y % 5 === 0 ? 5 : ebob(Math.round(y), 100)) : ebob(Math.round(y), b.taban.y);
+  return 'İlk satırla aynı oranda değil. Önce ' + yz(u) + ' satırını kur. Bu satırı ondan bul.';
 }
 function tbHtml(bg, salt){
   var tb = tbAl(bg), n = bg.n, B = bg.birim, h = '';
@@ -3465,6 +3970,7 @@ function tbHtml(bg, salt){
     b.sat.forEach(function(r, si){
       var d = tbDurum(bg, tb, bi, si), od = tb.odak, oy = od && od[0] === bi && od[1] === si && od[2] === 'y', om = od && od[0] === bi && od[1] === si && od[2] === 'm';
       var dy = d === 'tutar' ? '<span class="tbok">✓</span>' : d === 'tutmaz' ? '<span class="tbno">' + esc(tbNot(bg, tb, bi, si)) + '</span>' : d === 'bekle' ? '<span class="tbbek">cevabınla denetlenir</span>' : '';
+      if (r.verildi && !salt) { h += '<tr class="verildi"><td>%' + esc(r.y) + '</td><td>' + esc(r.m) + '</td><td class="tbd"><span class="tbok">✓</span> hazır</td></tr>'; return; }
       if (salt) h += '<tr><td>' + (r.y ? '%' + esc(r.y) : '') + '</td><td>' + esc(r.m) + '</td><td class="tbd">' + dy + '</td></tr>';
       else h += '<tr' + (d === 'tutmaz' ? ' class="tbuyar"' : '') + '><td><button class="hucre' + (oy ? ' odakta' : '') + '" data-hucre="' + bi + ',' + si + ',y" aria-label="Yüzde hücresi">%' + esc(r.y || '…') + '</button></td><td><button class="hucre' + (om ? ' odakta' : '') + '" data-hucre="' + bi + ',' + si + ',m" aria-label="Miktar hücresi">' + esc(r.m || '…') + '</button></td><td class="tbd">' + dy + '</td></tr>';
     });
@@ -3475,24 +3981,25 @@ function tbHtml(bg, salt){
     h += '<div class="satirDug tbDug">' + (dolu ? '' : '<button data-tbekle="1">+ Satır</button>') + (tb.odak ? '<button class="ana" data-tbtamam="1">Tamam</button>' : '');
     if (n.tip === 'zincir' && tb.bl.length === 1) { var yb = tbYeniButun(bg, tb); if (yb !== null) h += '<button data-tbbutun="1">Yeni bütün: ' + say(yb) + ' TL</button>'; }
     h += '</div>';
-    if (!son.sat.length) h += '<p class="not">İstersen kendi tablonu kur: ilk satır hazır. ' + (n.taban.y === 100 ? 'Örnek: + Satır’a bas, %10 yaz; miktara ' + say(n.taban.m) + ek(n.taban.m, 'in') + ' onda birini yaz.' : 'Örnek: + Satır’a bas, ' + yz(ebob(n.taban.y, 100)) + ' yaz; miktarı ilk satırdan bul.') + ' Tuş takımı seçili hücreye yazar.</p>';
+    if (!son.sat.length) h += '<p class="not">İstersen kendi tablonu kur: ilk satır hazır. ' + (n.taban.y === 100 ? 'Örnek: + Satır’a bas, %10 yaz; miktara ' + say(n.taban.m) + ek(n.taban.m, 'in') + ' onda birini yaz.' : (ebob(n.taban.y, 100) === n.taban.y ? 'Örnek: + Satır’a bas, %100 yaz; miktarı ilk satırdan bul.' : 'Örnek: + Satır’a bas, ' + yz(ebob(n.taban.y, 100)) + ' yaz; miktarı ilk satırdan bul.')) + ' Tuş takımı seçili hücreye yazar.</p>';
     else if (n.tip === 'zincir' && tb.bl.length === 1) h += '<p class="not">İlk indirimden sonraki fiyatın satırını (' + yz(100 - n.a) + ') kurunca onu yeni bütün yapabilirsin.</p>';
   }
   return '<div class="tbAlan">' + h + '</div>';
 }
 function tbYeniButun(bg, tb){ var b = tb.bl[0], r = b.sat[b.sat.length - 1]; if (!r) return null; if (tbDurum(bg, tb, 0, b.sat.length - 1) !== 'tutar') return null; var y = tbSay(r.y); return esit(y, 100 - bg.n.a) ? tbSay(r.m) : null; }
-function tbCiz(bg){ el('tabloBaslik').textContent = 'Benim tablom'; el('tabloYer').innerHTML = tbHtml(bg, false); tbOdakGoster(); }
+function tbCiz(bg){ el('tabloBaslik').textContent = 'Benim tablom'; el('tabloYer').innerHTML = tbHtml(bg, false); tbOdakGoster();
+  try { var y = el('yan'), d = y.querySelector('.tbDug'); if (d && bg.nesne.tb && bg.nesne.tb.odak) { var r = d.getBoundingClientRect(), ry = y.getBoundingClientRect(); if (r.bottom > ry.bottom) y.scrollTop += r.bottom - ry.bottom + 8; if (d.getBoundingClientRect().bottom > window.innerHeight) d.scrollIntoView({block:'nearest'}); } } catch (e) {} }
 function tbOdakGoster(){ var bg = tbBaglam(), e = PANEL.querySelector('.ekran'); if (!e) return; var od = bg && bg.acik && bg.nesne.tb && bg.nesne.tb.odak; e.classList.toggle('odakta', !od); }
 function tbHedef(){ var bg = tbBaglam(); if (!bg || !bg.acik || !bg.nesne.tb || !bg.nesne.tb.odak) return null; var tb = bg.nesne.tb, o = tb.odak; return {tb:tb, r:tb.bl[o[0]].sat[o[1]], alan:o[2]}; }
 function tbTus(t){ var h = tbHedef(); if (!h) return false; h.r[h.alan] = tusUygula(h.r[h.alan] || '', t); h.r.denet = false; tabloCiz(); return true; }
-function tbDenetle(tb, bi, si){ var bg = tbBaglam(), r = tb.bl[bi].sat[si]; if (!r || !r.y || !r.m || r.denet) return; r.denet = true; if (bg && tbDurum(bg, tb, bi, si) === 'tutmaz') bg.nesne.tbYanlis = (bg.nesne.tbYanlis || 0) + 1; }
+function tbDenetle(tb, bi, si){ var bg = tbBaglam(), r = tb.bl[bi].sat[si]; if (!r || !r.y || !r.m || r.denet) return; r.denet = true; if (bg && bg.nesne.asama !== 'sonuc' && tbDurum(bg, tb, bi, si) === 'tutmaz') bg.nesne.tbYanlis = (bg.nesne.tbYanlis || 0) + 1; }
 function tbTamam(){ var h = tbHedef(); if (!h) return; var o = h.tb.odak;
   if (o[2] === 'y') { if (!h.r.y) return; if (!h.r.m) h.tb.odak = [o[0], o[1], 'm']; else { tbDenetle(h.tb, o[0], o[1]); h.tb.odak = null; } }
   else { if (!h.r.m) return; if (!h.r.y) h.tb.odak = [o[0], o[1], 'y']; else { tbDenetle(h.tb, o[0], o[1]); h.tb.odak = null; } }
-  tabloCiz(); }
+  tabloCiz(); var sk = ST[gno]; if (sk && sk.kd && sk.kd.asama === 'sonuc' && !h.tb.odak) panelCiz(); }
 document.getElementById('yan').addEventListener('click', function(e){
   var b = e.target.closest('button'); if (!b) return; var bg = tbBaglam(); if (!bg || !bg.acik) return; var tb = tbAl(bg), a;
-  if ((a = b.getAttribute('data-hucre')) !== null) { var p = a.split(','), onc = tb.odak; if (onc) { var r0 = tb.bl[onc[0]].sat[onc[1]]; if (r0 && r0.y && r0.m && !(onc[0] === +p[0] && onc[1] === +p[1])) tbDenetle(tb, onc[0], onc[1]); } tb.odak = [+p[0], +p[1], p[2]]; tabloCiz(); return; }
+  if ((a = b.getAttribute('data-hucre')) !== null) { var p = a.split(','), onc = tb.odak; if (tb.bl[+p[0]].sat[+p[1]].verildi) return; if (onc) { var r0 = tb.bl[onc[0]].sat[onc[1]]; if (r0 && r0.y && r0.m && !(onc[0] === +p[0] && onc[1] === +p[1])) tbDenetle(tb, onc[0], onc[1]); } tb.odak = [+p[0], +p[1], p[2]]; tabloCiz(); return; }
   if (b.hasAttribute('data-tbekle')) { var son = tb.bl[tb.bl.length - 1]; if (tb.odak) tbDenetle(tb, tb.odak[0], tb.odak[1]); son.sat.push({y:'', m:'', denet:false}); tb.odak = [tb.bl.length - 1, son.sat.length - 1, 'y']; tabloCiz(); return; }
   if (b.hasAttribute('data-tbtamam')) { tbTamam(); return; }
   if (b.hasAttribute('data-tbbutun')) { var m = tbYeniButun(bg, tb); if (m !== null) { tb.bl.push({taban:{y:100, m:m}, sat:[{y:'', m:'', denet:false}]}); tb.odak = [1, 0, 'y']; } tabloCiz(); return; }
@@ -3500,9 +4007,10 @@ document.getElementById('yan').addEventListener('click', function(e){
 // "Henüz" olunca: önce öğrencinin kendi tablosuna, sonra bilinen yanılgıya bak
 function tbTani(bg, x){
   var tb = bg.nesne.tb, n = bg.n;
-  if (tb) { for (var bi = 0; bi < tb.bl.length; bi++) for (var si = 0; si < tb.bl[bi].sat.length; si++) { var r = tb.bl[bi].sat[si], y = tbSay(r.y), m = tbSay(r.m); if (y === null || m === null) continue;
+  if (tb) { for (var bi = 0; bi < tb.bl.length; bi++) for (var si = 0; si < tb.bl[bi].sat.length; si++) { var r = tb.bl[bi].sat[si], y = tbSay(r.y), m = tbSay(r.m); if (y === null || m === null) continue; if (bg.sinav && arananMi(n, bi, y, m)) continue;
       var ok = esit(m * tb.bl[bi].taban.y, y * tb.bl[bi].taban.m), ar = arananTam(n, bi, y, m);
-      if (!ok) return 'Tablonda ' + yz(y) + ' satırı ' + (bi ? 'yeni bütünle' : 'ilk satırla') + ' aynı oranda değil. Oradan devam et.';
+      if (!ok) { var tg = tbBag(bg, tb, bi, si); if (tg && !tg.a.ilk && tg.tur !== 'ayni') return yz(tg.a.y) + ' satırın doğru. ' + yz(y) + ' satırındaki ' + (tg.tur === 'carp' ? 'çarpmaya' : 'bölmeye') + ' bir daha bak. Tablonda düzeltebilirsin.';
+        return 'Tablonda ' + yz(y) + ' satırı ' + (bi ? 'yeni bütünle' : 'ilk satırla') + ' aynı oranda değil. Tablonda düzeltebilirsin.'; }
       if (ar && !esit(n.tip === 'yuzde' ? y : m, x)) return 'Tablondaki ' + yz(y) + ' satırı ile yazdığın cevap farklı. Hangisine güveniyorsun?'; } }
   var yn = yanilgi(n, x, bg.birim); if (yn) return yn;
   if (!tb || !tb.bl[0].sat.length) return 'İstersen Benim tablom’u kur: ilk satır hazır, küçük bir parçanın satırını ekle.';
@@ -3556,53 +4064,57 @@ function sinavPanel(){
     var bag = sinavBagimsiz(s), tamam = sinavTamam(s), eks = sinavEksik(s);
     el('durum').innerHTML = 'Sınava hazırlık. <span id="soru">' + N + ' sorunun hepsini çözdün.</span>';
     h += '<p class="geri' + (tamam ? ' tamam' : '') + '">Kendi başına çözdüklerin: ' + bag + '/' + N + '. ' + (tamam ? 'Altı türün hepsinde kendi başına doğru var. Hazırsın.' : 'Hedef: altı türün her birinden en az bir soru, toplam en az 6.') + '</p>' + (eks.length ? '<p class="geri">Şu türlerde bir soru daha dene: ' + esc(eks.map(function(k){ return TUR_AD[k]; }).join(', ')) + '.</p><div class="satirDug"><button class="ana" data-sinavtur="' + eks[0] + '">' + esc(TUR_AD[eks[0]]) + ': 2 soru</button></div>' : '') + '<p class="not">Sayılar her seferinde değişir.</p><div class="satirDug"><button' + (eks.length ? '' : ' class="ana"') + ' data-sinavyeni="1">Yeni sorular</button></div>';
-    PANEL.innerHTML = h; return;
+    if (KIP === 'kendim') h += '<div class="satirDug"><button class="ana" data-ozetac="1">Öğretmenine göster</button></div>';
+    PANEL.innerHTML = h; ilerlemeYaz(); return;
   }
   var q = s.sorular[s.i], t = SINAV[q.j];
-  el('durum').innerHTML = '<b>Soru ' + (s.i + 1) + '/' + N + '.</b> <span id="soru">' + esc(t.metin(q.v)) + '</span>';
+  el('durum').innerHTML = '<b>Soru ' + (s.i + 1) + '.</b> <span id="soru">' + esc(t.metin(q.v)) + '</span>';
+  if (s.onceki && s.onceki.no === s.i) h += '<p class="geri tamam">' + s.onceki.no + '. soru tuttu: ' + esc(s.onceki.yazi) + '.' + (!s.onceki.destekli ? ' Kendi başına çözdün.' : (s.onceki.yardim ? ' Yardımla çözdün' : ' ' + (s.onceki.deneme === 2 ? 'İkinci' : s.onceki.deneme + '.') + ' denemede buldun') + (s.onceki.ekGeldi ? '; sona aynı türden bir soru eklendi.' : '.')) + '</p>';
   h += '<div class="bolum' + (KIP === 'kendim' ? ' simdi' : '') + '"><p class="asama a1"><span class="no">' + (s.i + 1) + '</span>Cevabını yaz' + (q.ek ? ' (aynı türden yeni soru)' : '') + '</p>' + tusTakimi(s.giris, t.birim, 'sinavtamam') + '</div>';
   if (q.son !== undefined && !q.tuttu) h += '<p class="geri">Henüz. Cevabın ' + esc(sayBirim(q.son, t.birim)) + '. ' + esc(q.tani || 'Bir daha bak: Takıldım, Benim tablom ya da şerit yardımcı olabilir.') + '</p>';
-  h += '<div class="satirDug">' + (s.arac ? '' : '<button data-aracac="1">Şeridi aç</button>') + '</div><p class="not">Şeritle, 2. ipucuyla ya da ikinci denemede çözdüğün soru tamamlanır. Aynı türden yeni bir soru gelir, onu kendi başına dene.</p>';
+  h += '<div class="satirDug">' + (s.arac ? '' : '<button data-aracac="1">Şeridi aç</button>') + '</div><p class="not">Şeritle, 2. ipucuyla ya da ikinci denemede çözdüğün soru kendi başına sayılmaz. Aynı türden yeni bir soru gelir, onu kendi başına dene.</p>';
   PANEL.innerHTML = h;
 }
 
 var KANCA_SEC = [{m:'Evet, %40'}, {m:'%40’tan az'}, {m:'%40’tan çok'}];
 function zinPanel(){
   var g = G[gno], s = ST[gno], P = s.say.P, h = '';
-  el('durum').innerHTML = s.kd ? g.kdDurum(s.kd.st.say) : g.durum(s.say);
-  if (s.kd) { PANEL.innerHTML = '<p class="ozet">Tahmin et, iki şeritte dene, açıkla bitti.' + (s.kdDeneme ? ' Kendin dene: ' + s.kdDeneme + ' deneme.' : '') + '</p>' + bolum('kd', kdHtml(g, s, 5)); panelSon(); return; }
-  if (s.tahmin < 0 && kancaTahmin >= 0) s.tahmin = kancaTahmin;
-  var ht = '<p class="asama a1"><span class="no">1</span>Tahmin et: Toplam indirim %40 mı?' + (kancaTahmin >= 0 && s.tahmin === kancaTahmin ? ' <small>(açılışta seçtin, değiştirebilirsin)</small>' : '') + '</p>' + secenekHtml(KANCA_SEC, s.tahmin, 'ztahmin', false);
+  el('durum').innerHTML = s.kd ? g.kdDurum(s.kd.st.say) : (KIP === 'kendim' && simdiki() === 'hata' ? '<b>Arkadaşının sorusu:</b> ' + esc(hataVeri(g, hataSay(g, s).say).metin) : g.durum(s.say));
+  if (isinmaVar() && !s.isinmaTamam) { PANEL.innerHTML = bolum('isinma', isinmaHtml(s)); rehberCiz(); panelSon(); isinmaGoster(); return; }
+  if (s.kd) { PANEL.innerHTML = '<p class="ozet">Bitenler: tahmin, iki şerit, açıkla.' + (s.kdDeneme ? ' Kendin dene: ' + s.kdDeneme + ' deneme.' : '') + '</p>' + bolum('kd', kdHtml(g, s, 5)); panelSon(); return; }
+  if (s.tahmin < 0 && kancaTahmin >= 0) { s.tahmin = kancaTahmin; s.kancadan = true; }
+  var ht = '<p class="asama a1"><span class="no">1</span>Tahmin et: Toplam indirim %40 mı?' + (s.kancadan ? ' <small>(açılışta seçtin, değiştirebilirsin)</small>' : '') + '</p>' + secenekHtml(KANCA_SEC, s.tahmin, 'ztahmin', false);
   if (s.tahmin < 0) { ht += '<p class="not">Tahminini seçince şeritteki tutarlar görünür.</p>'; PANEL.innerHTML = bolum('tahmin', ht); panelSon(); return; }
   h += bolum('tahmin', ht);
   var hd = '<p class="asama a2"><span class="no">2</span>Dene</p>';
   if (!s.zBitti) {
-    if (s.k === 0) hd += '<p class="yonerge">Önce %20 indirim: tutamağı %80’e götür.</p>';
-    else hd += '<p class="yonerge">Kasada %20 daha. Alt şerit indirimli fiyat: onun %100’ü ' + say(P * 0.8) + ' TL. Alt şeritte tutamağı %80’e götür.</p>';
+    if (s.k === 0) hd += '<p class="yonerge">Önce %20 indirim: sarı kutuyu %80’e götür.</p>';
+    else hd += '<p class="yonerge">Kasada %20 daha. Alt şerit indirimli fiyat: onun %100’ü ' + say(P * 0.8) + ' TL. Alt şeritte sarı kutuyu %80’e götür.</p>';
     h += bolum(s.k === 0 ? 'dene1' : 'dene2', hd);
   } else {
     var son = P * 0.64, dog = s.tahmin === 1;
     hd += '<p class="geri' + (dog ? ' tamam' : '') + '">Ödeyeceğin ' + say(son) + ' TL: ilk fiyatın %64’ü. Toplam indirim %36. İkinci indirim ' + say(P * 0.16) + ' TL, ilk fiyatın %16’sı. ' +
       (dog ? 'Tahminin tuttu.' : s.tahmin === 0 ? 'Tahminin %40’tı. İkinci %20, ' + say(P * 0.8) + ' TL’den kesildi; o yüzden ' + say(P * 0.16) + ' TL. %40 olsaydı ikinci kesim ' + say(P * 0.2) + ' TL olurdu.' : 'Tahminin %40’tan çoktu. Kesikli çizgiye bak: %40 indirimde ' + say(P * 0.6) + ' TL ödenirdi; sen ' + say(son) + ' TL ödüyorsun. Toplam indirim %40’tan az.') + '</p>';
+    if (simKaynak()) hd += '<div class="satirDug">' + simDugme() + '</div>';
     h += bolum('dene2', hd);
     var ac = [{d:1, m:'İkinci %20, küçülmüş fiyattan alındı.', g:'Evet. İkinci şeridin %100’ü ' + say(P * 0.8) + ' TL; onun %20’si ' + say(P * 0.16) + ' TL.'},
       {m:'İkinci %20, ilk fiyattan alındı.', g:'Alt şeride bak: ikinci %20 o şeridin %20’si. O şerit ' + say(P * 0.8) + ' TL.'},
       {m:'İki %20 bu fiyatta %40 etti.', g:'Sarı boşluğa bak: son fiyat ilk fiyatın %64’ü. İndirim %36.'}];
     var ha = '<p class="asama a3"><span class="no">3</span>Açıkla: hangisi bu durumu anlatıyor?</p>' + secenekHtml(ac, s.acikla, 'zacikla', true, tohumu(s.say) + 2, eleIndeks(ac, s.acikla));
-    if (s.acikla >= 0) ha += '<p class="geri' + (ac[s.acikla].d ? ' tamam' : '') + '">' + esc(ac[s.acikla].g) + '</p>';
+    if (s.acikla >= 0) ha += '<p class="geri' + (ac[s.acikla].d ? ' tamam' : '') + '">' + esc(ac[s.acikla].g) + (TEKRAR === 'ac' + s.acikla ? tekrarYazi() : '') + '</p>';
     if (s.aciklaTamam) {
-      ha += '<p class="yonerge">Başka bir fiyatla dene. Toplam indirim değişiyor mu?</p><div class="satirDug"><button data-yenifiyat="1">Başka fiyatla dene</button>' + (KIP === 'kendim' ? '' : '<button class="ana" data-sonraki="1">Sınava hazırlık</button>') + '</div>';
-      if (s.denemeler.length) ha += '<p class="not">Denediklerin: ' + s.denemeler.map(function(d){ return say(d) + ' TL → %36'; }).join(' · ') + '</p>';
+      if (KIP !== 'kendim') ha += '<p class="yonerge">Başka bir fiyatla dene. Toplam indirim değişiyor mu?</p><div class="satirDug"><button data-yenifiyat="1">Başka fiyatla dene</button>' + (KIP === 'kendim' ? '' : '<button class="ana" data-sonraki="1">Sınava hazırlık</button>') + '</div>';
+      if (s.denemeler.length) { var dl = s.denemeler.slice(); if (dl.indexOf(P) < 0) dl.push(P); ha += '<p class="not">Denediklerin: ' + dl.map(function(d){ return say(d) + ' TL → %36'; }).join(' · ') + '</p><p class="not"><b>Her fiyatta %36 çıktı. Neden fiyata bağlı değil? İkinci %20 neyin %20’si?</b></p>'; }
     }
     h += bolum('acikla', ha);
-    if (s.aciklaTamam && KIP === 'kendim') h += bolum('kd', kdHtml(g, s, 4));
+    if (s.aciklaTamam) { h += bolum('hata', hataHtml(g, s, 4, !hataZorunlu())); if (KIP === 'kendim' && (s.hataTamam || !hataZorunlu())) { h += '<div class="bolum"><p class="not"><b>İstersen:</b> başka bir fiyatla dene. Toplam indirim değişiyor mu?</p><div class="satirDug"><button data-yenifiyat="1">Başka fiyatla dene</button></div>' + (s.denemeler.length ? '<p class="not">Denediklerin: ' + s.denemeler.concat(s.denemeler.indexOf(P) < 0 ? [P] : []).map(function(d){ return say(d) + ' TL → %36'; }).join(' · ') + '</p><p class="not"><b>Her fiyatta %36 çıktı. Neden fiyata bağlı değil? İkinci %20 neyin %20’si?</b></p>' : '') + '</div>'; h += bolum('kd', kdHtml(g, s, 5)); } }
   }
   PANEL.innerHTML = h; panelSon();
 }
 function ileriPanel(){
   var s = ST[gno], h = '';
-  el('durum').innerHTML = 'Programın dışına taşmadan, aynı şeritle birkaç durum daha. <span id="soru">Önce tahmin et, sonra dene.</span>';
-  h += '<p class="asama a1"><span class="no">1</span>Bir durum seç</p>';
+  el('durum').innerHTML = 'Aynı şeritle birkaç durum daha. <span id="soru">Önce tahmin et, sonra dene.</span>';
+  h += ekstraSecim() + '<p class="asama a1"><span class="no">1</span>Bir durum seç</p>';
   h += secenekHtml(ILERI, s.secim, 'ileri', false);
   if (s.secim >= 0) {
     var d = ILERI[s.secim], top = 0; d.ops.forEach(function(o){ top += o.t * o.a; });
@@ -3613,43 +4125,68 @@ function ileriPanel(){
     h += '<p class="asama a1"><span class="no">2</span>' + esc(d.soru) + ' Tahmin et</p>' + secenekHtml(sc, s.tahmin, 'itahmin', false);
     if (s.tahmin >= 0) {
       h += '<p class="asama a2"><span class="no">3</span>Dene</p>';
-      if (!s.zBitti) { var o = d.ops[s.k]; h += '<p class="yonerge">' + (s.k ? 'Alt şeritte' : 'Şeritte') + ' tutamağı ' + yz(100 + o.t * o.a, 'e') + ' götür.</p>'; }
+      if (!s.zBitti) { var o = d.ops[s.k]; h += '<p class="yonerge">' + (s.k ? 'Alt şeritte' : 'Şeritte') + ' sarı kutuyu ' + yz(100 + o.t * o.a, 'e') + ' götür.</p>'; }
       else h += '<p class="geri' + (s.tahmin === dogru ? ' tamam' : '') + '">Son fiyat ' + say(1000 * Vs / 100) + ' TL: ilk fiyatın ' + yz(Math.round(Vs * 100) / 100, 'i') + '. İkinci yüzde, değişmiş fiyattan alındı.</p><div class="satirDug"><button data-ileriyeni="1">Başka durum</button></div>';
     }
   }
   PANEL.innerHTML = h; panelSon();
 }
 
+var TEKRAR = '';
+function tekrarMi(s, anahtar){ s.yanlisIz = s.yanlisIz || {}; var t = s.yanlisIz[anahtar] || 0; s.yanlisIz[anahtar] = t + 1; TEKRAR_YENI = false; TEKRAR_N = t + 1;
+  if (t && KIP === 'kendim') { var ip = ipuclari(); if (ip && IPUCU.seviye < ip.length) { IPUCU.seviye++; TEKRAR_YENI = true; setTimeout(ipucuUygula, 0); } TEKRAR = anahtar; } else TEKRAR = ''; return !!t; }
+var TEKRAR_YENI = false, TEKRAR_N = 0;
+function ipSon(){ return TEKRAR_YENI ? ' Bu adımda bir ipucu açıldı.' : simKaynak() ? ' İpuçları bitti. Hesabı izle’ye bas.' : ' İpuçlarına yeniden bak.'; }
+function tekrarYazi(){ return (TEKRAR_N >= 3 ? ' Aynı seçimi ' + TEKRAR_N + '. kez yaptın.' : ' Bu seçim yine uymadı.') + ipSon(); }
+var KAYMA = 0; // geri bildirimden sonra yerleşim kayarken gelen tık yanlış öğeye düşmesin
 PANEL.addEventListener('click', function(e){
   if (e.target.closest('.ekran')) { var bge = tbBaglam(); if (bge && bge.nesne.tb && bge.nesne.tb.odak) { bge.nesne.tb.odak = null; tabloCiz(); } return; }
   var b = e.target.closest('button'); if (!b || b.disabled) return;
   var g = G[gno], s = ST[gno], a;
+  if (b.hasAttribute('data-asagi')) { PANEL.scrollTop += Math.round(PANEL.clientHeight * 0.7); return; }
   if ((a = b.getAttribute('data-tus')) !== null) {
     if (tbTus(a)) return;
+    if (g.tip !== 'sinav' && !s.kd && s.hata && s.hata.nedenTamam && !s.hata.tamam) { s.hata.giris = tusUygula(s.hata.giris, a); var eh = PANEL.querySelector('.ekran'), Bh = hataVeri(g, s.hata.say).B; if (eh) eh.textContent = (Bh === '%' ? '%' : '') + (s.hata.giris || ' ') + (Bh !== '%' ? ' ' + Bh : ''); return; }
     if (g.tip === 'sinav') s.giris = tusUygula(s.giris, a); else if (s.kd) s.kd.giris = tusUygula(s.kd.giris, a);
     var ek2 = PANEL.querySelector('.ekran'); if (ek2) { var B = g.tip === 'sinav' ? SINAV[s.sorular[s.i].j].birim : kdBirim(g), gi = g.tip === 'sinav' ? s.giris : s.kd.giris; ek2.textContent = (B === '%' ? '%' : '') + (gi || ' ') + (B !== '%' ? ' ' + B : ''); }
     return;
   }
-  if (b.hasAttribute('data-kdtamam')) { var x = sayiOku(s.kd.giris); if (isNaN(x)) { uyar('Önce bir sayı yaz.'); return; } s.kd.cevap = x; var bgk = tbBaglam(); if (s.kd.tb) { s.kd.tb.bitti = true; s.kd.tb.odak = null; } s.kd.tani = tbTani(bgk, x); s.kd.asama = 'denetle'; s.kd.st.tahmin = 0; ciz(); odaklaTutamak(); return; }
-  if (b.hasAttribute('data-kdbasla')) { kdBasla(); ciz(); return; }
+  if (b.hasAttribute('data-kdtamam')) { var x = sayiOku(s.kd.giris); if (isNaN(x)) { uyar('Önce bir sayı yaz.'); return; } s.kd.cevap = x; var bgk = tbBaglam(); if (s.kd.tb) { s.kd.tb.bitti = true; s.kd.tb.odak = null; } s.kd.tani = tbTani(bgk, x); s.kd.tbIlkDuzgun = tbDuzeldi(); s.kd.asama = 'denetle'; s.kd.st.tahmin = 0; ciz(); odaklaTutamak(); sonuGoster('.geri'); return; }
+  if (b.hasAttribute('data-tbduzelt') && s.kd) { s.kd.duzeltAcik = true; ciz(); sonuGoster('.tusAlan'); return; }
+  if (b.hasAttribute('data-kdgec') && s.kd && s.kd.asama === 'denetle') { kdSonuc(); ciz(); sonuGoster('.geri, [data-kdbasla]'); return; }
+  if (b.hasAttribute('data-kdbasla')) { SIM = null; kdBasla(); ciz(); return; }
+  if (b.hasAttribute('data-simac')) { simAc(); return; }
+  if ((a = b.getAttribute('data-git')) !== null) { git(+a); return; }
+  if ((a = b.getAttribute('data-akarar')) !== null) { if (s.tahmin >= 0) return; s.tahmin = +a; ISARET = null; panelCiz(); seritCiz(); tabloCiz(); rehberCiz(); odakla('[data-akarar="' + a + '"]'); sonuGoster('.bolum'); return; }
+  if ((a = b.getAttribute('data-aduz')) !== null) { s.duz = +a; panelCiz(); rehberCiz(); sonuGoster('.geri, [data-asonraki]'); odakla('[data-asonraki],[data-aduz="' + a + '"]'); return; }
+  if (b.hasAttribute('data-asonraki')) { if (s.secim >= AFIS.length - 1) bitir(gno); s.secim = (s.secim + 1) % AFIS.length; afisAyarla(s); ciz(); return; }
+  if ((a = b.getAttribute('data-ksec')) !== null) { if (s.karar < 0) s.karar = +a; ciz(); odakla('[data-ksonraki]'); sonuGoster('.geri, [data-ksonraki]'); return; }
+  if (b.hasAttribute('data-ksonraki')) { if (s.secim >= KARSI.length - 1) bitir(gno); s.secim = (s.secim + 1) % KARSI.length; s.karar = -1; ciz(); return; }
+  if ((a = b.getAttribute('data-teshis')) !== null && !TESHIS.bitti) { TESHIS.c[TESHIS.i] = +a; TESHIS.i++; if (TESHIS.i >= TQ.length) teshisKaydet(); ciz(); odakla(TESHIS.bitti ? '[data-kanca]' : '[data-teshis="0"]'); return; }
+  if ((a = b.getAttribute('data-isin')) !== null && s.isin) { var ri = s.isin.l[s.isin.tur]; if (ri.secim < 0) ri.secim = +a; panelCiz(); odakla('[data-isinson]'); isinmaGoster(); return; }
+  if (b.hasAttribute('data-isinson') && s.isin) { s.isinmaTamam = true; ciz(); return; }
+  if ((a = b.getAttribute('data-hsatir')) !== null && s.hata) { var Vh = hataVeri(g, s.hata.say); if (+a !== Vh.h && !s.hata.bulundu) tekrarMi(s, 'hs' + a); else TEKRAR = ''; if (!s.hata.bulundu) { s.hata.satir = +a; if (+a === Vh.h) s.hata.bulundu = true; } panelCiz(); odakla(s.hata.bulundu ? '[data-hneden]' : '[data-hsatir="' + a + '"]'); sonuGoster('.geri, .tusAlan, [data-hneden]'); return; }
+  if ((a = b.getAttribute('data-hneden')) !== null && s.hata) { var Vn = hataVeri(g, s.hata.say); if (!Vn.nd[+a].d && !s.hata.nedenTamam) tekrarMi(s, 'hn' + a); else TEKRAR = ''; if (!s.hata.nedenTamam) { if (s.hata.ilkNeden === undefined) s.hata.ilkNeden = +a; s.hata.neden = +a; if (Vn.nd[+a].d) s.hata.nedenTamam = true; } panelCiz(); odakla(s.hata.nedenTamam ? '[data-htamam]' : '[data-hneden="' + a + '"]'); sonuGoster('.geri, .tusAlan, [data-hneden]'); return; }
+  if (b.hasAttribute('data-htamam') && s.hata) { var Vt = hataVeri(g, s.hata.say), xh = sayiOku(s.hata.giris); if (isNaN(xh)) { uyar('Önce bir sayı yaz.'); return; } s.hata.son = xh; s.hata.giris = ''; if (esit(xh, Vt.dog)) { s.hata.tamam = true; s.hataTamam = true; ilerlemeYaz(); } else { s.hata.yan = (s.hata.yan || 0) + 1; tekrarMi(s, 'hy' + xh); } ciz(); sonuGoster(s.hata.tamam ? '.geri, [data-kdbasla]' : '.tusAlan'); return; }
   if (b.hasAttribute('data-sinavtamam')) {
     var q = s.sorular[s.i], t = SINAV[q.j], y = sayiOku(s.giris); if (isNaN(y)) { uyar('Önce bir sayı yaz.'); return; }
     q.deneme++; q.son = y; var bgs = tbBaglam(); if (q.tb) q.tb.odak = null; YTUR = ''; q.tani = tbTani(bgs, y); if (YAKIN[YTUR]) q.yakin = true;
-    if (Math.abs(y - t.cevap(q.v)) < 1e-6) { q.tuttu = true; q.destekli = !!(q.arac || q.ip3 || q.yakin || q.deneme > 1 || q.tbYanlis >= 3); if (q.tb) q.tb.bitti = true; if (q.destekli && s.sorular.length < 14) s.sorular.push({j:q.j, v:sinavUret(t), cevap:null, tuttu:false, deneme:0, arac:false, ek:true}); s.i++; s.giris = ''; s.arac = null; if (s.i >= s.sorular.length && sinavTamam(s)) bitir(gno); }
+    if (Math.abs(y - t.cevap(q.v)) < 1e-6) { q.tuttu = true; q.destekli = !!(q.arac || q.ip3 || q.yakin || q.deneme > 1 || q.tbYanlis >= 3); s.onceki = {no:s.i + 1, yazi:sayBirim(y, t.birim), destekli:q.destekli, yardim:!!(q.arac || q.ip3 || q.yakin || q.tbYanlis >= 3), deneme:q.deneme, ekGeldi:q.destekli && s.sorular.length < 14}; if (q.tb) q.tb.bitti = true; if (q.destekli && s.sorular.length < 14) s.sorular.push({j:q.j, v:sinavUret(t), cevap:null, tuttu:false, deneme:0, arac:false, ek:true}); s.i++; s.giris = ''; s.arac = null; if (s.i >= s.sorular.length && sinavTamam(s)) bitir(gno); }
     else s.giris = '';
     ciz(); return;
   }
   if (b.hasAttribute('data-aracac')) { aracAc(); ciz(); return; }
   if (b.hasAttribute('data-sinavyeni')) { sinavKur(s); ciz(); return; }
   if ((a = b.getAttribute('data-sinavtur')) !== null) { var js = []; SINAV.forEach(function(t, j){ if (t.tip === a) js.push(j); }); for (var n2 = 0; n2 < 2; n2++) { var j2 = js[n2 % js.length]; s.sorular.push({j:j2, v:sinavUret(SINAV[j2]), cevap:null, tuttu:false, deneme:0, arac:false, ek:true}); } s.giris = ''; s.arac = null; ciz(); return; }
-  if ((a = b.getAttribute('data-kanca')) !== null) { kancaTahmin = +a; ST[GI.kanca].tahmin = -1; ilerlemeYaz(); bitir(0); panelCiz(); return; }
+  if ((a = b.getAttribute('data-kanca')) !== null) { kancaTahmin = +a; ST[GI.kanca].tahmin = -1; ilerlemeYaz(); bitir(0); panelCiz(); rehberCiz(); sonuGoster('[data-sonraki]'); return; }
+  if (b.hasAttribute('data-ozetac')) { ozetAc(); return; }
   if (b.hasAttribute('data-sonraki')) { git(Math.min(G.length - 1, gno + 1)); return; }
-  if ((a = b.getAttribute('data-butun')) !== null) { s.butun = +a; if (g.butunSoru(s.v).sec[+a].d) s.butunTamam = true; panelCiz(); seritCiz(); odakla('[data-butun="' + a + '"]'); return; }
+  if ((a = b.getAttribute('data-butun')) !== null) { if (!g.butunSoru(s.v).sec[+a].d) tekrarMi(s, 'bt' + a); else TEKRAR = ''; s.butun = +a; if (g.butunSoru(s.v).sec[+a].d) s.butunTamam = true; panelCiz(); seritCiz(); odakla('[data-butun="' + a + '"]'); return; }
   if ((a = b.getAttribute('data-tahmin')) !== null) { s.tahmin = +a; if (!s.vardi && Math.abs(s.h - g.hedef(s.v)) < 1e-6) s.vardi = true; ISARET = null; panelCiz(); seritCiz(); tabloCiz(); odakla('[data-tahmin="' + a + '"]'); return; }
-  if ((a = b.getAttribute('data-acikla')) !== null) { if (s.aciklaIlk === undefined) { s.aciklaIlk = +a; s.aciklaYanlis = !g.acikla(s.v)[+a].d; } s.acikla = +a; if (g.acikla(s.v)[+a].d) { s.aciklaTamam = true; if (KIP !== 'kendim') bitir(gno); } panelCiz(); tabloCiz(); seritCiz(); odakla('[data-acikla="' + a + '"]'); return; }
+  if ((a = b.getAttribute('data-acikla')) !== null) { if (!g.acikla(s.v)[+a].d) tekrarMi(s, 'ac' + a); else TEKRAR = ''; if (s.aciklaIlk === undefined) { s.aciklaIlk = +a; s.aciklaYanlis = !g.acikla(s.v)[+a].d; } s.acikla = +a; if (g.acikla(s.v)[+a].d) { s.aciklaTamam = true; if (KIP !== 'kendim') bitir(gno); } ciz(); odakla('[data-acikla="' + a + '"]'); sonuGoster('.geri'); return; }
   if (b.hasAttribute('data-ekyol')) { s.ekYol = true; panelCiz(); tabloCiz(); return; }
-  if ((a = b.getAttribute('data-ztahmin')) !== null) { s.tahmin = +a; zKontrol(); if (gno === GI.kanca && kancaTahmin < 0) { kancaTahmin = +a; ilerlemeYaz(); } ISARET = null; panelCiz(); seritCiz(); tabloCiz(); odakla('[data-ztahmin="' + a + '"]'); return; }
-  if ((a = b.getAttribute('data-zacikla')) !== null) { if (s.aciklaIlk === undefined) { s.aciklaIlk = +a; s.aciklaYanlis = +a !== 0; } s.acikla = +a; if (+a === 0) { s.aciklaTamam = true; if (KIP !== 'kendim') bitir(gno); } panelCiz(); seritCiz(); odakla('[data-zacikla="' + a + '"]'); return; }
+  if ((a = b.getAttribute('data-ztahmin')) !== null) { s.tahmin = +a; s.kancadan = false; zKontrol(); if (gno === GI.kanca && kancaTahmin < 0) { kancaTahmin = +a; ilerlemeYaz(); } ISARET = null; panelCiz(); seritCiz(); tabloCiz(); odakla('[data-ztahmin="' + a + '"]'); return; }
+  if ((a = b.getAttribute('data-zacikla')) !== null) { if (+a !== 0) tekrarMi(s, 'ac' + a); else TEKRAR = ''; if (s.aciklaIlk === undefined) { s.aciklaIlk = +a; s.aciklaYanlis = +a !== 0; } s.acikla = +a; if (+a === 0) { s.aciklaTamam = true; if (KIP !== 'kendim') bitir(gno); } ciz(); odakla('[data-zacikla="' + a + '"]'); sonuGoster('.geri'); return; }
   if (b.hasAttribute('data-yenifiyat')) { s.denemeler.push(s.say.P); var P; do { P = G[gno].uret().P; } while (P === s.say.P); s.say.P = P; zSifirla(s); panelCiz(); seritCiz(); tabloCiz(); return; }
   if ((a = b.getAttribute('data-ileri')) !== null) { s.secim = +a; s.ops = ILERI[+a].ops; s.say = {P:ILERI[+a].P}; s.tahmin = -1; zSifirla(s); panelCiz(); seritCiz(); tabloCiz(); el('ince').className = ''; return; }
   if ((a = b.getAttribute('data-itahmin')) !== null) { s.tahmin = +a; zKontrol(); panelCiz(); seritCiz(); el('ince').className = ''; return; }
@@ -3658,12 +4195,12 @@ PANEL.addEventListener('click', function(e){
 function uyar(t){ var e2 = PANEL.querySelector('.ekran'); if (e2) { e2.textContent = t; } }
 function odaklaTutamak(){ var t = SVG.querySelector('.tutamak'); if (t) try { t.focus({preventScroll:true}); } catch (e) {} }
 document.addEventListener('keydown', function(e){
-  if (!PANEL.querySelector('.tusAlan') || el('kapi').className === '' || el('sorunPerde').className === '' || el('paylasPerde').className === '') return;
+  if (!PANEL.querySelector('.tusAlan') || el('kapi').className === '' || el('sorunPerde').className === '' || el('paylasPerde').className === '' || el('ozetPerde').className === '') return;
   if (e.target && (e.target.tagName === 'TEXTAREA' || e.target.tagName === 'INPUT' || (e.target.classList && e.target.classList.contains('tutamak')))) return;
   var k = e.key, t = null;
   if (tbHedef()) { if (/^[0-9]$/.test(k) || k === ',' || k === '.' || k === 'Backspace') { e.preventDefault(); tbTus(k === 'Backspace' ? '⌫' : k); return; } if (k === 'Enter') { e.preventDefault(); tbTamam(); return; } }
   if (/^[0-9]$/.test(k)) t = k; else if (k === ',') t = ','; else if (k === '.') t = '.'; else if (k === 'Backspace') t = '⌫';
-  else if (k === 'Enter') { var ok = PANEL.querySelector('[data-kdtamam],[data-sinavtamam]'), ae = document.activeElement; if (ok && ae !== ok && (!ae || ae.tagName !== 'BUTTON' || ae.hasAttribute('data-tus'))) { e.preventDefault(); ok.click(); } return; }
+  else if (k === 'Enter') { var ok = PANEL.querySelector('[data-kdtamam],[data-sinavtamam],[data-htamam]'), ae = document.activeElement; if (ok && ae !== ok && (!ae || ae.tagName !== 'BUTTON' || ae.hasAttribute('data-tus'))) { e.preventDefault(); ok.click(); } return; }
   if (t === '.') { e.preventDefault(); var S = ST[gno]; if (G[gno].tip === 'sinav') S.giris = tusUygula(S.giris, '.'); else if (S.kd) S.kd.giris = tusUygula(S.kd.giris, '.'); var b0 = PANEL.querySelector('[data-tus="0"]'); if (b0) { var ek3 = PANEL.querySelector('.ekran'), gi3 = G[gno].tip === 'sinav' ? S.giris : S.kd.giris, B3 = G[gno].tip === 'sinav' ? SINAV[S.sorular[S.i].j].birim : kdBirim(G[gno]); ek3.textContent = (B3 === '%' ? '%' : '') + gi3 + (B3 !== '%' ? ' ' + B3 : ''); } return; }
   if (t !== null) { e.preventDefault(); var bt = PANEL.querySelector('[data-tus="' + t + '"]'); if (bt) bt.click(); }
 });
@@ -3679,8 +4216,10 @@ el('degistir').addEventListener('click', function(){
 /* ---------- tablo ---------- */
 function tabloCiz(){
   var bg = tbBaglam();
-  if (bg && bg.acik) { tbCiz(bg); return; }
+  if (bg && bg.acik) { tbCiz(bg); var sk = ST[gno]; if (sk.kd && sk.kd.asama === 'sonuc' && G[gno].tip === 'tek') { el('tabloYer').insertAdjacentHTML('beforeend', '<h3 id="seritTabloBas">Şeridin tablosu</h3>' + oranTabloHtml(G[gno].tablo(sk.kd.st.v), G[gno].birim)); if (!sk.kd.tabloKaydi) { sk.kd.tabloKaydi = true; try { var yk = el('yan'), hk = el('seritTabloBas'); yk.scrollTop += hk.getBoundingClientRect().top - yk.getBoundingClientRect().top - 8; } catch (e) {} } } return; }
   tabloCiz0();
+  var sk0 = ST[gno]; if (sk0.kd && sk0.kd.asama === 'sonuc' && G[gno].tip === 'tek' && !sk0.kd.tabloKaydi && bg && bg.nesne.tb && bg.nesne.tb.bl[0].sat.length) { sk0.kd.tabloKaydi = true; setTimeout(function(){ try { var yk = el('yan'), hs = yk.querySelectorAll('h3'), hk = hs[hs.length - 1]; if (hk) yk.scrollTop += hk.getBoundingClientRect().top - yk.getBoundingClientRect().top - 8; } catch (e) {} }, 0); }
+  try { var yy = el('yan'), vv = yy.querySelector('tr.vurgu'); if (vv) { var rv = vv.getBoundingClientRect(), ryy = yy.getBoundingClientRect(); if (rv.bottom > ryy.bottom) yy.scrollTop += rv.bottom - ryy.bottom + 8; } } catch (e) {}
   if (bg && bg.nesne.tb && bg.nesne.tb.bl[0].sat.length) el('tabloYer').insertAdjacentHTML('afterbegin', '<h3>Benim tablom</h3>' + tbHtml(bg, true) + '<h3>Şeridin tablosu</h3>');
   tbOdakGoster();
 }
@@ -3694,27 +4233,24 @@ function tabloCiz0(){
     s.sorular.forEach(function(q, j){ h += '<tr' + (j === s.i ? ' class="vurgu"' : '') + '><td>' + (j + 1) + '</td><td>' + (q.tuttu ? '✓' + (q.arac ? ' (şeritle)' : '') : j === s.i ? 'şimdi' : '') + '</td></tr>'; });
     yer.innerHTML = h + '</table><p class="not">' + tamamS + '/' + s.sorular.length + ' tamam.</p>'; return; }
   var z = SS();
-  if (g.tip === 'ileri' || g.tip === 'zincir') {
+  if (g.tip === 'karsi') { var kk = KARSI[s.secim]; if (s.karar < 0) { yer.innerHTML = '<p class="bos">Göz kararından sonra dolar.</p>'; return; }
+    yer.innerHTML = '<table id="tablo"><tr><th></th><th>Bütün</th><th>Yüzde</th><th>Miktar</th></tr>' + [['A', kk.A], ['B', kk.B]].map(function(r){ return '<tr><td>' + r[0] + '</td><td>' + say(r[1].W) + ' ' + kk.birim + '</td><td>' + yz(r[1].p) + '</td><td>' + say(r[1].W * r[1].p / 100) + ' ' + kk.birim + '</td></tr>'; }).join('') + '</table>'; return; }
+  if (g.tip === 'ileri' || g.tip === 'zincir' || g.tip === 'afis') {
     if (!z.ops || z.tahmin < 0) { yer.innerHTML = '<p class="bos">' + (s.kd ? 'Şeritle denetlerken dolar.' : 'Tahminden sonra dolar.') + '</p>'; return; }
     var Vt = zDegerler(z), P = z.say.P, n = z.zBitti ? z.ops.length : z.k;
-    h = '<table id="tablo"><tr><th>Adım</th><th>Bu şeridin</th><th>Tutar</th></tr><tr><td>fiyat</td><td>%100</td><td>' + say(P) + ' TL</td></tr>';
-    for (var i = 0; i < n; i++) { var o = z.ops[i]; h += '<tr' + (i === n - 1 && z.zBitti ? ' class="vurgu' + (ISTABLO() ? ' nabiz' : '') + '"' : '') + '><td>' + (i + 1) + '. ' + (o.t < 0 ? 'indirim' : 'zam') + ' ' + yz(o.a) + '</td><td>' + yz(100 + o.t * o.a) + '</td><td>' + say(P * Vt[i + 1]) + ' TL</td></tr>'; }
+    h = '<table id="tablo" class="oran"><tr><th>Adım</th><th>Önceki fiyatın</th><th>Tutar</th></tr><tr><td>fiyat</td><td>%100</td><td>' + say(P) + ' TL</td></tr>';
+    for (var i = 0; i < n; i++) { var o = z.ops[i], kal = 100 + o.t * o.a; h += '<tr class="gecis"><td colspan="2" class="ne">' + esc((i === 0 ? 'Önceki fiyat 100 parça: ' : '') + (o.t < 0 ? yz(o.a) + ' gider, ' + kal + ' parça kalır.' : yz(o.a) + ' eklenir, ' + kal + ' parça olur.')) + '</td><td class="ok">↓ ÷ 100 × ' + kal + '</td></tr><tr' + (i === n - 1 && z.zBitti ? ' class="vurgu' + (ISTABLO() ? ' nabiz' : '') + '"' : '') + '><td>' + (i + 1) + '. ' + (o.t < 0 ? 'indirim' : 'zam') + ' ' + yz(o.a) + '</td><td>' + yz(100 + o.t * o.a) + '</td><td>' + say(P * Vt[i + 1]) + ' TL</td></tr>'; }
     h += '</table>';
-    if (z.zBitti) h += '<p class="not">İlk fiyata göre: ' + say(P * Vt[z.ops.length]) + ' / ' + say(P) + ' ile ' + say(Math.round(Vt[z.ops.length] * 10000) / 100) + ' / 100 denk oranlar.</p><span class="kavram">denk oran</span>';
+    if (z.zBitti) h += '<p class="not">Son fiyat ' + say(P * Vt[z.ops.length]) + ' TL: ilk fiyatın ' + yz(Math.round(Vt[z.ops.length] * 10000) / 100, 'i') + '.</p>' + (KIP !== 'kendim' ? '<p class="not">' + say(P * Vt[z.ops.length]) + ' / ' + say(P) + ' ile ' + say(Math.round(Vt[z.ops.length] * 10000) / 100) + ' / 100 denk oranlar.</p><span class="kavram">denk oran</span>' : '');
     yer.innerHTML = h; return;
   }
-  if (!z.vardi) { yer.innerHTML = '<p class="bos">' + (s.kd ? 'Şeritle denetleyince dolar.' : 'Ölçümden sonra dolar: şeritteki her adım bir satır.') + '</p>'; return; }
+  if (!z.vardi && !(s.kd && s.kd.asama === 'sonuc' && g.tip === 'tek')) { yer.innerHTML = '<p class="bos">' + (s.kd ? 'Şeritle denetleyince dolar.' : 'Ölçümden sonra dolar: şeritteki her adım bir satır.') + '</p>'; return; }
   var v = z.v, rows = g.tablo(v), vu = g.vurgu(v);
-  h = '<table id="tablo"><tr><th>Yüzde</th><th>' + g.birim + '</th><th>aynı çarpan</th></tr>';
-  rows.forEach(function(r){ h += '<tr' + (Math.abs(r.y - vu) < 1e-6 ? ' class="vurgu' + (ISTABLO() ? ' nabiz' : '') + '"' : '') + '><td>' + yz(r.y) + '</td><td>' + say(r.m) + ' ' + g.birim + '</td><td class="ok">' + esc(r.ok || '') + '</td></tr>'; });
-  if (s.ekYol && !s.kd) {
-    h += '<tr><th colspan="3">Başka yol: birim oran (%1’e düşen)</th></tr>';
-    g.birimYol(v).forEach(function(r){ h += '<tr class="yeni"><td>' + yz(r.y) + '</td><td>' + say(r.m) + ' ' + g.birim + '</td><td class="ok">' + esc(r.ok || '') + '</td></tr>'; });
-  }
-  h += '</table>';
+  h = oranTabloHtml(rows, g.birim, vu);
+  if (s.ekYol && !s.kd) { h += '<p class="tabloAra">Başka yol: önce %1 (birim oran)</p>' + oranTabloHtml(g.birimYol(v).map(function(r){ return {y:r.y, m:r.m, ok:r.ok, yeni:!r.bas}; }), g.birim); }
   if (s.aciklaTamam && !s.kd) {
-    h += '<p class="not">' + esc(g.oranYaz(v)) + ' İki denk oranın eşitliği bir orantı.</p>';
-    h += '<span class="kavram">denk oran</span><span class="kavram">orantı</span><span class="kavram">doğru orantı: yüzde ile miktar aynı çarpanla değişir</span>';
+    h += '<p class="not">İki sütun hep aynı sayıyla değişti: doğru orantı.</p>';
+    if (KIP !== 'kendim') h += '<p class="not">' + esc(g.oranYaz(v)) + ' İki denk oranın eşitliği bir orantı.</p><span class="kavram">denk oran</span><span class="kavram">orantı</span><span class="kavram">doğru orantı</span>';
     if (s.ekYol) h += '<span class="kavram">birim oran: %1’e ' + say(v.P / 100) + ' TL</span><p class="not">İki yol da ' + say(v.ode) + ' TL verdi. Sence hangisi daha kısa?</p>';
     h += '<div class="satirDug"><button id="grafikDug" aria-pressed="' + s.grafik + '">Grafik</button></div>';
     if (s.grafik) h += grafikSvg(rows, g.birim);
@@ -3722,24 +4258,39 @@ function tabloCiz0(){
   yer.innerHTML = h;
   var gd = el('grafikDug'); if (gd) gd.addEventListener('click', function(){ s.grafik = !s.grafik; tabloCiz(); });
 }
+function gecisYaz(r, rows, B, on){ var ok = r.ok || '', m, bul = function(y){ for (var i = 0; i < rows.length; i++) if (Math.abs(rows[i].y - y) < 1e-9) return rows[i].m; return null; }, Bs = B ? ' ' + B : '';
+  if ((m = /^([÷×]) (\d+)$/.exec(ok))) return {ok:m[1] + ' ' + m[2], ne:(m[1] === '÷' ? 'İkisini de ' + m[2] + ek(+m[2], 'e') + ' böl' : 'İkisini de ' + m[2] + ' ile çarp') + (on ? ', ' + yz(r.y, 'e') + (m[1] === '÷' ? ' in.' : ' çık.') : '.')};
+  if ((m = /^%(\d+) ÷ 2$/.exec(ok))) return {ne:yz(+m[1], 'in') + ' yarısı: ' + say(bul(+m[1])) + ' ÷ 2 = ' + say(r.m) + Bs + '.'};
+  if ((m = /^%(\d+) \+ %(\d+)$/.exec(ok))) return {ne:yz(+m[1]) + ' ile ' + yz(+m[2], 'i') + ' topla: ' + say(bul(+m[1])) + ' + ' + say(bul(+m[2])) + ' = ' + say(r.m) + Bs + '.'};
+  if ((m = /^%100 − %(\d+)$/.exec(ok))) return {ne:yz(100, 'den') + ' ' + yz(+m[1], 'i') + ' çıkar: ' + say(bul(100)) + ' − ' + say(bul(+m[1])) + ' = ' + say(r.m) + Bs + '.'};
+  return ok ? {ne:ok} : null; }
+function oranTabloHtml(rows, B, vu){
+  var h = '<table id="tablo" class="oran"><tr><th></th><th>Yüzde</th><th>' + esc(B) + '</th><th></th></tr>';
+  rows.forEach(function(r, i){
+    if (i > 0) { var gc = gecisYaz(r, rows, B, rows[i - 1]); if (gc) h += '<tr class="gecis"><td class="ok">' + (gc.ok ? esc(gc.ok) + ' ↓' : '') + '</td><td colspan="2" class="ne">' + esc(gc.ne) + '</td><td class="ok">' + (gc.ok ? '↓ ' + esc(gc.ok) : '') + '</td></tr>'; }
+    h += '<tr class="satir' + (vu !== undefined && Math.abs(r.y - vu) < 1e-6 ? ' vurgu' + (ISTABLO() ? ' nabiz' : '') : '') + (r.yeni ? ' yeni' : '') + '"><td></td><td>' + yz(r.y) + '</td><td>' + say(r.m) + ' ' + esc(B) + '</td><td></td></tr>'; });
+  return h + '</table>'; }
 function ISTABLO(){ return KIP === 'kendim' && simdiki() === 'acikla' && IPUCU.seviye >= 2; }
 function grafikSvg(rows, birim){
   var mx = 0, my = 0; rows.forEach(function(r){ mx = Math.max(mx, r.y); my = Math.max(my, r.m); });
-  mx = Math.ceil(mx / 50) * 50; var W = 380, H = 205, x0 = 56, y0 = 172;
-  function X(p){ return x0 + p / mx * (W - x0 - 14); } function Y(m){ return y0 - m / my * (y0 - 18); }
+  mx = Math.ceil(mx / 50) * 50; var W = 420, H = 250, x0 = 70, y0 = 196, son0 = rows[rows.length - 1]; my = Math.max(my, son0.m / son0.y * mx);
+  function X(p){ return x0 + p / mx * (W - x0 - 36); } function Y(m){ return y0 - m / my * (y0 - 18); }
   var h = '<svg id="grafik" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Yüzde ve miktar grafiği">';
   h += '<line x1="' + x0 + '" y1="' + y0 + '" x2="' + (W - 5) + '" y2="' + y0 + '" stroke="#16263D" stroke-width="2"/><line x1="' + x0 + '" y1="' + y0 + '" x2="' + x0 + '" y2="8" stroke="#16263D" stroke-width="2"/>';
   var son = rows[rows.length - 1];
   h += '<line x1="' + X(0) + '" y1="' + Y(0) + '" x2="' + X(mx) + '" y2="' + Y(son.m / son.y * mx) + '" stroke="#F07D21" stroke-width="3"/>';
   rows.forEach(function(r){ h += '<circle cx="' + X(r.y) + '" cy="' + Y(r.m) + '" r="6" fill="#16263D"/>'; });
-  h += '<text x="' + (W - 8) + '" y="' + (y0 + 26) + '" text-anchor="end" font-size="16" font-weight="800" fill="#16263D">yüzde</text><text x="' + (x0 - 6) + '" y="18" text-anchor="end" font-size="16" font-weight="800" fill="#16263D">' + esc(birim) + '</text>';
-  h += '<text x="' + X(0) + '" y="' + (y0 + 20) + '" text-anchor="middle" font-size="16" fill="#16263D">0</text><text x="' + X(mx) + '" y="' + (y0 + 20) + '" text-anchor="middle" font-size="16" fill="#16263D">%' + mx + '</text>';
-  return h + '</svg><p class="not">Noktalar başlangıçtan çıkan bir ışının üstünde: doğru orantı.</p>';
+  var yt = [0, mx / 2, mx]; if (mx > 100) yt.splice(2, 0, 100);
+  yt.forEach(function(p){ var mv = son.m / son.y * p; h += '<line x1="' + X(p) + '" y1="' + y0 + '" x2="' + X(p) + '" y2="' + (y0 + 6) + '" stroke="#16263D" stroke-width="2"/><text x="' + X(p) + '" y="' + (y0 + 24) + '" text-anchor="middle" font-size="18" font-weight="700" fill="#16263D">%' + say(p) + '</text>';
+    if (p > 0) h += '<line x1="' + (x0 - 6) + '" y1="' + Y(mv) + '" x2="' + x0 + '" y2="' + Y(mv) + '" stroke="#16263D" stroke-width="2"/><line x1="' + x0 + '" y1="' + Y(mv) + '" x2="' + X(p) + '" y2="' + Y(mv) + '" stroke="#C9D3DF" stroke-width="1" stroke-dasharray="4 4"/><text x="' + (x0 - 9) + '" y="' + (Y(mv) + 6) + '" text-anchor="end" font-size="17" font-weight="700" fill="#16263D">' + say(mv) + '</text>'; });
+  h += '<text x="' + (x0 - 12) + '" y="' + (y0 - 4) + '" text-anchor="end" font-size="17" font-weight="700" fill="#16263D">0</text>';
+  h += '<text x="' + ((x0 + W) / 2) + '" y="' + (y0 + 48) + '" text-anchor="middle" font-size="17" font-weight="800" fill="#5B6B7D">yüzde</text><text x="' + (x0 + 8) + '" y="18" text-anchor="start" font-size="17" font-weight="800" fill="#5B6B7D">' + esc(birim) + '</text>';
+  return h + '</svg><p class="not">Noktalar başlangıçtan çıkan bir ışının üstünde: doğru orantı. Yüzde 2 katına çıkınca miktar da 2 katına çıkıyor mu? Noktalara bak.</p>';
 }
 
 /* ---------- genel çizim ---------- */
 function ciz(){
-  panelCiz(); tabloCiz(); seritCiz();
+  panelCiz(); tabloCiz(); seritCiz(); simCiz();
   el('ince').className = sinir() ? '' : 'gizli';
   odakSinif();
 }
@@ -3749,6 +4300,7 @@ var rzZaman = null; window.addEventListener('resize', function(){ clearTimeout(r
 /* ---------- sekmeler, tam ekran ---------- */
 el('sekAtolye').addEventListener('click', function(){ sekme(0); });
 el('sekOgretmen').addEventListener('click', function(){ sekme(1); });
+el('kendimeGec').addEventListener('click', function(){ for (var i = 0; i < bitti.length; i++) bitti[i] = false; sekme(0); kipSec('kendim'); });
 function sekme(n){ el('sekAtolye').setAttribute('aria-selected', String(n === 0)); el('sekOgretmen').setAttribute('aria-selected', String(n === 1));
   el('atolye').style.display = n === 0 ? 'flex' : 'none'; el('ogretmen').className = n === 1 ? '' : 'gizli'; }
 el('tamEkran').addEventListener('click', function(){ var d = document; try { if (d.fullscreenElement || d.mozFullScreenElement) { (d.exitFullscreen || d.mozCancelFullScreen).call(d); } else { var r = d.documentElement; (r.requestFullscreen || r.mozRequestFullScreen).call(r); } } catch (e) {} });
@@ -3766,11 +4318,11 @@ function kapiTus(e){
 function kapiOdak(e){ if (kapiEl.className !== 'gizli' && !kapiEl.contains(e.target)) { try { e.target.blur && e.target.blur(); kapiDers.focus({preventScroll:true}); } catch (h) {} } }
 function ilkEksik(){ for (var i = 0; i < 8; i++) if (!bitti[i]) return i; return 8; }
 function kipSec(k){
-  KIP = k; document.body.classList.toggle('kendim', k === 'kendim'); kapiKapat();
+  KIP = k; document.body.classList.toggle('kendim', k === 'kendim'); kapiKapat(); el('kendimeGec').className = k === 'kendim' ? 'ustDug gizli' : 'ustDug'; el('ozetDugme').className = k === 'kendim' ? 'ustDug' : 'ustDug gizli';
   if (k === 'kendim') {
-    if (!window.__OKUL) paylasDugme.className = 'ustDug';
+    paylasDugme.className = 'ustDug';
     var x = ilerlemeOku();
-    if (x) { if (Array.isArray(x.bitti)) x.bitti.forEach(function(b, i){ if (b && i < bitti.length) bitti[i] = true; }); if (typeof x.kanca === 'number' && x.kanca >= 0 && x.kanca < 3) kancaTahmin = x.kanca; }
+    if (x) { if (Array.isArray(x.bitti)) x.bitti.forEach(function(b, i){ if (b && i < bitti.length) bitti[i] = true; }); if (typeof x.kanca === 'number' && x.kanca >= 0 && x.kanca < 3) kancaTahmin = x.kanca; if (x.ozet && typeof x.ozet === 'object') { if (x.ozet.kd && typeof x.ozet.kd === 'object') OZET.kd = x.ozet.kd; if (x.ozet.hata && typeof x.ozet.hata === 'object') OZET.hata = x.ozet.hata; if (x.ozet.sinav && typeof x.ozet.sinav === 'object') OZET.sinav = x.ozet.sinav; } if (x.teshis && typeof x.teshis === 'object') { TESHIS.bitti = true; TESHIS.butun = !!x.teshis.butun; TESHIS.carpim = !!x.teshis.carpim; TESHIS.hesap = !!x.teshis.hesap; } }
     ilerlemeYaz(); git(Math.min(ilkEksik(), G.length - 1));
   } else { adimlarCiz(); ciz(); }
 }
@@ -3781,11 +4333,11 @@ function kipSec(k){
   if (KAYIT || /[#&]derste/.test(hs)) return;
   if (/[#&]kendim/.test(hs)) { kipSec('kendim'); return; }
   var x = ilerlemeOku();
-  if (x && Array.isArray(x.bitti) && x.bitti.some(function(b){ return b; })) { var n = 0; x.bitti.forEach(function(b){ if (b) n++; }); kapiKalan.textContent = n + ' görev bitti. Kaldığın görevden açılır.'; }
+  if (x && Array.isArray(x.bitti) && x.bitti.some(function(b){ return b; })) { var n = 0; x.bitti.forEach(function(b){ if (b) n++; }); kapiKalan.textContent = n + ' görev bitti. Kaldığın görevin başından açılır.'; }
   kapiEl.className = ''; document.addEventListener('keydown', kapiTus, true); document.addEventListener('focusin', kapiOdak, true);
   kapiDers.addEventListener('click', function(){ kipSec('ders'); });
   kapiKendim.addEventListener('click', function(){ kipSec('kendim'); });
-  setTimeout(function(){ try { kapiDers.focus({preventScroll:true}); } catch (e) {} }, 0);
+  setTimeout(function(){ try { el('kapiKutu').focus({preventScroll:true}); } catch (e) {} }, 0);
 })();
 
 /* ---------- arkadaşına gönder ---------- */
@@ -3827,10 +4379,7 @@ function sorunQr(){ var y = el('sorunQr'); if (!y || typeof qrcode !== 'function
 function sorunAc(){ sorunGonderildi = false; sorunCiz(); sorunPerde.className = ''; var b = sorunKutu.querySelector('button'); if (b) b.focus(); }
 function sorunKapat(){ sorunPerde.className = 'gizli'; sorunDugme.focus(); }
 function sorunCiz(){
-  if (window.__OKUL) {
-    sorunKutu.innerHTML = '<h2 id="sorunBaslik">Eksik ya da yanlış mı gördünüz?</h2><p>Bir terim, bir sayı ya da konudan eksik kalan bir kısım varsa Eğitim Teknolojileri birimine iletin; düzeltip güncelliyoruz.</p><pre id="sKayit"></pre><div class="gonder"><button class="ana" id="sKapat">Kapat</button></div>';
-    el('sKayit').textContent = sorunKayit(); el('sKapat').addEventListener('click', sorunKapat); return;
-  }
+  
   if (sorunGonderildi) {
     sorunKutu.innerHTML = '<h2 id="sorunBaslik">Teşekkürler</h2><p>Okuyorum, bakıyorum.</p><div class="gonder"><button class="ana" id="sKapat">Kapat</button></div>';
     el('sKapat').addEventListener('click', function(){ sorunTur = {}; sorunNot = ''; sorunKapat(); }); return;
@@ -3869,9 +4418,38 @@ document.addEventListener('keydown', function(e){
     if (e.shiftKey && document.activeElement === ilk) { e.preventDefault(); son.focus(); } else if (!e.shiftKey && document.activeElement === son) { e.preventDefault(); ilk.focus(); } else if (!sorunKutu.contains(document.activeElement)) { e.preventDefault(); ilk.focus(); } }
 }, true);
 
+/* ---------- Öğretmenine göster (özet) ve sıfırla ---------- */
+var ozetPerde = el('ozetPerde'), ozetKutu = el('ozet'), ozetDugme = el('ozetDugme'), sifirOnay = false;
+function ozetCiz(){ ozetTopla();
+  var h = '<h2 id="ozetBaslik">Öğretmenine göster</h2><table class="ozetTablo"><tr><th>Görev</th><th>Durum</th><th>Kendin dene</th><th>Hatayı bul</th></tr>';
+  for (var i = 1; i <= 6; i++) { var hz = hataZorunluG(i), hb = OZET.hata[i];
+    var kq = OZET.kd[i], kdy = !kq ? '–' : typeof kq === 'number' ? kq + ' deneme' : kq.n + ' deneme' + (kq.d || kq.h ? ': ' + [kq.d ? sy(kq.d, 'i') + ' hazır satırla' : '', kq.h ? kq.h + ' kez Henüz' : ''].filter(function(x){ return x; }).join(', ') : ''), t0 = ST[i];
+    var dur = bitti[i] ? '✓ bitti' : t0 && t0.kd ? 'yarım: Kendin dene art arda ' + (t0.kdSeri || 0) + '/' + kdHedef(t0) : t0 && (t0.vardi || t0.zBitti) ? 'yarım' : '–';
+    h += '<tr><td>' + i + '. ' + esc(G[i].ad) + '</td><td>' + dur + '</td><td>' + kdy + '</td><td>' + (hb ? (hb.yan ? 'düzeltti, ' + hb.yan + ' yanlış girişle' : 'düzeltti') + (hb.ilk ? '; ilk seçtiği neden: “' + esc(hb.ilk) + '”' : '') : hz ? '–' : 'isteğe bağlı') + '</td></tr>'; }
+  var so = OZET.sinav;
+  h += '<tr><td>7. ' + esc(G[GI.sinav].ad) + '</td><td>' + (bitti[GI.sinav] ? '✓ bitti' : '–') + '</td><td colspan="2">' + (so ? so.cozulen + ' soru çözüldü; kendi başına ' + so.bag + '; tür ' + so.tur + '/6' + (so.tr ? '<br><span class="kucuk">' + Object.keys(TUR_AD).map(function(k){ return esc(TUR_AD[k]) + ': ' + (so.tr[k] === 'k' ? 'kendi başına' : so.tr[k] === 'd' ? 'yardımla' : '–'); }).join(' · ') + '</span>' : '') : '–') + '</td></tr></table>';
+  h += '<p class="kucuk">Kendi başına: şerit ve 2. ipucu açılmadan, ilk denemede doğru.</p>';
+  h += '<div class="gonder"><button class="ana" id="oKapat">Kapat</button><span style="flex:1"></span><button id="oSifir">' + (sifirOnay ? 'Emin misin? Bu cihazdaki ilerleme silinir.' : 'Yeni öğrenci: sıfırla') + '</button>' + (sifirOnay ? '<button id="oVazgec">Vazgeç</button>' : '') + '</div>';
+  ozetKutu.innerHTML = h;
+  el('oKapat').addEventListener('click', ozetKapat);
+  el('oSifir').addEventListener('click', function(){ if (!sifirOnay) { sifirOnay = true; ozetCiz(); el('oSifir').focus(); return; } try { localStorage.removeItem(ILERLEME); } catch (e) {} location.hash = 'kendim'; location.reload(); });
+  var v = el('oVazgec'); if (v) v.addEventListener('click', function(){ sifirOnay = false; ozetCiz(); el('oSifir').focus(); });
+}
+function hataZorunluG(i){ return i === GI.bul || i === GI.tamam || i === GI.kanca; }
+function ozetAc(){ sifirOnay = false; ozetCiz(); ozetPerde.className = ''; el('oKapat').focus(); }
+function ozetKapat(){ ozetPerde.className = 'gizli'; try { document.activeElement.blur(); } catch (e) {} } // odak düğmede kalırsa sonraki Enter özeti yeniden açar
+ozetDugme.addEventListener('click', ozetAc);
+ozetPerde.addEventListener('click', function(e){ if (e.target === ozetPerde) ozetKapat(); });
+document.addEventListener('keydown', function(e){
+  if (ozetPerde.className === 'gizli') return;
+  if (e.key === 'Escape') { e.preventDefault(); ozetKapat(); return; }
+  if (e.key === 'Tab') { var od = ozetKutu.querySelectorAll('button'); if (!od.length) return; var ilk = od[0], son = od[od.length - 1];
+    if (e.shiftKey && document.activeElement === ilk) { e.preventDefault(); son.focus(); } else if (!e.shiftKey && document.activeElement === son) { e.preventDefault(); ilk.focus(); } else if (!ozetKutu.contains(document.activeElement)) { e.preventDefault(); ilk.focus(); } }
+}, true);
+
 /* ---------- test kancası ---------- */
 window.__yz = {
-  git:git, kip:function(){ return KIP; }, kipSec:kipSec, sorun:sorunAc, paylas:paylasAc,
+  git:git, kip:function(){ return KIP; }, teshis:function(c){ TESHIS.c = c; TESHIS.i = 3; teshisKaydet(); ciz(); return TESHIS; }, isinmaGec:function(){ ST[gno].isinmaTamam = true; ciz(); }, hataVeri:function(){ var g = G[gno], s = ST[gno]; return hataVeri(g, hataSay(g, s).say); }, hataCoz:function(){ var s = ST[gno]; hataSay(G[gno], s); s.hata.bulundu = s.hata.nedenTamam = s.hata.tamam = true; s.hataTamam = true; ciz(); }, simdi:function(){ return simdiki(); }, simPlan:simPlan, sim:function(){ return SIM ? {i:SIM.i, n:SIM.plan.kare.length, yaz:SIM.plan.kare[SIM.i].yaz} : null; }, kipSec:kipSec, sorun:sorunAc, paylas:paylasAc,
   durum:function(){ var s = ST[gno]; return {gno:gno, tip:G[gno].tip, h:s.h, k:s.k, zBitti:s.zBitti, tahmin:s.tahmin, vardi:s.vardi, acikla:s.acikla, aciklaTamam:s.aciklaTamam, butunTamam:s.butunTamam, say:s.say, v:s.v, bitti:bitti.slice(), kanca:kancaTahmin}; },
   hedef:function(){ var g = G[gno], s = ST[gno]; if (g.tip === 'tek') return g.hedef(s.v); var o = s.ops[s.k]; return 100 + o.t * o.a; },
   tut:function(p){ yerlestir(p); },
